@@ -1,0 +1,284 @@
+{
+	\\ NETWORK MENU \\
+
+	menuDef 
+	{
+    	name		"invalid_version_menu"
+    	visible		0
+    	fullscreen	0
+		rect		0 0 640 480
+		focusColor	.49 .56 .27 1
+    	style		WINDOW_STYLE_FILLED
+		popup
+
+		onESC 
+		{ 
+			close invalid_version_menu;
+		}
+
+		itemDef
+		{
+			name		window
+			rect		0 0 640 480
+			style		WINDOW_STYLE_FILLED
+			backcolor	0 0 0 .5
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			rect		30 50 640 400
+			background	"gfx/menus/backdrop/requestor"
+			style		WINDOW_STYLE_SHADER
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			text		"Please download the latest version of SOF2."
+			style		WINDOW_STYLE_FILLED
+			textfont	"hud"
+			textscale	.53
+			rect		66  75 510 33
+			textalign	1
+			textalignx	235
+			textaligny	8
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 .25
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			group				invalid_version
+			name				invalid_versionText
+			feeder				FEEDER_NEWVERSION_TEXT
+			type				ITEM_TYPE_TEXTSCROLL
+			style				WINDOW_STYLE_EMPTY
+			visible				0
+			rect				74 120 490 100
+			textfont			"hud"
+			textscale			.43
+			textscale			.9
+			textalign			ITEM_ALIGN_LEFT	
+			border				1
+			bordercolor			0 0 0 1
+			forecolor			1 1 1 1
+			backcolor			0 0 0 .25
+			outlinecolor		.23 .26 .17 1
+			visible				1
+
+			lineHeight			20
+			maxLineChars		45
+		}
+
+		itemDef 
+		{
+      		name				downloadsize_field
+			group				invalid_version
+			type				ITEM_TYPE_NUMERICFIELD
+			style				WINDOW_STYLE_FILLED
+			text				"Download Size: "
+			cvar				"ui_downloadsize"
+      		rect				220 220 0 0
+      		textalign			ITEM_ALIGN_RIGHT
+      		textalignx			120
+			maxchars			20
+      		textaligny			2
+			textfont			"hud"
+			textscale			.43
+     		forecolor			.12 .14 .08 1
+			backcolor			0 0 0 0
+			visible				1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+		}
+
+		itemDef 
+		{
+			name				website_list
+			group				invalid_version
+      		rect				74 240 490 100
+			type				ITEM_TYPE_LISTBOX
+			style				WINDOW_STYLE_FILLED
+			elementwidth		120
+			elementheight		15
+			textfont			"hud"
+			textscale			.43
+			elementtype			LISTBOX_TEXT
+			feeder				FEEDER_NEWVERSION_WEBSITES
+			textaligny			-12
+			border				1
+			bordercolor			0 0 0 1
+			forecolor			1 1 1 1
+			backcolor			0 0 0 .25
+			outlinecolor		.23 .26 .17 1
+			visible				1
+			columns				1 2 190 21
+	  	}
+
+		itemDef 
+		{
+      		name				browserdownload_button
+			group				invalid_version
+      		text				"Browser Download"
+			type				ITEM_TYPE_BUTTON
+			style				WINDOW_STYLE_FILLED
+      		rect				65 360 120 20
+			textfont			"hud"
+			textscale			.43
+			textalign			0
+      		textalignx			2
+			textaligny			2
+			forecolor			.12 .14 .08 1
+			backcolor			0 0 0 0
+      		visible				1 
+			border				1
+			bordercolor			0 0 0 1
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+				uiScript loadNewVersionFromBrowser
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor browserdownload_button backcolor .12 .14 .08 1
+				setitemcolor browserdownload_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor browserdownload_button forecolor .12 .14 .08 1
+				setitemcolor browserdownload_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		download_button
+			group		invalid_version
+      		text		"Download"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		190 360 120 20
+			textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	2
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+				open version_download_menu
+				uiScript loadNewVersion
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor download_button backcolor .12 .14 .08 1
+				setitemcolor download_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor download_button forecolor .12 .14 .08 1
+				setitemcolor download_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		cancel_button
+			group		invalid_version
+      		text		"Cancel"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		315 360 120 20
+			textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	11
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+				close invalid_version_menu ; 
+			}
+
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor cancel_button backcolor .12 .14 .08 1
+				setitemcolor cancel_button forecolor .49 .56 .27 1
+			}
+
+      		mouseExit 
+			{ 
+				setitemcolor cancel_button forecolor .12 .14 .08 1
+				setitemcolor cancel_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		ignore_button
+			group		invalid_version
+      		text		"Ignore"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		440 360 130 20
+			textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	11
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+				open invalid_version_ignore_menu ; 
+			}
+
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor ignore_button backcolor .12 .14 .08 1
+				setitemcolor ignore_button forecolor .49 .56 .27 1
+			}
+
+      		mouseExit 
+			{ 
+				setitemcolor ignore_button forecolor .12 .14 .08 1
+				setitemcolor ignore_button backcolor 0 0 0 0
+			}
+		}
+
+	}
+}

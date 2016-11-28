@@ -1,0 +1,44 @@
+// menu defs
+// 
+{
+	loadMenu { "ui/loading.menu" }
+
+	loadMenu { "ui/main.menu" }
+
+	loadMenu { "ui/joinserver.menu" }
+	loadMenu { "ui/setup.menu" }
+	loadMenu { "ui/mods.menu" }
+	loadMenu { "ui/createserver.menu" }
+	loadMenu { "ui/violence.menu" }
+	loadMenu { "ui/violence_options.menu" }
+	loadMenu { "ui/violence_setpassword.menu" }
+	loadMenu { "ui/credits.menu" }
+
+	loadMenu { "ui/createfavorite.menu" }
+	loadMenu { "ui/findplayer.menu" }
+	loadMenu { "ui/serverinfo.menu" }
+
+	loadMenu { "ui/connect.menu" }
+
+	loadMenu { "ui/setup_controls.menu" }
+	loadMenu { "ui/setup_player.menu" }
+	loadMenu { "ui/setup_sounds.menu" }
+	loadMenu { "ui/setup_display.menu" }
+	loadMenu { "ui/setup_misc.menu" }
+	loadMenu { "ui/setup_scale.menu" }
+	loadMenu { "ui/setup_cdkey.menu" }
+	loadMenu { "ui/setup_network.menu" }
+
+	loadMenu { "ui/vid_restart.menu" }
+	loadMenu { "ui/quit.menu" }
+	loadMenu { "ui/background_task.menu" }
+	loadMenu { "ui/cdkey.menu" }
+	loadMenu { "ui/error.menu" }
+	loadMenu { "ui/password.menu" }
+	loadMenu { "ui/verify_network.menu" }
+
+	loadMenu { "ui/patch_info.menu" }
+	loadMenu { "ui/patch_location.menu" }
+	loadMenu { "ui/patch_download.menu" }
+	loadMenu { "ui/patch_ignore.menu" }
+}

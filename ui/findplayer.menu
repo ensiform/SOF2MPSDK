@@ -1,0 +1,275 @@
+{
+	\\ Server Information Popup Menu
+
+	menuDef 
+	{
+		name		"findplayer_popmenu"
+	   	visible		0
+   		fullscreen	0
+		rect		0 0 640 480
+		focusColor	.49 .56 .27 1
+   		style		WINDOW_STYLE_FILLED
+   		border		1
+		popup
+
+		onOpen 
+		{ 
+			uiScript FindPlayer ; 
+			setfocus namefield ;
+		}
+		onESC 
+		{ 
+			close findplayer_popmenu ; 
+		}
+
+		itemDef
+		{
+			name		window
+			rect		0 0 640 480
+			style		WINDOW_STYLE_FILLED
+			backcolor	0 0 0 .5
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+   			rect		150 40 435 440
+			background	"gfx/menus/backdrop/requestor"
+			style		WINDOW_STYLE_SHADER
+			visible		1
+			decoration
+		}
+   
+		itemDef 
+		{
+			name		window
+			text		"Find Player"
+			style		WINDOW_STYLE_FILLED
+			textfont	"hud"
+			textscale	.53
+			rect		167 62 356 33
+			textalign	1
+			textalignx	160
+			textaligny	8
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 .25
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_EMPTY
+			text		"Name"
+			textfont	"hud"
+			textscale	.43
+			rect		184 105 215 32
+			textalign	ITEM_ALIGN_LEFT
+			textalignx  0
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+		itemDef 
+		{
+      		name		namefield
+      		type		ITEM_TYPE_EDITFIELD
+			style		WINDOW_STYLE_FILLED
+			cvar		"ui_findplayer"
+			maxChars	20
+      		rect		224 105 195 20 
+      		textalign	ITEM_ALIGN_LEFT		
+      		textalignx	2
+      		textaligny	2
+			textfont	"hud"
+			textscale	.43
+			forecolor	1 1 1 1
+			backcolor	0 0 0 .25
+      		visible		1 
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				ui_script FindPlayer 
+			}
+    	}
+
+		// LIST OF SERVER NAMES
+
+		itemDef 
+		{
+			name			servername_feeder
+			rect			175 132 340 85
+			type			ITEM_TYPE_LISTBOX
+			style			WINDOW_STYLE_FILLED
+			elementwidth	120
+			elementheight	15
+			textfont	"hud"
+			textscale	.43
+			textaligny		-13
+			elementtype		LISTBOX_TEXT
+			feeder			FEEDER_FINDPLAYER
+			border			1
+			forecolor		1 1 1 1
+			backcolor		0 0 0 .25
+			bordercolor		0 0 0 1
+			outlinecolor	.23 .26 .17 1
+			visible			1
+			columns			1	2 40 30
+	 	
+			doubleClick
+			{
+				ui_script FoundPlayerJoinServer 
+			}
+		}
+
+		// LIST OF SERVER STATUS INFORMATION
+
+		itemDef 
+		{
+			name			serverInfoList		
+			rect			175 230 340 130
+			type			ITEM_TYPE_LISTBOX
+			style			WINDOW_STYLE_FILLED
+			elementwidth	120
+			elementheight	15
+			forecolor		1 1 1 1
+			backcolor		0 0 0 .25
+			border			1
+			bordersize		1
+			bordercolor		0 0 0 1
+			textaligny		-12
+			textfont	"hud"
+			textscale	.43
+			elementtype		LISTBOX_TEXT
+			feeder			FEEDER_SERVERSTATUS
+			visible			1
+			columns 4	2 40 20
+					40 40 10
+					90 40 10
+					135 40 24
+
+			notselectable
+	 	}
+
+		//	BUTTON
+
+		itemDef 
+		{
+			name		exit_button
+			text		"Exit"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		193 378 60 26
+			textalign	10
+			textalignx	13
+			textaligny	4
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			border		1
+			bordercolor	0 0 0 1
+			visible 1
+			
+			action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				close findplayer_popmenu ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor exit_button backcolor .12 .14 .08 1
+				setitemcolor exit_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor exit_button backcolor 0 0 0 0
+				setitemcolor exit_button forecolor .12 .14 .08 1
+			}
+		}
+
+		itemDef 
+		{
+			name		search_button
+			text		"Search"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		316 378 60 26
+			textfont	"hud"
+			textscale	.43
+			textalign	0
+			textalignx	7
+			textaligny	4
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			border		1
+			bordercolor	0 0 0 1
+			visible 1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				ui_script FindPlayer 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor search_button backcolor .12 .14 .08 1
+				setitemcolor search_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor search_button backcolor 0 0 0 0
+				setitemcolor search_button forecolor .12 .14 .08 1
+			}
+		}
+
+
+		itemDef 
+		{
+			name		join_button
+			text		"Join"
+			textfont	"hud"
+			textscale	.43
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		435 378 60 26
+			textalign	0
+			textalignx	12
+			textaligny	4
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			border		1
+			bordercolor	0 0 0 1
+			visible 1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				ui_script FoundPlayerJoinServer 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor join_button backcolor .12 .14 .08 1
+				setitemcolor join_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor join_button backcolor 0 0 0 0
+				setitemcolor join_button forecolor .12 .14 .08 1
+			}
+	}
+}
+}
+
+

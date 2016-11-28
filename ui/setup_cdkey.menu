@@ -1,0 +1,311 @@
+{
+	\\ CDKEY MENU \\
+
+	menuDef 
+	{
+    	name		"setup_cdkey_menu"
+    	visible		0
+    	fullscreen	0
+		rect		50 110 432 254
+		focusColor	.49 .56 .27 1
+    	style		WINDOW_STYLE_FILLED
+
+		onOpen
+		{
+			uiScript getCDKey;
+			setfocus cdkey1_field;
+//			setcvar  cdkey_error    " " ;
+		}
+		
+		onClose
+		{
+//			setcvar  "cdkey_error" " " ;
+		}
+
+		itemDef 
+		{
+			name		window
+			text		"Enter CDKEY"
+			textfont	"hud"
+			textscale	.53
+			rect		95 19 240 33
+			textalign	1
+			textalignx	125
+			textaligny	8
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 .25
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			text		"cdkey"
+			textfont	"hud"
+			textscale	.43
+			rect		117 75 260 20
+			textalignx	2
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			cvar		"cdkey_error"
+			textfont	"hud"
+			textscale	.43
+			rect		166 143 260 20
+			textalignx	2
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		cdkey1_field
+			style		WINDOW_STYLE_FILLED
+			maxchars	20
+			textfont	"hud"
+			textscale	.43
+			type		ITEM_TYPE_EDITFIELD
+			cvar		"cdkey1"
+			maxchars	4
+			rect		117 93 40 20
+			textalignx	2
+			textaligny	4
+			forecolor	1 1 1 1
+			backcolor	0 0 0 .25
+			visible		1
+			
+			action
+			{
+				play "sound/misc/menus/select.wav" ;
+			}
+			onfocus
+			{
+				setitemcolor cdkey1_field backcolor 0 0 0 .75 
+			}
+			leavefocus
+			{
+				setitemcolor cdkey1_field backcolor 0 0 0 .25 
+			}
+			mouseenter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor cdkey1_field backcolor 0 0 0 .75 
+			}
+			mouseexit 
+			{ 
+				setitemcolor cdkey1_field backcolor 0 0 0 .25 
+			}
+		}
+
+		itemDef 
+		{
+			name		cdkey2_field
+			style		WINDOW_STYLE_FILLED
+			maxchars	20
+			text		""
+			textfont	"hud"
+			textscale	.43
+			type		ITEM_TYPE_EDITFIELD
+			cvar		"cdkey2"
+			maxchars	4
+			rect		162 93 40 20
+			textalignx	2
+			textaligny	4
+			forecolor	1 1 1 1
+			backcolor	0 0 0 .25
+			visible		1
+			
+			action
+			{
+				play "sound/misc/menus/select.wav" ;
+			}
+			onfocus
+			{
+				setitemcolor cdkey2_field backcolor 0 0 0 .75 
+			}
+			leavefocus
+			{
+				setitemcolor cdkey2_field backcolor 0 0 0 .25 
+			}
+			mouseenter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor cdkey2_field backcolor 0 0 0 .75 
+			}
+			mouseexit 
+			{ 
+				setitemcolor cdkey2_field backcolor 0 0 0 .25 
+			}
+		}
+
+		itemDef 
+		{
+			name		cdkey3_field
+			style		WINDOW_STYLE_FILLED
+			maxchars	20
+			text		""
+			textfont	"hud"
+			textscale	.43
+			type		ITEM_TYPE_EDITFIELD
+			cvar		"cdkey3"
+			maxchars	4
+			rect		207 93 40 20
+			textalignx	2
+			textaligny	4
+			forecolor	1 1 1 1
+			backcolor	0 0 0 .25
+			visible		1
+			
+			action
+			{
+				play "sound/misc/menus/select.wav" ;
+			}
+			onfocus
+			{
+				setitemcolor cdkey3_field backcolor 0 0 0 .75 
+			}
+			leavefocus
+			{
+				setitemcolor cdkey3_field backcolor 0 0 0 .25 
+			}
+			mouseenter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor cdkey3_field backcolor 0 0 0 .75 
+			}
+			mouseexit 
+			{ 
+				setitemcolor cdkey3_field backcolor 0 0 0 .25 
+			}
+		}
+
+		itemDef 
+		{
+			name		cdkey4_field
+			style		WINDOW_STYLE_FILLED
+			maxchars	20
+			text		""
+			textfont	"hud"
+			textscale	.43
+			type		ITEM_TYPE_EDITFIELD
+			cvar		"cdkey4"
+			maxchars	4
+			rect		252 93 40 20
+			textalignx	2
+			textaligny	4
+			forecolor	1 1 1 1
+			backcolor	0 0 0 .25
+			visible		1
+			
+			action
+			{
+				play "sound/misc/menus/select.wav" ;
+			}
+			onfocus
+			{
+				setitemcolor cdkey4_field backcolor 0 0 0 .75 
+			}
+			leavefocus
+			{
+				setitemcolor cdkey4_field backcolor 0 0 0 .25 
+			}
+			mouseenter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor cdkey4_field backcolor 0 0 0 .75 
+			}
+			mouseexit 
+			{ 
+				setitemcolor cdkey4_field backcolor 0 0 0 .25 
+			}
+		}
+
+		itemDef 
+		{
+			name		cdkeychecksum_field
+			style		WINDOW_STYLE_FILLED
+			maxchars	20
+			text		""
+			textfont	"hud"
+			textscale	.43
+			type		ITEM_TYPE_EDITFIELD
+			cvar		"cdkeychecksum"
+			maxchars	2
+			rect		297 93 20 20
+			textalignx	2
+			textaligny	4
+			forecolor	1 1 1 1
+			backcolor	0 0 0 .25
+			visible		1
+			
+			action
+			{
+				play "sound/misc/menus/select.wav" ;
+			}
+			onfocus
+			{
+				setitemcolor cdkeychecksum_field backcolor 0 0 0 .75 
+			}
+			leavefocus
+			{
+				setitemcolor cdkeychecksum_field backcolor 0 0 0 .25 
+			}
+			mouseenter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor cdkeychecksum_field backcolor 0 0 0 .75 
+			}
+			mouseexit 
+			{ 
+				setitemcolor cdkeychecksum_field backcolor 0 0 0 .25 
+			}
+		}
+
+		itemDef 
+		{
+			name		ok_button
+			text		"Verify"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		186 173 60 26
+
+			textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	12
+     		textaligny	5
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript verifyCDKey ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor ok_button backcolor .12 .14 .08 1
+				setitemcolor ok_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor ok_button backcolor 0 0 0 0
+				setitemcolor ok_button forecolor .12 .14 .08 1
+			}
+		}
+	}
+}

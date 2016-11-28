@@ -1,0 +1,135 @@
+{
+	\\ VERSION DOWNLOAD
+
+	menuDef 
+	{
+    	name		"patch_download"
+    	visible		0
+    	fullscreen	0
+		rect		0 0 640 480
+		focusColor	.49 .56 .27 1
+    	style		WINDOW_STYLE_FILLED
+		popup
+
+		onESC 
+		{ 
+			close patch_download;
+		}
+
+		itemDef
+		{
+			name		window
+			rect		0 0 640 480
+			style		WINDOW_STYLE_FILLED
+			backcolor	0 0 0 .5
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			rect		120 150 420 220
+			background	"gfx/menus/backdrop/requestor"
+			style		WINDOW_STYLE_SHADER
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			text		"Downloading Patch"
+			style		WINDOW_STYLE_FILLED
+			textfont	"hud"
+			textscale	.53
+			rect		140 160 340 33
+			textalign	1
+			textalignx	170
+			textaligny	10
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 .25
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name			window
+			type			ITEM_TYPE_TEXT
+			textfont		"hud"
+			textscale		.53
+			cvar			"ui_downloadsite"
+      		rect			160 220 0 0
+			textalignx		0
+			textaligny		8
+			forecolor		.12 .14 .08 1
+			backcolor		0 0 0 .25
+			visible			1
+			decoration
+		}
+
+		itemDef 
+		{
+      		name			downloadprogress_field
+			type			ITEM_TYPE_TEXT
+			style			WINDOW_STYLE_FILLED
+      		rect			160 245 0 0
+			cvar			"ui_downloadstatus"
+      		textalignx		0
+      		textaligny		2
+			textfont		"hud"
+			textscale		.43
+     		forecolor		.12 .14 .08 1
+			backcolor		0 0 0 0
+			visible			1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+		}
+
+
+		itemDef 
+		{
+      		name		cancel_button
+      		text		"Cancel"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		260 290 100 20
+			textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	25
+			textaligny	1
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+				uiScript cancelDownload
+				close patch_download ;
+				open patch_info ; 
+			}
+
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor cancel_button backcolor .12 .14 .08 1
+				setitemcolor cancel_button forecolor .49 .56 .27 1
+			}
+
+      		mouseExit 
+			{ 
+				setitemcolor cancel_button forecolor .12 .14 .08 1
+				setitemcolor cancel_button backcolor 0 0 0 0
+			}
+		}
+	}
+}

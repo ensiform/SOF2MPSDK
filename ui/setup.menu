@@ -1,0 +1,706 @@
+{
+	\\ SETUP MENU 
+
+	menuDef 
+	{
+    	name				setup_menu
+		visible				0
+		fullscreen			0
+		rect				50 50 432 293
+		focusColor			.49 .56 .27 1
+
+		tooltipbackcolor	.49 .56 .27 1
+		tooltipforecolor	.12 .14 .08 1
+		tooltipfont			"hud"
+		tooltipscale		.43
+		tooltipdelay		500
+	
+		onOpen 
+		{
+			hide submenu_image_alt_group;
+			show submenu_image_group;
+
+			hide player_image;
+			show player_image_alt;
+
+			show submenu_button_group;
+			hide player_button;
+
+			open player_menu;
+		}
+
+		onClose
+		{
+			close setup_controls_menu;
+			close player_menu;
+			close sounds_menu;
+			close setup_display_menu;
+			close setup_misc_menu;
+			close setup_scale_menu;
+			close setup_cdkey_menu;
+			close setup_network_menu
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  Selection buttons
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+	      	rect		10 9 46 46
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		player_image
+			group		submenu_image_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_player"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+	      	rect		18 17 32 32
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		player_image_alt
+			group		submenu_image_alt_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_player_alt"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+	      	rect		18 17 32 32
+			visible		0
+			decoration
+		}
+
+		itemDef 
+		{
+      		name		player_button
+			group		submenu_button_group
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_EMPTY
+	      	rect		10 9 46 46
+      		visible		1
+			tooltip		"Player Setup"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				show player_image_alt;
+				hide player_image;
+			}
+			mouseExit
+			{
+				show player_image;
+				hide player_image_alt;
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				hide submenu_image_alt_group;
+				show submenu_image_group;
+				show submenu_button_group;
+				
+				hide player_image;
+				show player_image_alt;
+				hide player_button;
+
+				close setup_controls_menu;
+				close sounds_menu;
+				close setup_display_menu;
+				close setup_misc_menu;
+				close setup_scale_menu;
+				close setup_cdkey_menu;
+				close setup_network_menu
+
+				open player_menu;
+			}	  	  
+    	}
+
+		itemDef
+		{
+			name		window
+	      	rect		62 9 46 46
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		keys_image
+			group		submenu_image_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_keys"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+	      	rect		70 17 32 32
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		keys_image_alt
+			group		submenu_image_alt_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_keys_alt"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+	      	rect		70 17 32 32
+			visible		0
+			decoration
+		}
+
+		itemDef 
+		{
+      		name		keys_button
+			group		submenu_button_group
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_EMPTY
+	      	rect		62 9 46 46
+      		visible		1
+			tooltip		"Controls Setup"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				show keys_image_alt;
+				hide keys_image;
+			}
+			mouseExit
+			{
+				show keys_image;
+				hide keys_image_alt;
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				hide submenu_image_alt_group;
+				show submenu_image_group;
+				show submenu_button_group;
+				
+				hide keys_image;
+				show keys_image_alt;
+				hide keys_button;
+
+				close player_menu;
+				close sounds_menu;
+				close setup_display_menu;
+				close setup_misc_menu;
+				close setup_scale_menu;
+				close setup_cdkey_menu;
+				close setup_network_menu
+
+				open setup_controls_menu;
+			}	  	  
+    	}
+
+		itemDef
+		{
+			name		window
+      		rect		114 9 46 46
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		display_image
+			group		submenu_image_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_display"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		rect		122 17 32 32
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		display_image_alt
+			group		submenu_image_alt_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_display_alt"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		rect		122 17 32 32
+			visible		0
+			decoration
+		}
+
+		itemDef 
+		{
+	      	name		display_button
+			group		submenu_button_group
+			style		WINDOW_STYLE_EMPTY
+			type		ITEM_TYPE_BUTTON
+      		rect		114 9 46 46
+      		visible		1 
+			tooltip		"Display Setup"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				show display_image_alt;
+				hide display_image;
+			}
+			mouseExit
+			{
+				show display_image;
+				hide display_image_alt;
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				hide submenu_image_alt_group;
+				show submenu_image_group;
+				show submenu_button_group;
+				
+				hide display_image;
+				show display_image_alt;
+				hide display_button;
+
+				close player_menu;
+				close sounds_menu;
+				close setup_controls_menu;
+				close setup_misc_menu;
+				close setup_scale_menu;
+				close setup_cdkey_menu;
+				close setup_network_menu
+
+				open setup_display_menu;
+			}
+    	}
+
+		itemDef
+		{
+			name		window
+      		rect		166 9 46 46
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		sound_image
+			group		submenu_image_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_sound"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		rect		174 17 32 32
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		sound_image_alt
+			group		submenu_image_alt_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_sound_alt"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		rect		174 17 32 32
+			visible		0
+			decoration
+		}
+
+		itemDef 
+		{
+	      	name		sound_button
+			group		submenu_button_group
+			style		WINDOW_STYLE_EMPTY
+			type		ITEM_TYPE_BUTTON
+      		rect		166 9 46 46
+      		visible		1 
+			tooltip		"Sound Setup"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				show sound_image_alt;
+				hide sound_image;
+			}
+			mouseExit
+			{
+				show sound_image;
+				hide sound_image_alt;
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				hide submenu_image_alt_group;
+				show submenu_image_group;
+				show submenu_button_group;
+				
+				hide sound_image;
+				show sound_image_alt;
+				hide sound_button;
+
+				close player_menu;
+				close setup_controls_menu;
+				close setup_display_menu;
+				close setup_misc_menu;
+				close setup_scale_menu;
+				close setup_cdkey_menu;
+				close setup_network_menu
+
+				open sounds_menu;
+			}
+    	}
+
+		itemDef
+		{
+			name		window
+      		rect		218 9 46 46
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		misc_image
+			group		submenu_image_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_misc"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		rect		226 17 32 32
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		misc_image_alt
+			group		submenu_image_alt_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_misc_alt"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		rect		226 17 32 32
+			visible		0
+			decoration
+		}
+
+		itemDef 
+		{
+	      	name		misc_button
+			group		submenu_button_group
+			style		WINDOW_STYLE_EMPTY
+			type		ITEM_TYPE_BUTTON
+      		rect		218 9 46 46
+      		visible		1 
+			tooltip		"Misc. Setup"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				show misc_image_alt;
+				hide misc_image;
+			}
+			mouseExit
+			{
+				show misc_image;
+				hide misc_image_alt;
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				hide submenu_image_alt_group;
+				show submenu_image_group;
+				show submenu_button_group;
+				
+				hide misc_image;
+				show misc_image_alt;
+				hide misc_button;
+
+				close setup_controls_menu;
+				close sounds_menu;
+				close player_menu;
+				close setup_display_menu;
+				close setup_scale_menu;
+				close setup_cdkey_menu;
+				close setup_network_menu
+
+				open setup_misc_menu;
+			}
+    	}
+
+		itemDef
+		{
+			name		window
+      		rect		270 9 46 46
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		scale_image
+			group		submenu_image_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_scale"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		rect		278 17 32 32
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		scale_image_alt
+			group		submenu_image_alt_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_scale_alt"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		rect		278 17 32 32
+			visible		0
+			decoration
+		}
+
+		itemDef 
+		{
+	      	name		scale_button
+			group		submenu_button_group
+			style		WINDOW_STYLE_EMPTY
+			type		ITEM_TYPE_BUTTON
+      		rect		270 9 46 46
+      		visible		1
+			tooltip		"Scalability Options"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				show scale_image_alt;
+				hide scale_image;
+			}
+			mouseExit
+			{
+				show scale_image;
+				hide scale_image_alt;
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				hide submenu_image_alt_group;
+				show submenu_image_group;
+				show submenu_button_group;
+				
+				hide scale_image;
+				show scale_image_alt;
+				hide scale_button;
+
+				close player_menu;
+				close setup_controls_menu;
+				close sounds_menu;
+				close setup_display_menu;
+				close setup_misc_menu;
+				close setup_cdkey_menu;
+				close setup_network_menu
+
+				open setup_scale_menu;
+			}
+    	}
+
+		itemDef
+		{
+			name		window
+      		rect		322 9 46 46
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		network_image
+			group		submenu_image_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_network"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		rect		330 17 32 32
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		network_image_alt
+			group		submenu_image_alt_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_network_alt"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		rect		330 17 32 32
+			visible		0
+			decoration
+		}
+
+		itemDef 
+		{
+	      	name		network_button
+			group		submenu_button_group
+			style		WINDOW_STYLE_EMPTY
+			type		ITEM_TYPE_BUTTON
+      		rect		322 9 46 46
+      		visible		1
+			tooltip		"Network Settings"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				show network_image_alt;
+				hide network_image;
+			}
+			mouseExit
+			{
+				show network_image;
+				hide network_image_alt;
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				hide submenu_image_alt_group;
+				show submenu_image_group;
+				show submenu_button_group;
+				
+				hide network_image;
+				show network_image_alt;
+				hide network_button;
+
+				close player_menu;
+				close setup_controls_menu;
+				close sounds_menu;
+				close setup_display_menu;
+				close setup_misc_menu;
+				close setup_scale_menu;
+				close setup_cdkey_menu;
+
+				open setup_network_menu
+			}
+    	}
+
+		itemDef
+		{
+			name		window
+      		rect		374 9 46 46
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		cdkey_image
+			group		submenu_image_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_cdkey"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		rect		382 17 32 32
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		cdkey_image_alt
+			group		submenu_image_alt_group
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_cdkey_alt"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		rect		382 17 32 32
+			visible		0
+			decoration
+		}
+
+		itemDef 
+		{
+	      	name		cdkey_button
+			group		submenu_button_group
+			style		WINDOW_STYLE_EMPTY
+			type		ITEM_TYPE_BUTTON
+      		rect		374 9 46 46
+      		visible		1
+			tooltip		"CD Key"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				show cdkey_image_alt;
+				hide cdkey_image;
+			}
+			mouseExit
+			{
+				show cdkey_image;
+				hide cdkey_image_alt;
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				hide submenu_image_alt_group;
+				show submenu_image_group;
+				show submenu_button_group;
+				
+				hide cdkey_image;
+				show cdkey_image_alt;
+				hide cdkey_button;
+
+				close player_menu;
+				close setup_controls_menu;
+				close sounds_menu;
+				close setup_display_menu;
+				close setup_misc_menu;
+				close setup_scale_menu;
+				close setup_network_menu;
+
+				open setup_cdkey_menu;
+			}
+    	}
+
+		itemDef
+		{
+			name		window
+			rect		8 60 418 3
+			style		WINDOW_STYLE_FILLED
+			backcolor	0 0 0 1
+			visible		1
+			decoration
+		}
+	}
+}

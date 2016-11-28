@@ -1,0 +1,549 @@
+{
+	assetGlobalDef 
+	{
+		defaultFont		"hud"
+
+		cursor			"gfx/menus/cursor/cursor"			// cursor	
+
+    	fadeClamp		1.0					// sets the fadeup alpha
+		fadeCycle		1					// how often fade happens in milliseconds
+		fadeAmount		0.1					// amount to adjust alpha per cycle
+
+		shadowColor		0.1 0.1 0.1 0.25			// shadow color
+  	}
+
+	\\ INGAME MENU \\
+
+	menuDef 
+	{
+    	name			"ingame"
+    	visible			0
+    	fullScreen		0
+		rect			0 0 640 480
+		focusColor		1 .75 0 1
+		disableColor	.5 .5 .5 1
+
+		outOfBoundsClick
+
+		onOpen
+		{
+			setitemcolor ingame_button_text_group backcolor 0 0 0 0;
+			setitemcolor ingame_button_text_group forecolor .12 .14 .08 1;
+
+			show ingame_button_group;
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  Dialog frame
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		4 4 632 28
+			background	"gfx/menus/ingame/background.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		0 0 8 8
+			background	"gfx/menus/ingame/frame_topleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		634 0 8 8
+			background	"gfx/menus/ingame/frame_topright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		5 0 630 8
+			background	"gfx/menus/ingame/frame_top.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		0 26 8 8
+			background	"gfx/menus/ingame/frame_bottomleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		634 26 8 8
+			background	"gfx/menus/ingame/frame_bottomright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		5 26 629 8
+			background	"gfx/menus/ingame/frame_bottom.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		634 4 8 22
+			background	"gfx/menus/ingame/frame_right.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		0 5 8 22
+			background	"gfx/menus/ingame/frame_left.png"
+			visible		1
+			decoration
+		}
+	
+		itemdef
+		{
+			name		about_button_text
+			group		ingame_button_text_group
+			style		WINDOW_STYLE_FILLED
+			rect		17 7 82 18
+			text		"About"	
+			textalign	1
+      		textalignx	41      
+			textaligny	2
+			textfont	"hud"
+			textscale	.43
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+			visible		1
+		}
+
+		/////////////////////////////////////////////////////////////
+		// About button
+		/////////////////////////////////////////////////////////////
+		itemdef
+		{
+			name		about_button
+			group		ingame_button_group
+			type		ITEM_TYPE_BUTTON
+			rect		17 7 82 18
+			visible		1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				close ingame_leave ;
+				close ingame_setup;
+				close ingame_callvote;
+				close ingame_vote;
+				close ingame_player;
+
+				open ingame_about;
+
+				setitemcolor ingame_button_text_group backcolor 0 0 0 0;
+				setitemcolor ingame_button_text_group forecolor .12 .14 .08 1;
+
+				setitemcolor about_button_text backcolor .12 .14 .08 1;
+				setitemcolor about_button_text forecolor .49 .56 .27 1;
+
+				show ingame_button_group;
+				hide about_button;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor about_button_text backcolor .12 .14 .08 1;
+				setitemcolor about_button_text forecolor .49 .56 .27 1;
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor about_button_text backcolor 0 0 0 0;
+				setitemcolor about_button_text forecolor .12 .14 .08 1;
+			}
+		}
+
+		itemDef
+		{
+			name		join_button_text
+			group		ingame_button_text_group
+			style		WINDOW_STYLE_FILLED
+      		rect		120 7 82 18   
+      		text		"Player"
+      		textalign	1	
+      		textalignx	41      
+			textaligny	2
+			textfont	"hud"
+			textscale	.43
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+			visible 1
+		}
+
+		itemDef 
+		{
+      		name		join_button
+			group		ingame_button_group
+			type		ITEM_TYPE_BUTTON
+      		rect		120 7 82 18   
+			visible		1
+
+		    action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				close ingame_leave ;
+				close ingame_setup;
+				close ingame_callvote;
+				close ingame_vote;
+				close ingame_about;
+
+				open ingame_player;
+
+				setitemcolor ingame_button_text_group backcolor 0 0 0 0;
+				setitemcolor ingame_button_text_group forecolor .12 .14 .08 1;
+
+				setitemcolor join_button_text backcolor .12 .14 .08 1;
+				setitemcolor join_button_text forecolor .49 .56 .27 1;
+
+				show ingame_button_group;
+				hide join_button;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor join_button_text backcolor .12 .14 .08 1;
+				setitemcolor join_button_text forecolor .49 .56 .27 1;
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor join_button_text backcolor 0 0 0 0;
+				setitemcolor join_button_text forecolor .12 .14 .08 1;
+			}
+    	}
+
+/*
+		itemDef
+		{
+			name		addbot_button_text
+			group		ingame_button_text_group
+			style		WINDOW_STYLE_FILLED
+      		rect		192 11 82 18
+      		text		"Add Bot"
+      		textalign	1	
+      		textalignx	41      
+			textaligny	2
+			textfont	"hud"
+			textscale	.43
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+			visible		1
+		}
+
+		itemDef 
+		{
+      		name		addbot_button
+			group		ingame_button_group
+			type		ITEM_TYPE_BUTTON
+      		rect		192 11 82 18
+			visible		1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				close ingame_leave ;
+				close ingame_setup;
+				close ingame_callvote;
+				close ingame_vote;
+				close ingame_player;
+				close ingame_about;
+
+				open ingame_addbot;
+
+				setitemcolor ingame_button_text_group backcolor 0 0 0 0;
+				setitemcolor ingame_button_text_group forecolor .12 .14 .08 1;
+
+				setitemcolor addbot_button_text backcolor .12 .14 .08 1;
+				setitemcolor addbot_button_text forecolor .49 .56 .27 1;
+
+				show ingame_button_group;
+				hide addbot_button;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor addbot_button_text backcolor .12 .14 .08 1;
+				setitemcolor addbot_button_text forecolor .49 .56 .27 1;
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor addbot_button_text backcolor 0 0 0 0;
+				setitemcolor addbot_button_text forecolor .12 .14 .08 1;
+			}
+    	}
+*/
+
+		itemDef
+		{
+			name		options_button_text
+			group		ingame_button_text_group
+			style		WINDOW_STYLE_FILLED
+      		rect		225 7 82 18
+      		text		"Options"
+      		textalign	1	
+      		textalignx	41      
+			textaligny	2
+			textfont	"hud"
+			textscale	.43
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+			visible		1
+		}
+
+		itemDef 
+		{
+      		name		options_button
+			group		ingame_button_group
+			type		ITEM_TYPE_BUTTON
+      		rect		225 7 82 18
+			visible		1
+	
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				close ingame_leave ;
+				close ingame_callvote;
+				close ingame_vote;
+				close ingame_player;
+				close ingame_about;
+
+				open ingame_setup ;
+
+				setitemcolor ingame_button_text_group backcolor 0 0 0 0;
+				setitemcolor ingame_button_text_group forecolor .12 .14 .08 1;
+
+				setitemcolor options_button_text backcolor .12 .14 .08 1;
+				setitemcolor options_button_text forecolor .49 .56 .27 1;
+
+				show ingame_button_group;
+				hide options_button;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor options_button_text backcolor .12 .14 .08 1;
+				setitemcolor options_button_text forecolor .49 .56 .27 1;
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor options_button_text backcolor 0 0 0 0;
+				setitemcolor options_button_text forecolor .12 .14 .08 1;
+			}
+		}
+
+		itemDef
+		{
+			name		vote_button_text
+			group		ingame_button_text_group
+			style		WINDOW_STYLE_FILLED
+      		rect		331 7 82 18
+      		text		"Vote"
+      		textalign	1	
+      		textalignx	41  
+			textaligny	2
+			textfont	"hud"
+			textscale	.43
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+			visible		1
+		}
+
+		itemDef 
+		{
+      		name		vote_button
+			group		ingame_button_group
+			type		ITEM_TYPE_BUTTON
+      		rect		331 7 82 18
+			visible		1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				close ingame_leave ;
+				close ingame_callvote;
+				close ingame_setup;
+				close ingame_player;
+				close ingame_about;
+
+				open ingame_vote;
+
+				setitemcolor ingame_button_text_group backcolor 0 0 0 0;
+				setitemcolor ingame_button_text_group forecolor .12 .14 .08 1;
+
+				setitemcolor vote_button_text backcolor .12 .14 .08 1;
+				setitemcolor vote_button_text forecolor .49 .56 .27 1;
+
+				show ingame_button_group;
+				hide vote_button;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor vote_button_text backcolor .12 .14 .08 1;
+				setitemcolor vote_button_text forecolor .49 .56 .27 1;
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor vote_button_text backcolor 0 0 0 0;
+				setitemcolor vote_button_text forecolor .12 .14 .08 1;
+			}
+		}
+
+		itemDef
+		{
+			name		callvote_button_text
+			group		ingame_button_text_group
+			style		WINDOW_STYLE_FILLED
+      		rect		435 7 82 18
+      		text		"Call Vote"
+      		textalign	1	
+      		textalignx	41      
+			textaligny	2
+			textfont	"hud"
+			textscale	.43
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+			visible		1
+		}
+
+		itemDef 
+		{
+      		name		callvote_button
+			group		ingame_button_group
+			type		ITEM_TYPE_BUTTON
+      		rect		435 7 82 18
+			visible		1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				close ingame_leave ;
+				close ingame_setup;
+				close ingame_vote;
+				close ingame_player;
+				close ingame_about;
+
+				open ingame_callvote;
+
+				setitemcolor ingame_button_text_group backcolor 0 0 0 0;
+				setitemcolor ingame_button_text_group forecolor .12 .14 .08 1;
+
+				setitemcolor callvote_button_text backcolor .12 .14 .08 1;
+				setitemcolor callvote_button_text forecolor .49 .56 .27 1;
+
+				show ingame_button_group;
+				hide callvote_button;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor callvote_button_text backcolor .12 .14 .08 1;
+				setitemcolor callvote_button_text forecolor .49 .56 .27 1;
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor callvote_button_text backcolor 0 0 0 0;
+				setitemcolor callvote_button_text forecolor .12 .14 .08 1;
+			}
+		}
+
+		itemDef
+		{
+			name		leave_button_text
+			group		ingame_button_text_group
+			style		WINDOW_STYLE_FILLED
+      		rect		540 7 83 18
+      		text		"Exit"
+      		textalign	1	
+      		textalignx	41      
+			textaligny	2
+			textfont	"hud"
+			textscale	.43
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+			visible		1
+		}
+
+		itemDef 
+		{
+      		name		leave_button
+			group		ingame_button_group
+			type		ITEM_TYPE_BUTTON
+      		rect		540 7 83 18
+			visible		1
+    
+			action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				close ingame_setup;
+				close ingame_vote;
+				close ingame_player;
+				close ingame_about;
+				close ingame_callvote;
+
+				open ingame_leave 
+
+				setitemcolor ingame_button_text_group backcolor 0 0 0 0;
+				setitemcolor ingame_button_text_group forecolor .12 .14 .08 1;
+
+				setitemcolor leave_button_text backcolor .12 .14 .08 1;
+				setitemcolor leave_button_text forecolor .49 .56 .27 1;
+
+				show ingame_button_group;
+				hide leave_button;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor leave_button_text backcolor .12 .14 .08 1;
+				setitemcolor leave_button_text forecolor .49 .56 .27 1;
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor leave_button_text backcolor 0 0 0 0;
+				setitemcolor leave_button_text forecolor .12 .14 .08 1;
+			}
+		}
+	}
+}

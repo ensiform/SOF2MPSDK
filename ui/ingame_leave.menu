@@ -1,0 +1,409 @@
+{
+	\\ INGAME_LEAVE MENU
+
+	menuDef 
+	{
+    	name		"ingame_leave"
+    	visible		1
+    	fullScreen	0
+    	rect		488 50 128 125
+
+		onOpen
+		{
+			show leave_menu_group;
+
+			hide mainmenu_confirm_group;
+			hide quit_confirm_group;
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  Dialog frame
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-6 -6 134 131
+			background	"gfx/menus/ingame/background.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-12 -10 8 8
+			background	"gfx/menus/ingame/frame_topleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-6 -10 134 8
+			background	"gfx/menus/ingame/frame_top.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		128 -10 8 8
+			background	"gfx/menus/ingame/frame_topright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-12 125 8 8
+			background	"gfx/menus/ingame/frame_bottomleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-6 125 134 8
+			background	"gfx/menus/ingame/frame_bottom.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		128 125 8 8
+			background	"gfx/menus/ingame/frame_bottomright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		128 -5 8 130
+			background	"gfx/menus/ingame/frame_right.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-12 -5 8 130
+			background	"gfx/menus/ingame/frame_left.png"
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+     		name		mainmenu_button
+			group		leave_menu_group
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_BUTTON
+     		text		"Main Menu"
+     		rect		10 26 100 26
+     		textalign	1	
+     		textalignx	50
+    		textaligny	6
+			textfont	"hud"
+			textscale	.43
+      		forecolor	.12 .14 .08 1
+      		visible		1
+			border		1
+			bordercolor	0 0 0 1
+
+      		action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				hide leave_menu_group;
+				show mainmenu_confirm_group; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor mainmenu_button backcolor .12 .14 .08 1;
+				setitemcolor mainmenu_button forecolor .49 .56 .27 1;
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor mainmenu_button backcolor 0 0 0 0;
+				setitemcolor mainmenu_button forecolor .12 .14 .08 1;
+			}
+    	}
+
+		itemDef 
+		{
+      		name		quit_button
+			group		leave_menu_group
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_BUTTON
+      		rect		10 70 100 26
+      		text		"Quit"
+      		textalign	1	
+      		textalignx	50 
+      		textaligny	6
+			textfont	"hud"
+			textscale	.43
+      		forecolor	.12 .14 .08 1
+      		visible		1
+			border		1
+			bordercolor	0 0 0 1
+      		
+			action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				hide leave_menu_group;		
+				show quit_confirm_group
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor quit_button backcolor .12 .14 .08 1;
+				setitemcolor quit_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor quit_button backcolor 0 0 0 0;
+				setitemcolor quit_button forecolor .12 .14 .08 1
+			}
+    	}
+
+		// CONFIRMS
+		
+		itemDef 
+		{
+     		name		window
+			group		mainmenu_confirm_group
+     		text		"Exit to"
+         	rect		0 28 128 20   
+     		textalign	1	
+     		textalignx	64
+    		textaligny	2
+			textfont	"hud"
+			textscale	.43
+      		forecolor	.12 .14 .08 1
+      		visible		1
+			decoration
+    	}
+
+		itemDef 
+		{
+     		name		window
+			group		mainmenu_confirm_group
+     		text		"Main Menu?"
+     		rect		0 45 128 20   
+     		textalign	1	
+     		textalignx	64
+    		textaligny	2
+			textfont	"hud"
+			textscale	.43
+      		forecolor	.12 .14 .08 1
+      		visible		1
+			decoration
+    	}
+
+		itemDef 
+		{
+			name		mainmenu_yes_button
+			group		mainmenu_confirm_group
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		18 80 40 20
+			text		"Yes"
+			textfont	"hud"
+			textscale	.43
+			textalign	1
+			textalignx	20
+			textaligny	2
+      		forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+			border		1
+			bordercolor 0 0 0 1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript leave 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor mainmenu_yes_button backcolor .12 .14 .08 1;
+				setitemcolor mainmenu_yes_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor mainmenu_yes_button backcolor 0 0 0 0;
+				setitemcolor mainmenu_yes_button forecolor .12 .14 .08 1;
+			}
+		}
+
+		itemDef 
+		{
+			name		mainmenu_no_button
+			group		mainmenu_confirm_group
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			text		"No"
+			rect		70 80 40 20
+			textalign	1
+			textalignx	20
+			textaligny	2
+			textfont	"hud"
+			textscale	.43
+      		forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+			border		1
+			bordercolor 0 0 0 1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				hide mainmenu_confirm_group; 
+				show leave_menu_group;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor mainmenu_no_button backcolor .12 .14 .08 1;
+				setitemcolor mainmenu_no_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor mainmenu_no_button backcolor 0 0 0 0;
+				setitemcolor mainmenu_no_button forecolor .12 .14 .08 1;
+			}
+		}
+
+		itemDef 
+		{
+     		name		window
+			group		quit_confirm_group
+     		text		"Want to"
+     		rect		0 28 128 20   
+     		textalign	1	
+     		textalignx	64
+    		textaligny	2
+			textfont	"hud"
+			textscale	.43
+      		forecolor	.12 .14 .08 1
+      		visible		1 
+			decoration
+    	}
+
+		itemDef 
+		{
+     		name		window
+			group		quit_confirm_group
+     		text		"Quit Game?"
+     		rect		0 45 128 20
+     		textalign	1	
+     		textalignx	64
+    		textaligny	2
+			textfont	"hud"
+			textscale	.43
+      		forecolor	.12 .14 .08 1
+      		visible		1 
+			decoration
+		}
+
+		itemDef 
+		{
+			name		quit_yes_button
+			group		quit_confirm_group
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		18 80 40 20
+			text		"Yes"
+			textfont	"hud"
+			textscale	.43
+			textalign	1
+			textalignx	20
+			textaligny	2
+      		forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+			border		1
+			bordercolor 0 0 0 1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript quit
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor quit_yes_button backcolor .12 .14 .08 1;
+				setitemcolor quit_yes_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor quit_yes_button backcolor 0 0 0 0;
+				setitemcolor quit_yes_button forecolor .12 .14 .08 1;
+			}
+		}
+
+		itemDef 
+		{
+			name		quit_no_button
+			group		quit_confirm_group
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			text		"No"
+			rect		70 80 40 20
+			textalign	1
+			textalignx	20
+			textaligny	2
+			textfont	"hud"
+			textscale	.43
+      		forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+			border		1
+			bordercolor 0 0 0 1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				hide quit_confirm_group ; 
+				show leave_menu_group;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor quit_no_button backcolor .12 .14 .08 1;
+				setitemcolor quit_no_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor quit_no_button backcolor 0 0 0 0;
+				setitemcolor quit_no_button forecolor .12 .14 .08 1;
+			}
+		}
+	}
+}

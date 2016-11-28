@@ -1,0 +1,175 @@
+{
+	\\ Violence Options menu
+
+	menuDef 
+	{
+		name				"violence_options_menu"
+		visible				0
+		fullscreen			0
+		rect				50 50 432 293
+		focusColor			.49 .56 .27 1
+
+		tooltipbackcolor	.49 .56 .27 1
+		tooltipforecolor	.12 .14 .08 1
+		tooltipfont			"hud"
+		tooltipscale		.43
+		tooltipdelay		500
+
+		itemDef
+		{
+			name		window
+			rect		35 15 300 40
+			text		"Violence Lock"
+			textfont	"hud"
+			textscale	.6
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			type		ITEM_TYPE_MULTI
+			rect		35 75 300 20
+			text		"Blood :"
+			textfont	"hud"
+			textscale	.53
+			forecolor	.12 .14 .08 1
+			visible		1
+
+			cvar			"lock_blood"
+			cvarFloatList	{ "Enabled" 0 "Locked out" 1  }		
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				UpdateViolence;
+			}
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+			}				
+		}
+
+		itemDef
+		{
+			name		window
+			rect		35 90 300 20
+			text		"Allows player to view enemy bleeding"
+			textfont	"hud"
+			textscale	.43
+			forecolor	0 0 0 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			type		ITEM_TYPE_MULTI
+			rect		35 115 300 20
+			text		"Death Animations :"
+			textfont	"hud"
+			textscale	.53
+			forecolor	.12 .14 .08 1
+			visible		1
+
+			cvar			"lock_deaths"
+			cvarFloatList	{ "Enabled" 0 "Locked out" 1  }		
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+			}				
+		}
+
+		itemDef
+		{
+			name		window
+			rect		35 130 300 20
+			text		"Allows player to view violent animations"
+			textfont	"hud"
+			textscale	.43
+			forecolor	0 0 0 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			type		ITEM_TYPE_MULTI
+			rect		35 155 300 20
+			text		"Dismembered Limbs :"
+			textfont	"hud"
+			textscale	.53
+			forecolor	.12 .14 .08 1
+			visible		1
+
+			cvar			"lock_sever"
+			cvarFloatList	{ "Enabled" 0 "Locked out" 1  }		
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+			}				
+		}
+
+		itemDef
+		{
+			name		window
+			rect		35 170 300 20
+			text		"Allows player to remove limbs from enemies"
+			textfont	"hud"
+			textscale	.43
+			forecolor	0 0 0 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		setpassword_button
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_BUTTON
+			rect		35 250 150 25
+			text		"Set Password"
+			textfont	"hud"
+			textscale	.53
+			textalignx	20
+			textaligny	3
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				open "violence_setpassword_popmenu";
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor setpassword_button backcolor .12 .14 .08 1
+				setitemcolor setpassword_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor setpassword_button backcolor 0 0 0 0
+				setitemcolor setpassword_button forecolor .12 .14 .08 1
+			}
+		}
+	}
+}

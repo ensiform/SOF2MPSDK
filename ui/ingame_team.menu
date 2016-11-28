@@ -1,0 +1,561 @@
+{
+	\\ INGAME TEAM MENU
+
+	menuDef 
+	{
+    	name			"ingame_team"
+    	visible			0
+    	fullScreen		0
+		rect			0 0 640 480
+		focusColor		1 .75 0 1
+		disablecolor	.12 .14 .08 .5
+
+		onOpen
+		{
+		}
+
+		onESC
+		{
+			close	ingame_team;
+		}
+
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_BUTTON
+			rect		0 0 640 480
+			backcolor	0 0 0 .75
+			visible		0
+			decoration
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  Dialog frame
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		130 70 380 350
+			background	"gfx/menus/ingame/background.png"
+			backcolor	1 1 1 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		124 65 8 8
+			background	"gfx/menus/ingame/frame_topleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		130 65 380 8
+			background	"gfx/menus/ingame/frame_top.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		510 65 8 8
+			background	"gfx/menus/ingame/frame_topright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		124 420 8 8
+			background	"gfx/menus/ingame/frame_bottomleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		130 420 380 8
+			background	"gfx/menus/ingame/frame_bottom.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		510 420 8 8
+			background	"gfx/menus/ingame/frame_bottomright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		510 70 8 350
+			background	"gfx/menus/ingame/frame_right.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		124 70 8 350
+			background	"gfx/menus/ingame/frame_left.png"
+			visible		1
+			decoration
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  Title
+		////////////////////////////////////////////////////////////////////////
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		130 70 378 30
+			forecolor	0 0 0 1
+			backcolor	0 0 0 .25
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+
+			textalignx	190
+			textaligny	5
+			textalign	1
+			textfont	"hud"
+			textscale	.54
+			text		"SELECT TEAM"
+
+			decoration
+		}
+
+		///////////////////////////////////////////////////////////////////////
+		// HELP TEXT
+		///////////////////////////////////////////////////////////////////////
+		itemDef
+		{
+			rect				150 110 340 15
+			text				"Select the team you wish to join.  Take careful note of the current"
+			textfont			"hud"
+			textscale			.35
+			forecolor			0 0 0 1
+			visible				1
+			decoration
+		}
+
+		itemDef
+		{
+			rect				150 125 340 15
+			text				"number of players and score of each team before choosing.  If you "
+			textfont			"hud"
+			textscale			.35
+			forecolor			0 0 0 1
+			visible				1
+			decoration
+		}
+
+		itemDef
+		{
+			rect				150 140 340 15
+			text				"would like to join the team that needs you the most hit the"
+			textfont			"hud"
+			textscale			.35
+			forecolor			0 0 0 1
+			visible				1
+			decoration
+		}
+
+		itemDef
+		{
+			rect				150 155 340 15
+			text				"'Auto Join' button at the bottom."
+			textfont			"hud"
+			textscale			.35
+			forecolor			0 0 0 1
+			visible				1
+			decoration
+		}
+
+		///////////////////////////////////////////////////////////////////////
+		// TEAMS
+		///////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name			"team_blue"
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			145 175 170 180
+			border			1
+			bordercolor		0 0 0 1
+			visible			1
+
+			backcolor		0 0 0 0
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				setitemcolor team_blue  backcolor 0 0 0 .25;
+			}
+
+			mouseExit
+			{
+				setitemcolor team_blue  backcolor 0 0 0 0;
+			}
+
+			action
+			{
+				play	 "sound/misc/menus/select.wav" ; 			
+				close	 ingame_team;
+				open	 ingame_identity_blue;
+			}
+		}
+
+
+		itemDef
+		{
+			name			"team_red"
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			322 175 170 180
+			border			1
+			bordercolor		0 0 0 1
+			visible			1
+
+			backcolor		0 0 0 0
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				setitemcolor team_red  backcolor 0 0 0 .25;
+			}
+
+			mouseExit
+			{
+				setitemcolor team_red  backcolor 0 0 0 0;
+			}
+
+			action
+			{
+				play	 "sound/misc/menus/select.wav" ; 			
+				close	 ingame_team;
+				open	 ingame_identity_red;
+			}
+		}
+
+		itemDef
+		{
+			rect			230 185 0 0
+			text			"TEAM COLOR"
+			textfont		"hud"
+			textscale		.34
+			forecolor		0 0 0 .75
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			rect			230 195 0 0
+			text			"BLUE"
+			textfont		"hud"
+			textscale		.43
+			forecolor		0 0 0 1
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			rect			410 185 0 0
+			text			"TEAM COLOR"
+			textfont		"hud"
+			textalign		2
+			textscale		.34
+			forecolor		0 0 0 .75
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			rect			410 195 0 0
+			text			"RED"
+			textfont		"hud"
+			textalign		2
+			textscale		.43
+			forecolor		0 0 0 1
+			visible			1
+			decoration
+		}
+
+
+
+		itemDef
+		{
+			rect			410 225 0 0
+			text			"IDENTITY"
+			textfont		"hud"
+			textalign		2
+			textscale		.34
+			forecolor		0 0 0 .75
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			rect			410 235 0 0
+			cvar			"ui_info_redteam"
+			textfont		"hud"
+			textalign		2
+			textscale		.43
+			forecolor		0 0 0 1
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			rect			230 225 0 0
+			text			"IDENTITY"
+			textfont		"hud"
+			textscale		.34
+			forecolor		0 0 0 .75
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			rect			230 235 0 0
+			cvar			"ui_info_blueteam"
+			textfont		"hud"
+			textscale		.43
+			forecolor		0 0 0 1
+			visible			1
+			decoration
+		}
+
+
+
+
+		itemDef
+		{
+			rect			410 265 0 0
+			text			"PLAYERS"
+			textfont		"hud"
+			textalign		2
+			textscale		.34
+			forecolor		0 0 0 .75
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			rect			410 275 0 0
+ 			ownerdraw		UI_RED_TEAM_COUNT
+			textfont		"hud"
+			align			2
+			textscale		.43
+			forecolor		0 0 0 1
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			rect			230 265 0 0
+			text			"PLAYERS"
+			textfont		"hud"
+			textscale		.34
+			forecolor		0 0 0 .75
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			rect			230 275 0 0
+ 			ownerdraw		UI_BLUE_TEAM_COUNT
+			textfont		"hud"
+			textscale		.43
+			forecolor		0 0 0 1
+			visible			1
+			decoration
+		}
+
+
+
+
+		itemDef
+		{
+			rect			410 305 0 0
+			text			"SCORE"
+			textfont		"hud"
+			textalign		2
+			textscale		.34
+			forecolor		0 0 0 .75
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			rect			410 315 0 0
+			ownerdraw		UI_RED_TEAM_SCORE
+			textfont		"hud"
+			align			2
+			textscale		.43
+			forecolor		0 0 0 1
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			rect			230 305 0 0
+			text			"SCORE"
+			textfont		"hud"
+			textscale		.34
+			forecolor		0 0 0 .75
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			rect			230 315 0 0
+			ownerdraw		UI_BLUE_TEAM_SCORE
+			textfont		"hud"
+			textscale		.43
+			forecolor		0 0 0 1
+			visible			1
+			decoration
+		}
+
+
+
+
+		itemDef
+		{
+			rect			155 180 68 142
+			border			0
+			bordercolor		0 0 0 1
+			visible			1
+			ownerdraw		UI_BLUETEAM_IDENTITY
+			ownerdrawparam	0
+			decoration
+		}
+
+		itemDef
+		{
+			rect			417 180 68 142
+			border			0
+			bordercolor		0 0 0 1
+			visible			1
+			ownerdraw		UI_REDTEAM_IDENTITY
+			ownerdrawparam	0
+			decoration
+		}
+
+		///////////////////////////////////////////////////////////////////////
+		// BUTTONS
+		///////////////////////////////////////////////////////////////////////
+
+		itemDef 
+		{
+			name		autoteam_button
+			text		"Auto Join"
+			type		1
+			textfont	"hud"
+			textscale	.53
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		210 370 100 26
+			textalignx	10
+			textaligny	4
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			
+			action 
+			{ 
+				play		"sound/misc/menus/select.wav" ; 
+				uiScript	autoTeamJoin ingame_identity_red ingame_identity_blue ;
+				close		"ingame_team" ;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor autoteam_button backcolor .12 .14 .08 1
+				setitemcolor autoteam_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor autoteam_button backcolor 0 0 0 0
+				setitemcolor autoteam_button forecolor 0 0 0 1
+			}
+		}
+
+		itemDef 
+		{
+			name		spec_button
+			text		"Spectate"
+			type		1
+			textfont	"hud"
+			textscale	.53
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		325 370 100 26
+			textalignx	15
+			textaligny	4
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			
+			action 
+			{ 
+				play		"sound/misc/menus/select.wav" ; 
+				exec		"cmd team s" ;
+				close		"ingame_team" ;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor spec_button backcolor .12 .14 .08 1
+				setitemcolor spec_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor spec_button backcolor 0 0 0 0
+				setitemcolor spec_button forecolor 0 0 0 1
+			}
+		}
+	}
+}

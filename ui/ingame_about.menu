@@ -1,0 +1,355 @@
+{
+	\\ INGAME ABOUT BOX
+
+	menuDef 
+	{
+    	name		"ingame_about"
+    	visible		0
+    	fullscreen	0
+    	rect		12 50 300 235
+
+		////////////////////////////////////////////////////////////////////////
+		//  Dialog frame
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-6 -6 306 241
+			background	"gfx/menus/ingame/background.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-12 -10 8 8
+			background	"gfx/menus/ingame/frame_topleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-7 -10 307 8
+			background	"gfx/menus/ingame/frame_top.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		300 -10 8 8
+			background	"gfx/menus/ingame/frame_topright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-12 235 8 8
+			background	"gfx/menus/ingame/frame_bottomleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-7 235 307 8
+			background	"gfx/menus/ingame/frame_bottom.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		300 235 8 8
+			background	"gfx/menus/ingame/frame_bottomright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		300 -5 8 241
+			background	"gfx/menus/ingame/frame_right.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-12 -5 8 241
+			background	"gfx/menus/ingame/frame_left.png"
+			visible		1
+			decoration
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  About Text
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef 
+		{
+			name			window
+			rect			0 0 300 20
+			name			gametypefield
+			type			ITEM_TYPE_EDITFIELD
+      		style			0	
+			cvar			cl_currentServerAddress
+			maxPaintChars	18
+			text			"Host:"
+      		textalign		ITEM_ALIGN_RIGHT		
+      		textalignx		128
+			textfont		"hud"
+			textscale		.40
+			forecolor		.12 .14 .08 1
+      		visible			1
+			decoration
+		}
+
+		itemDef 
+		{
+			name			window
+			rect			0 15 300 20
+			name			gametypefield
+			type			ITEM_TYPE_EDITFIELD
+      		style			0	
+			cvar			ui_about_mapname 
+			maxPaintChars	18
+			text			"Map Name:"
+      		textalign		ITEM_ALIGN_RIGHT		
+      		textalignx		128
+			textfont		"hud"
+			textscale		.40
+			forecolor		.12 .14 .08 1
+      		visible			1
+			decoration
+		}
+
+		itemDef 
+		{
+			name			window
+			type			ITEM_TYPE_EDITFIELD	
+			rect			0 30 300 20
+			textalign		ITEM_ALIGN_RIGHT	
+			cvar			"ui_about_gametypename"	    
+			text			"GameType:"
+			textalignx		128
+			textfont		"hud"
+			textscale		.40
+			forecolor		.12 .14 .08 1
+			visible			1
+			decoration
+		}
+
+		itemDef 
+		{
+			name			window
+			type			ITEM_TYPE_EDITFIELD
+			rect			0 45 300 20
+			maxPaintChars	12
+			cvar			"ui_about_scorelimit"
+			text			"Score Limit:"
+      		textalign		ITEM_ALIGN_RIGHT		
+      		textalignx		128
+			textfont		"hud"
+			textscale		.40
+			forecolor		.12 .14 .08 1
+      		visible			1
+			decoration
+		}
+
+		itemDef 
+		{
+			name			window
+			type			ITEM_TYPE_EDITFIELD
+			rect			0 60 300 20
+			maxPaintChars	12
+			cvar			"ui_about_timelimit"
+			text			"Time Limit:"
+      		textalign		ITEM_ALIGN_RIGHT		
+      		textalignx		128
+			textfont		"hud"
+			textscale		.40
+			forecolor		.12 .14 .08 1
+      		visible			1
+			decoration
+		}
+
+		itemDef 
+		{
+			name			window
+			type			ITEM_TYPE_YESNO
+			rect			0 75 300 20
+			maxPaintChars	12
+			cvar			"ui_about_friendlyfire"
+			text			"Friendly Fire:"
+      		textalign		ITEM_ALIGN_RIGHT		
+      		textalignx		128
+			textfont		"hud"
+			textscale		.40
+			forecolor		.12 .14 .08 1
+      		visible			1
+			decoration
+		}
+
+		itemDef 
+		{
+			name			window
+			type			ITEM_TYPE_YESNO
+			rect			0 90 300 20
+			maxPaintChars	12
+			cvar			"cl_punkbuster"
+			text			"Punk Buster:"
+      		textalign		ITEM_ALIGN_RIGHT		
+      		textalignx		128
+			textfont		"hud"
+			textscale		.40
+			forecolor		.12 .14 .08 1
+      		visible			1
+			decoration
+		}
+
+		itemDef 
+		{
+			name			window
+			type			ITEM_TYPE_EDITFIELD
+			rect			0 115 300 20
+			cvar			"protocol"
+			maxPaintChars	12
+			text			"Protocol:"
+      		textalign		ITEM_ALIGN_RIGHT		
+      		textalignx		128
+			textfont		"hud"
+			textscale		.40
+			forecolor		.12 .14 .08 1
+      		visible			1
+			decoration
+		}
+
+		itemDef 
+		{
+			name			window
+			type			ITEM_TYPE_EDITFIELD
+			rect			0 130 300 20
+			cvar			"ui_about_maxclients"
+			maxPaintChars	12
+			text			"Max Clients:"
+      		textalign		ITEM_ALIGN_RIGHT		
+      		textalignx		128
+			textfont		"hud"
+			textscale		.40
+			forecolor		.12 .14 .08 1
+      		visible			1
+			decoration
+		}
+
+		itemDef 
+		{
+			name			window
+			type			ITEM_TYPE_EDITFIELD
+			rect			0 145 300 20
+			cvar			"ui_about_hostname"
+			maxPaintChars	12
+			text			"Host Name:"
+      		textalign		ITEM_ALIGN_RIGHT		
+      		textalignx		128
+			textfont		"hud"
+			textscale		.40
+			forecolor		.12 .14 .08 1
+      		visible			1
+			decoration
+		}
+
+		itemDef 
+		{
+			name			window
+			rect			0 170 300 20
+			type			ITEM_TYPE_YESNO
+			cvar			"ui_about_needpass"
+			text			"Password:"
+      		textalign		ITEM_ALIGN_RIGHT		
+      		textalignx		128
+			textfont		"hud"
+			textscale		.40
+			forecolor		.12 .14 .08 1
+      		visible			1
+			decoration
+		}
+
+		itemDef 
+		{
+			name			window
+			rect			0 185 300 20
+			type			ITEM_TYPE_YESNO
+			cvar			"ui_about_dmflags"
+			text			"DM Flags:"
+      		textalign		ITEM_ALIGN_RIGHT		
+      		textalignx		128
+			textfont		"hud"
+			textscale		.40
+			forecolor		.12 .14 .08 1
+      		visible			1
+			decoration
+		}
+
+		itemDef 
+		{
+			name			window
+			rect			0 200 300 20
+			type			ITEM_TYPE_EDITFIELD
+			cvar			"ui_about_seed"
+			text			"RMG Seed:"
+      		textalign		ITEM_ALIGN_RIGHT		
+      		textalignx		128
+			textfont		"hud"
+			textscale		.40
+			forecolor		.12 .14 .08 1
+      		visible			1
+			decoration
+
+			cvarTest		"RMG"
+
+			hideCvar
+			{
+				"0"
+			}
+		}
+
+
+		itemDef 
+		{
+			name			window
+			type			ITEM_TYPE_EDITFIELD
+			rect			0 215 300 20
+			cvar			"version"
+			maxPaintChars	32
+			text			"Version:"
+      		textalign		ITEM_ALIGN_LEFT
+      		textalignx		5
+			textfont		"hud"
+			textscale		.40
+			forecolor		.12 .14 .08 1
+      		visible			1
+			decoration
+		}
+	}
+}

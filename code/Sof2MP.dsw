@@ -1,0 +1,164 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "SoF2MP"=.\SoF2MP.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name gt_ctf
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name gt_dem
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name gt_dm
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name gt_elim
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name gt_inf
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name gt_tdm
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name SoF2cgame
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name SoF2game
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ui
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "SoF2cgame"=.\cgame\sof2_cgame.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "SoF2game"=.\game\sof2_game.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "gt_ctf"=.\gametype\gt_ctf\gt_ctf.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "gt_dem"=.\gametype\gt_dem\gt_dem.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "gt_dm"=.\gametype\gt_dm\gt_dm.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "gt_elim"=.\gametype\gt_elim\gt_elim.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "gt_inf"=.\gametype\gt_inf\gt_inf.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "gt_tdm"=.\gametype\gt_tdm\gt_tdm.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "ui"=.\ui\sof2_ui.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

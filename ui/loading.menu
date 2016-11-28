@@ -1,0 +1,16 @@
+{
+	assetGlobalDef 
+	{
+		defaultFont				"hud"
+	}
+
+	menuDef 
+	{
+    	name		"Loading"
+    	background	"gfx/menus/backdrop/pra1_sof2_logo"
+      	rect		0 0 640 480
+    	fullScreen	MENU_TRUE
+    	visible		MENU_FALSE
+      	style		WINDOW_STYLE_SHADER
+	}
+}

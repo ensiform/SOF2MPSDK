@@ -1,0 +1,497 @@
+{
+	\\ INGAME TEAM MENU
+
+	menuDef 
+	{
+    	name			"ingame_identity_blue"
+    	visible			0
+    	fullScreen		0
+		rect			0 0 640 480
+		focusColor		1 .75 0 1
+		disablecolor	.12 .14 .08 .5
+
+		onOpen
+		{
+		}
+
+		onESC
+		{
+			close	ingame_identity_blue;
+			open	ingame_team;
+		}
+
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_BUTTON
+			rect		0 0 640 480
+			backcolor	0 0 0 .75
+			visible		0
+			decoration
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  Dialog frame
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		130 70 380 350
+			background	"gfx/menus/ingame/background.png"
+			backcolor	1 1 1 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		124 65 8 8
+			background	"gfx/menus/ingame/frame_topleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		130 65 380 8
+			background	"gfx/menus/ingame/frame_top.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		510 65 8 8
+			background	"gfx/menus/ingame/frame_topright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		124 420 8 8
+			background	"gfx/menus/ingame/frame_bottomleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		130 420 380 8
+			background	"gfx/menus/ingame/frame_bottom.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		510 420 8 8
+			background	"gfx/menus/ingame/frame_bottomright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		510 70 8 350
+			background	"gfx/menus/ingame/frame_right.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		124 70 8 350
+			background	"gfx/menus/ingame/frame_left.png"
+			visible		1
+			decoration
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  Title
+		////////////////////////////////////////////////////////////////////////
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		130 70 378 30
+			forecolor	0 0 0 1
+			backcolor	0 0 0 .25
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+
+			textalignx	190
+			textaligny	5
+			textalign	1
+			textfont	"hud"
+			textscale	.54
+			text		"SELECT IDENTITY"
+		}
+
+		itemDef
+		{
+			name		window
+			rect		150 110 340 160
+			textfont	"hud"
+			textscale	.6
+			forecolor	0 0 0 1
+			visible		1			
+
+			text		"Blue Team"
+
+			decoration
+		}
+
+
+		///////////////////////////////////////////////////////////////////////
+		// HELP TEXT
+		///////////////////////////////////////////////////////////////////////
+		itemDef
+		{
+			rect				150 135 340 15
+			text				"Select the identity you would like to use.  Keep in mind that the"
+			textfont			"hud"
+			textscale			.35
+			forecolor			0 0 0 1
+			visible				1
+			decoration
+		}
+
+		itemDef
+		{
+			rect				150 150 340 15
+			text				"below identities will be your teammates when playing.  Your identity"
+			textfont			"hud"
+			textscale			.35
+			forecolor			0 0 0 1
+			visible				1
+			decoration
+		}
+
+		itemDef
+		{
+			rect				150 165 340 15
+			text				"can be changed later by either rejoining the team or in the"
+			textfont			"hud"
+			textscale			.35
+			forecolor			0 0 0 1
+			visible				1
+			decoration
+		}
+
+		itemDef
+		{
+			rect				150 180 340 15
+			text				"player options menu."
+			textfont			"hud"
+			textscale			.35
+			forecolor			0 0 0 1
+			visible				1
+			decoration
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  BLUE TEAM
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name			blueteam1_glow
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			144 205 62 120
+			visible			1
+			border			1
+			bordercolor		0 0 0 1
+
+			hotkey			"1"
+
+			textfont		"hud"
+			textscale		.33
+			textaligny		2
+			textalignx		2
+							
+			forecolor		0 0 0 1
+			backcolor		0 0 0 0
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				setitemcolor blueteam1_glow  backcolor .12 .14 .08 1;
+				setitemcolor blueteam1_glow  forecolor .49 .56 .27 1;
+			}
+
+			mouseExit
+			{
+				setitemcolor blueteam1_glow backcolor	0 0 0 0 ;
+				setitemcolor blueteam1_glow forecolor	0 0 0 1 ;
+			}
+
+			action
+			{
+				play	 "sound/misc/menus/select.wav" ; 			
+				uiScript JoinTeam blue 0;
+				close	 ingame_identity_blue;
+				exec	"ui_outfitting";
+			}
+		}
+
+
+		itemDef
+		{
+			rect			145 206 62 120
+			visible			1
+			ownerdraw		UI_BLUETEAM_IDENTITY
+			ownerdrawparam	0
+			decoration
+		}
+
+		itemDef
+		{
+			name			blueteam2_glow
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			216 205 62 120
+			visible			1
+			border			1
+			bordercolor		0 0 0 1
+
+			hotkey			"2"
+						
+			forecolor		0 0 0 1
+			backcolor		0 0 0 0
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				setitemcolor blueteam2_glow  backcolor .12 .14 .08 1;
+				setitemcolor blueteam2_glow  forecolor .49 .56 .27 1;
+			}
+
+			mouseExit
+			{
+				setitemcolor blueteam2_glow backcolor	0 0 0 0 ;
+				setitemcolor blueteam2_glow forecolor	0 0 0 1 ;
+			}
+
+			action
+			{
+				play	 "sound/misc/menus/select.wav" ; 			
+				uiScript JoinTeam blue 1;
+				close	 ingame_identity_blue;
+				exec	"ui_outfitting";
+			}
+		}
+
+		itemDef
+		{
+			rect			217 206 62 120
+			visible			1
+			ownerdraw		UI_BLUETEAM_IDENTITY
+			ownerdrawparam	1
+			decoration
+		}
+
+		itemDef
+		{
+			name			blueteam3_glow
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			288 205 62 120
+			visible			1
+			border			1
+			bordercolor		0 0 0 1
+
+			hotkey			"3"
+						
+			forecolor		0 0 0 1
+			backcolor		0 0 0 0
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				setitemcolor blueteam3_glow  backcolor .12 .14 .08 1;
+				setitemcolor blueteam3_glow  forecolor .49 .56 .27 1;
+			}
+
+			mouseExit
+			{
+				setitemcolor blueteam3_glow backcolor	0 0 0 0 ;
+				setitemcolor blueteam3_glow forecolor	0 0 0 1 ;
+			}
+
+			action
+			{
+				play	 "sound/misc/menus/select.wav" ; 			
+				uiScript JoinTeam blue 2;
+				close	 ingame_identity_blue;
+				exec	"ui_outfitting";
+			}
+		}
+
+		itemDef
+		{
+			rect			289 206 62 120
+			visible			1
+			ownerdraw		UI_BLUETEAM_IDENTITY
+			ownerdrawparam	2
+			decoration
+		}
+
+		itemDef
+		{
+			name			blueteam4_glow
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			360 205 62 120
+			visible			1
+			border			1
+			bordercolor		0 0 0 1
+
+			hotkey			"4"
+						
+			forecolor		0 0 0 1
+			backcolor		0 0 0 0
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				setitemcolor blueteam4_glow  backcolor .12 .14 .08 1;
+				setitemcolor blueteam4_glow  forecolor .49 .56 .27 1;
+			}
+
+			mouseExit
+			{
+				setitemcolor blueteam4_glow backcolor	0 0 0 0 ;
+				setitemcolor blueteam4_glow forecolor	0 0 0 1 ;
+			}
+
+			action
+			{
+				play		"sound/misc/menus/select.wav" ; 			
+				uiScript	JoinTeam blue 3;
+				close		ingame_identity_blue;
+				exec		"ui_outfitting";
+			}
+		}
+
+		itemDef
+		{
+			rect			361 206 62 120
+			visible			1
+			ownerdraw		UI_BLUETEAM_IDENTITY
+			ownerdrawparam	3
+			decoration
+		}
+
+		itemDef
+		{
+			name			blueteam5_glow
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			432 205 62 120
+			visible			1
+			border			1
+			bordercolor		0 0 0 1
+
+			hotkey			"5"
+						
+			forecolor		0 0 0 1
+			backcolor		0 0 0 0
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				setitemcolor blueteam5_glow  backcolor .12 .14 .08 1;
+				setitemcolor blueteam5_glow  forecolor .49 .56 .27 1;
+			}
+
+			mouseExit
+			{
+				setitemcolor blueteam5_glow backcolor	0 0 0 0 ;
+				setitemcolor blueteam5_glow forecolor	0 0 0 1 ;
+			}
+
+			action
+			{
+				play		"sound/misc/menus/select.wav" ; 			
+				uiScript	JoinTeam blue 4;
+				close		ingame_identity_blue;
+				exec	"ui_outfitting";
+			}
+		}
+
+		itemDef
+		{
+			rect			433 206 62 120
+			visible			1
+			ownerdraw		UI_BLUETEAM_IDENTITY
+			ownerdrawparam	4
+			decoration
+		}
+
+		///////////////////////////////////////////////////////////////////////
+		// BUTTONS
+		///////////////////////////////////////////////////////////////////////
+
+		itemDef 
+		{
+			name		spec_button
+			text		"Cancel"
+			type		1
+			textfont	"hud"
+			textscale	.53
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		270 360 100 26
+			textalignx	25
+			textaligny	4
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			
+			action 
+			{ 
+				play		"sound/misc/menus/select.wav" ; 
+				close		"ingame_identity_blue" ;
+				open		"ingame_team" ;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor spec_button backcolor .12 .14 .08 1
+				setitemcolor spec_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor spec_button backcolor 0 0 0 0
+				setitemcolor spec_button forecolor 0 0 0 1
+			}
+		}
+	}
+}

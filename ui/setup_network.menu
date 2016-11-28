@@ -1,0 +1,421 @@
+{
+	\\ NETWORK MENU \\
+
+	menuDef 
+	{
+    	name		"setup_network_menu"
+    	visible		0
+    	fullscreen	0
+		rect		50 110 432 254
+		focusColor	.49 .56 .27 1
+    	style		WINDOW_STYLE_FILLED
+
+		itemDef 
+		{
+    		name		rate_network			
+			style		WINDOW_STYLE_FILLED	
+			text		"Rate:"
+   			type		ITEM_TYPE_MULTI	
+			cvar		"rate"
+			rect		50 20 300 15
+   			textalign	ITEM_ALIGN_RIGHT
+   			textalignx	125 
+   			textaligny	-1
+			textfont	"hud"
+			textscale	.45
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+   			visible		1
+
+			cvarFloatList 
+			{ 
+				"Modem 33.6k"	2500
+				"Modem 56k"		4500
+				"Single ISDN"	5000
+				"Dual ISDN"		8000
+				"DSL"			9000
+				"Cable"			10000
+				"T1"			11000
+				"LAN"			20000
+			}
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor rate_network backcolor .12 .14 .08 1
+				setitemcolor rate_network forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor rate_network forecolor .12 .14 .08 1
+				setitemcolor rate_network backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+    		name		maxfps_network			
+			style		WINDOW_STYLE_FILLED	
+			text		"Max FPS:"
+   			type		ITEM_TYPE_MULTI	
+			cvar		"com_maxfps"
+			rect		50 35 300 15
+   			textalign	ITEM_ALIGN_RIGHT
+   			textalignx	125 
+   			textaligny	-1
+			textfont	"hud"
+			textscale	.45
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+   			visible		1
+
+			cvarFloatList 
+			{ 
+				"35"	35
+				"45"	45
+				"55"	55
+				"65"	65
+				"75"	75
+				"85"	85
+				"95"	95
+				"105"	105
+				"115"	115
+			}
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor maxfps_network backcolor .12 .14 .08 1
+				setitemcolor maxfps_network forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor maxfps_network forecolor .12 .14 .08 1
+				setitemcolor maxfps_network backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+    		name		detail_multi			
+			style		WINDOW_STYLE_FILLED	
+			text		"Show Lagometer:"
+   			type		ITEM_TYPE_YESNO
+			cvar		"cg_lagometer"
+			rect		50 50 300 15
+   			textalign	ITEM_ALIGN_RIGHT
+   			textalignx	125 
+   			textaligny	-1
+			textfont	"hud"
+			textscale	.45
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+   			visible		1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor detail_multi backcolor .12 .14 .08 1
+				setitemcolor detail_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor detail_multi forecolor .12 .14 .08 1
+				setitemcolor detail_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+    		name		antilag_multi			
+			style		WINDOW_STYLE_FILLED	
+			text		"Impact Prediction:"
+   			type		ITEM_TYPE_MULTI
+			cvar		"cg_impactPrediction"
+			rect		50 65 300 15
+   			textalign	ITEM_ALIGN_RIGHT
+   			textalignx	125 
+   			textaligny	-1
+			textfont	"hud"
+			textscale	.45
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+   			visible		1
+
+			cvarFloatList 
+			{
+				"Off"					0
+				"On"					1
+			}
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor antilag_multi backcolor .12 .14 .08 1
+				setitemcolor antilag_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor antilag_multi forecolor .12 .14 .08 1
+				setitemcolor antilag_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+    		name		allowdownload_multi			
+			style		WINDOW_STYLE_FILLED	
+			text		"Allow Download:"
+   			type		ITEM_TYPE_YESNO
+			cvar		"cl_allowDownload"
+			rect		50 80 300 15
+   			textalign	ITEM_ALIGN_RIGHT
+   			textalignx	125 
+   			textaligny	-1
+			textfont	"hud"
+			textscale	.45
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+   			visible		1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor allowdownload_multi backcolor .12 .14 .08 1
+				setitemcolor allowdownload_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor allowdownload_multi forecolor .12 .14 .08 1
+				setitemcolor allowdownload_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+			name		window
+			text		"SOCKS5"
+			style		WINDOW_STYLE_FILLED
+			textfont	"hud"
+			textscale	.55
+			rect		50 97 240 18
+			textalign	1
+			textalignx	125
+			textaligny	0
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 .25
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+   			name		"fullscreen_yesno"
+			style		WINDOW_STYLE_FILLED
+     		type		ITEM_TYPE_YESNO
+			text		"SOCKS5 Active:"
+			cvar		"net_socksEnabled"
+			rect		50 120 240 15 
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	-1
+			textfont	"hud"
+			textscale	.45
+			forecolor	.12 .14 .08 1
+      		visible		1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript glCustom 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor fullscreen_yesno backcolor .12 .14 .08 1
+				setitemcolor fullscreen_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor fullscreen_yesno forecolor .12 .14 .08 1
+				setitemcolor fullscreen_yesno backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name			socksserver_field
+			group			createserver_options
+      		type			ITEM_TYPE_EDITFIELD
+			style			WINDOW_STYLE_FILLED
+			text			"Server:"
+			cvar			"net_socksServer"
+			rect			50 140 300 15 
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		125
+			textaligny		-1
+			textfont		"hud"
+			textscale		.45
+     		forecolor		.12 .14 .08 1
+			backcolor		0 0 0 0
+			visible			1 
+			maxchars		20
+			maxPaintChars	20
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor socksserver_field backcolor .12 .14 .08 1
+				setitemcolor socksserver_field forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor socksserver_field backcolor 0 0 0 0
+				setitemcolor socksserver_field forecolor .12 .14 .08 1
+			}
+    	}
+
+		itemDef 
+		{
+      		name			sockport_field
+			group			createserver_options
+      		type			ITEM_TYPE_EDITFIELD
+			style			WINDOW_STYLE_FILLED
+			text			"Port:"
+			cvar			"net_socksPort"
+			rect			50 160 240 15 
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		125
+			textaligny		-1
+			textfont		"hud"
+			textscale		.45
+     		forecolor		.12 .14 .08 1
+			backcolor		0 0 0 0
+			visible			1 
+			maxchars		15
+			maxPaintChars	15
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor sockport_field backcolor .12 .14 .08 1
+				setitemcolor sockport_field forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor sockport_field backcolor 0 0 0 0
+				setitemcolor sockport_field forecolor .12 .14 .08 1
+			}
+    	}
+
+		itemDef 
+		{
+      		name			sockusename_field
+			group			createserver_options
+      		type			ITEM_TYPE_EDITFIELD
+			style			WINDOW_STYLE_FILLED
+			text			"User Name:"
+			cvar			"net_socksUsername"
+			rect			50 180 240 15 
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		125
+			textaligny		-1
+			textfont		"hud"
+			textscale		.45
+     		forecolor		.12 .14 .08 1
+			backcolor		0 0 0 0
+			visible			1 
+			maxchars		22
+			maxPaintChars	22
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor sockusename_field backcolor .12 .14 .08 1
+				setitemcolor sockusename_field forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor sockusename_field backcolor 0 0 0 0
+				setitemcolor sockusename_field forecolor .12 .14 .08 1
+			}
+    	}
+
+		itemDef 
+		{
+      		name			sockpassword_field
+			group			createserver_options
+      		type			ITEM_TYPE_PASSWORDFIELD
+			style			WINDOW_STYLE_FILLED
+			text			"Password:"
+			cvar			"net_socksPassword"
+			rect			50 200 240 15 
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		125
+			textaligny		-1
+			textfont		"hud"
+			textscale		.45
+     		forecolor		.12 .14 .08 1
+			backcolor		0 0 0 0
+			visible			1 
+			maxchars		22
+			maxPaintChars	22
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor sockpassword_field backcolor .12 .14 .08 1
+				setitemcolor sockpassword_field forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor sockpassword_field backcolor 0 0 0 0
+				setitemcolor sockpassword_field forecolor .12 .14 .08 1
+			}
+    	}
+	}
+}

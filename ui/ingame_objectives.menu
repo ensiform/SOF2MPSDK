@@ -1,0 +1,270 @@
+{
+	\\ INGAME_JOIN MENU
+
+	menuDef 
+	{
+    	name			"ingame_objectives"
+    	visible			0
+    	fullScreen		0
+		rect			0 0 640 480
+		focusColor		1 .75 0 1
+		disablecolor	.12 .14 .08 .5
+
+		onOpen
+		{
+		}
+
+		onClose
+		{
+			exec	"ui_team 1";
+		}
+
+		onESC
+		{
+			exec  "ui_team 1" ;
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  Dialog frame
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		130 70 380 350
+			background	"gfx/menus/ingame/background.png"
+			backcolor	1 1 1 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		124 65 8 8
+			background	"gfx/menus/ingame/frame_topleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		130 65 380 8
+			background	"gfx/menus/ingame/frame_top.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		510 65 8 8
+			background	"gfx/menus/ingame/frame_topright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		124 420 8 8
+			background	"gfx/menus/ingame/frame_bottomleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		130 420 380 8
+			background	"gfx/menus/ingame/frame_bottom.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		510 420 8 8
+			background	"gfx/menus/ingame/frame_bottomright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		510 70 8 350
+			background	"gfx/menus/ingame/frame_right.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		124 70 8 350
+			background	"gfx/menus/ingame/frame_left.png"
+			visible		1
+			decoration
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  Title
+		////////////////////////////////////////////////////////////////////////
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		130 70 378 30
+			forecolor	0 0 0 1
+			backcolor	0 0 0 .25
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+
+			textalignx	185
+			textaligny	5
+			textalign	1
+			textfont	"hud"
+			textscale	.54
+			text		"OBJECTIVES"
+		}
+
+		itemDef
+		{
+			name		window
+			rect		150 110 340 160
+			textfont	"hud"
+			textscale	.6
+			forecolor	0 0 0 1
+			visible		1			
+
+			ownerdraw	UI_GAMETYPE
+
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			rect		150 135 340 160
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			visible		1
+			autowrapped
+
+			cvar		"ui_info_objectives"
+
+			decoration
+		}
+
+		itemDef
+		{
+			rect		160 260 320 100
+
+			ownerdraw	UI_OBJECTIVE_PHOTOS
+			textfont	"hud"
+			textscale	.40
+			forecolor	0 0 0 1
+			decoration
+			visible		1
+		}
+
+		///////////////////////////////////////////////////////////////////////
+		// BUTTONS
+		///////////////////////////////////////////////////////////////////////
+
+		itemDef 
+		{
+			name		continue_button
+			text		"Continue"
+			textfont	"hud"
+			textscale	.43
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		270 380 100 26
+			textalignx	20
+			textaligny	5
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			
+			cvarTest	"ui_info_seenobjectives"
+			showCvar
+			{
+				"0"
+			}
+
+			action 
+			{ 
+				play		"sound/misc/menus/select.wav" ; 
+				close		"ingame_objectives";
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor continue_button backcolor .12 .14 .08 1
+				setitemcolor continue_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor continue_button backcolor 0 0 0 0
+				setitemcolor continue_button forecolor 0 0 0 1
+			}
+		}
+
+		itemDef 
+		{
+			name		continue_button
+			text		"Done"
+			textfont	"hud"
+			textscale	.43
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		270 380 100 26
+			textalignx	32
+			textaligny	5
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			
+			cvarTest	"ui_info_seenobjectives"
+			showCvar
+			{
+				"1"
+			}
+
+			action 
+			{ 
+				play		"sound/misc/menus/select.wav" ; 
+				close		"ingame_objectives";
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor continue_button backcolor .12 .14 .08 1
+				setitemcolor continue_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor continue_button backcolor 0 0 0 0
+				setitemcolor continue_button forecolor 0 0 0 1
+			}
+		}
+	}
+}

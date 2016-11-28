@@ -1,0 +1,551 @@
+{
+	\\ SETUP DISPLAY MENU
+
+	menuDef 
+	{
+    	name		"setup_display_menu"
+		visible		0
+		fullscreen	0
+		rect		50 110 432 254
+		focusColor	.49 .56 .27 1
+
+		onOpen 
+		{
+			uiScript display_settings_store
+		}
+
+		onClose
+		{
+			uiScript display_settings_recall
+		}
+
+		itemDef 
+		{
+    		name		quality_multi			
+			style		WINDOW_STYLE_FILLED	
+			text		"Quality:"
+   			type		ITEM_TYPE_MULTI	
+			cvar		"ui_glCustom"
+			rect		50 19 240 15
+   			textalign	ITEM_ALIGN_RIGHT
+   			textalignx	125 
+   			textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+   			visible		1
+
+			cvarFloatList 
+			{ 
+				"High Quality"	0 
+				"Normal"		1 
+				"Fast"			2 
+				"Fastest"		3 
+				"Custom"		4 
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript update "ui_glCustom" 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor quality_multi backcolor .12 .14 .08 1
+				setitemcolor quality_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor quality_multi forecolor .12 .14 .08 1
+				setitemcolor quality_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+  			name		window
+   			type		ITEM_TYPE_EDITFIELD
+			text		"GL Driver:"
+			cvar		"r_gldriver"
+			rect		50 34 240 15
+   			textalign	ITEM_ALIGN_RIGHT
+  			textalignx	125
+   			textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+   			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+   			name		"fullscreen_yesno"
+			style		WINDOW_STYLE_FILLED
+     		type		ITEM_TYPE_YESNO
+			text		"Fullscreen:"
+			cvar		"r_fullscreen"
+			rect		50 49 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+      		visible		1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript glCustom 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor fullscreen_yesno backcolor .12 .14 .08 1
+				setitemcolor fullscreen_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor fullscreen_yesno forecolor .12 .14 .08 1
+				setitemcolor fullscreen_yesno backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+   			name		glextensions_yesno
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_YESNO
+			text		"GL Extensions:"
+			cvar		"r_allowExtensions"
+			rect		50 64 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+		
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript glCustom 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor glextensions_yesno backcolor .12 .14 .08 1
+				setitemcolor glextensions_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor glextensions_yesno forecolor .12 .14 .08 1
+				setitemcolor glextensions_yesno backcolor 0 0 0 0
+			}
+		}
+	
+		itemDef 
+		{
+   			name		videomode_multi
+			style		WINDOW_STYLE_FILLED
+   			type		ITEM_TYPE_MULTI	
+			text		"Video Mode:"
+			cvar		"r_mode"
+			rect		50 79 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+
+			cvarFloatList 
+			{ 
+				"512*384" 2 
+				"640*480" 3 
+				"800*600" 4 
+				"960*720" 5 
+				"1024*768" 6 
+				"1152*864" 7 
+				"1280*1024" 8 
+				"1600*1200" 9 
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript glCustom 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor videomode_multi backcolor .12 .14 .08 1
+				setitemcolor videomode_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor videomode_multi forecolor .12 .14 .08 1
+				setitemcolor videomode_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+   			name		colordepth_multi
+			style		WINDOW_STYLE_FILLED
+   			type		ITEM_TYPE_MULTI
+			text		"Color Depth:"
+			cvar		"r_colorbits"
+			rect		50 94 280 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+			
+			cvarFloatList
+			{ 
+				"Desktop Default" 0 
+				"16-bit" 16 
+				"32-bit" 32 
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript glCustom ; 
+				uiScript update "r_colorbits" 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor colordepth_multi backcolor .12 .14 .08 1
+				setitemcolor colordepth_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor colordepth_multi forecolor .12 .14 .08 1
+				setitemcolor colordepth_multi backcolor 0 0 0 0
+			}
+		}
+/*
+		itemDef 
+		{
+      		name		lighting_multi
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_MULTI			
+			text		"Lighting:"
+			cvar		"r_vertexlight"
+			rect		50 109 280 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+
+			cvarFloatList 
+			{ 
+				"Light Map (high)" 0 
+				"Vertex (low)" 1  
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript glCustom 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor lighting_multi backcolor .12 .14 .08 1
+				setitemcolor lighting_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor lighting_multi forecolor .12 .14 .08 1
+				setitemcolor lighting_multi backcolor 0 0 0 0
+			}
+		}
+*/
+		itemDef 
+		{
+   			name		geometric_multi
+			style		WINDOW_STYLE_FILLED
+    		type		ITEM_TYPE_MULTI
+			text		"Geometric Detail:"
+			cvar		"r_lodbias"
+			rect		30 109 260 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	145
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+
+			cvarFloatList
+			{ 
+				"Low" 2 
+				"Medium" 1 
+				"High" 0 
+			}
+			action
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript glCustom ; 
+				uiScript update "r_lodbias" 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor geometric_multi backcolor .12 .14 .08 1
+				setitemcolor geometric_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor geometric_multi forecolor .12 .14 .08 1
+				setitemcolor geometric_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+  			name		texdetail_multi
+			style		WINDOW_STYLE_FILLED
+   			type		ITEM_TYPE_MULTI
+			text		"Texture Detail:"
+			cvar		"r_picmip"
+			rect		50 124 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+
+			cvarFloatList
+			{ 
+				"Low" 3 
+				"Normal" 2
+				"High" 1
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript glCustom 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor texdetail_multi backcolor .12 .14 .08 1
+				setitemcolor texdetail_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor texdetail_multi forecolor .12 .14 .08 1
+				setitemcolor texdetail_multi backcolor 0 0 0 0
+			}
+		}
+	
+		itemDef 
+		{
+      		name		texquality_multi
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_MULTI
+			text		"Texture Quality:"
+			cvar		"r_texturebits"
+			rect		40 139 250 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	135
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+
+			cvarFloatList 
+			{ 
+				"Default" 0 
+				"16 bit" 16
+				"32 bit" 32
+			}
+ 			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript glCustom 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor texquality_multi backcolor .12 .14 .08 1
+				setitemcolor texquality_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor texquality_multi forecolor .12 .14 .08 1
+				setitemcolor texquality_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		texfilter_multi
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_MULTI
+			text		"Texture Filter:"
+			cvar		"r_texturemode"
+			rect		50 154 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+
+			cvarStrList 
+			{ 
+				"Bilinear", 
+				"GL_LINEAR_MIPMAP_NEAREST", 
+				"Trilinear", 
+				"GL_LINEAR_MIPMAP_LINEAR"  
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript glCustom 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor texfilter_multi backcolor .12 .14 .08 1
+				setitemcolor texfilter_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor texfilter_multi forecolor .12 .14 .08 1
+				setitemcolor texfilter_multi backcolor 0 0 0 0
+			}
+		}
+	
+		itemDef 
+		{
+      		name		compress_yesno
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_YESNO
+			text		"Compress Textures:"
+			cvar		"r_ext_compressed_textures"
+			rect		30 169 260 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	145
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+		
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript glCustom 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor compress_yesno backcolor .12 .14 .08 1
+				setitemcolor compress_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor compress_yesno forecolor .12 .14 .08 1
+				setitemcolor compress_yesno backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		vsync_yesno
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_YESNO
+			text		"Vertical Sync:"
+			cvar		"r_swapinterval"
+			rect		30 184 260 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	145
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+		
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript glCustom 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor vsync_yesno backcolor .12 .14 .08 1
+				setitemcolor vsync_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor vsync_yesno forecolor .12 .14 .08 1
+				setitemcolor vsync_yesno backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+			name		apply_button
+			style		WINDOW_STYLE_FILLED
+			text		"Apply Changes"
+			type		ITEM_TYPE_BUTTON
+			rect		300 173 113 26
+			textalignx	10
+      		textaligny	5
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+			border		1
+			bordercolor	0 0 0 1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				open vid_restart_popmenu 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor apply_button backcolor .12 .14 .08 1
+				setitemcolor apply_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor apply_button forecolor .12 .14 .08 1
+				setitemcolor apply_button backcolor 0 0 0 0
+			}
+		}
+	}
+}

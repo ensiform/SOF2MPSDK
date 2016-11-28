@@ -1,0 +1,704 @@
+{
+	menuDef 
+	{
+    	name			"ingame_outfitting"
+    	visible			0
+    	fullScreen		0
+		rect			0 0 640 480
+		focusColor		1 .75 0 1
+		disablecolor	.12 .14 .08 .5
+
+		onopen
+		{
+			uiScript	"LoadOutfittings" ;
+			uiScript	"DecompressOutfitting" ;
+		}
+
+		onclose
+		{
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  Dialog frame
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		130 70 380 350
+			background	"gfx/menus/ingame/background.png"
+			backcolor	1 1 1 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		124 65 8 8
+			background	"gfx/menus/ingame/frame_topleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		130 65 380 8
+			background	"gfx/menus/ingame/frame_top.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		510 65 8 8
+			background	"gfx/menus/ingame/frame_topright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		124 420 8 8
+			background	"gfx/menus/ingame/frame_bottomleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		130 420 380 8
+			background	"gfx/menus/ingame/frame_bottom.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		510 420 8 8
+			background	"gfx/menus/ingame/frame_bottomright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		510 70 8 350
+			background	"gfx/menus/ingame/frame_right.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		124 70 8 350
+			background	"gfx/menus/ingame/frame_left.png"
+			visible		1
+			decoration
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  Title
+		////////////////////////////////////////////////////////////////////////
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		130 70 378 30
+			forecolor	0 0 0 1
+			backcolor	0 0 0 .25
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+
+			textalignx	190
+			textaligny	5
+			textalign	1
+			textfont	"hud"
+			textscale	.53
+			text		"SELECT OUTFITTING"
+		}
+
+		///////////////////////////////////////////////////////////////////////
+		// SLOT #1
+		///////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name			slot1_glow
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			144 185 171 87
+			visible			1
+							
+			hotkey			"1"
+
+			textfont		"hud"
+			textscale		.35
+			text			"1. PRIMARY"
+			textaligny		2
+			textalignx		2
+							
+			forecolor		0 0 0 1
+			backcolor		0 0 0 0
+							
+			border			1
+			bordercolor		0 0 0 1
+
+			ownerdraw		UI_OUTFITTING_SLOT
+			ownerdrawparam	OUTFITTING_GROUP_PRIMARY
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				setitemcolor slot1_glow  backcolor .12 .14 .08 1;
+				setitemcolor slot1_glow  forecolor .49 .56 .27 1;
+			}
+
+			mouseExit
+			{
+				setitemcolor slot1_glow backcolor	0 0 0 0 ;
+				setitemcolor slot1_glow forecolor	0 0 0 1 ;
+			}
+
+			action
+			{
+				play		"sound/misc/menus/select.wav" ; 
+			}
+		}
+
+		itemDef
+		{
+			rect			145	200	170	70
+			forecolor		0 0 0 1
+			visible			1
+			ownerdraw		UI_OUTFITTING_SLOT_BACKGROUND
+			ownerdrawparam	OUTFITTING_GROUP_PRIMARY
+			decoration		
+		}
+
+		itemDef
+		{
+			rect			180 200 110 55
+			ownerdraw		UI_OUTFITTING_SLOT_RENDER
+			ownerdrawparam	OUTFITTING_GROUP_PRIMARY
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			name			slot1_text
+			rect			313 259 0 15
+			ownerdraw		UI_OUTFITTING_SLOT_NAME
+			ownerdrawparam	OUTFITTING_GROUP_PRIMARY
+			forecolor		.7 .7 .7 1
+			textalign		2
+			textfont		"hud"
+			textscale		.35
+			visible			1
+			decoration
+		}
+
+		///////////////////////////////////////////////////////////////////////
+		// SLOT #2
+		///////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		slot4_glow
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		323 185 171 87
+			visible		1
+			backcolor	0 0 0 0
+
+			hotkey		"2"
+
+			textfont	"hud"
+			textscale	.35
+			text		"2. SECONDARY"
+			textaligny	2
+			textalignx	2
+
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+
+			border		1
+			bordercolor	0 0 0 1
+
+			ownerdraw		UI_OUTFITTING_SLOT
+			ownerdrawparam	OUTFITTING_GROUP_SECONDARY
+
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				setitemcolor slot4_glow  backcolor .12 .14 .08 1;
+				setitemcolor slot4_glow  forecolor .49 .56 .27 1;
+			}
+
+			mouseExit
+			{
+				setitemcolor slot4_glow backcolor	0 0 0 0 ;
+				setitemcolor slot4_glow forecolor	0 0 0 1 ;
+			}
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+		}
+
+		itemDef
+		{
+			rect			325	200	170	70
+			forecolor		0 0 0 1
+			visible			1
+			ownerdraw		UI_OUTFITTING_SLOT_BACKGROUND
+			ownerdrawparam	OUTFITTING_GROUP_SECONDARY
+			decoration
+		}
+
+		itemDef
+		{
+			rect			360 200 110 55
+			ownerdraw		UI_OUTFITTING_SLOT_RENDER
+			ownerdrawparam	OUTFITTING_GROUP_SECONDARY
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			name			slot3_text
+			rect			492 259 0 15
+			ownerdraw		UI_OUTFITTING_SLOT_NAME
+			ownerdrawparam	OUTFITTING_GROUP_SECONDARY
+			forecolor		.7 .7 .7 1
+			textalign		2
+			textfont		"hud"
+			textscale		.35
+			visible			1
+			decoration
+		}
+
+		///////////////////////////////////////////////////////////////////////
+		// SLOT #3
+		///////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		slot2_glow
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		144 280 111 87
+			visible		1
+			backcolor	0 0 0 .5
+
+			hotkey		"3"
+
+			textfont	"hud"
+			textscale	.35
+			text		"3. PISTOL"
+			textaligny	2
+			textalignx	2
+
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+
+			border		1
+			bordercolor	0 0 0 1
+
+			ownerdraw		UI_OUTFITTING_SLOT
+			ownerdrawparam	OUTFITTING_GROUP_PISTOL
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				setitemcolor slot2_glow  backcolor .12 .14 .08 1;
+				setitemcolor slot2_glow  forecolor .49 .56 .27 1;
+			}
+
+			mouseExit
+			{
+				setitemcolor slot2_glow backcolor	0 0 0 0 ;
+				setitemcolor slot2_glow forecolor	0 0 0 1 ;
+			}
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+		}
+
+		itemDef
+		{
+			rect			145	295	110	70
+			forecolor		0 0 0 1
+			visible			1
+			ownerdraw		UI_OUTFITTING_SLOT_BACKGROUND
+			ownerdrawparam	OUTFITTING_GROUP_PISTOL
+			decoration
+		}
+
+		itemDef
+		{
+			rect			145 300 110 55
+			ownerdraw		UI_OUTFITTING_SLOT_RENDER
+			ownerdrawparam	OUTFITTING_GROUP_PISTOL
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			name			slot2_text
+			rect			253 354 0 15
+			ownerdraw		UI_OUTFITTING_SLOT_NAME
+			ownerdrawparam	OUTFITTING_GROUP_PISTOL
+			forecolor		.7 .7 .7 1
+			textalign		2
+			textfont		"hud"
+			textscale		.35
+			visible			1
+			decoration
+		}
+
+		///////////////////////////////////////////////////////////////////////
+		// SLOT #4
+		///////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		slot5_glow
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		263 280 111 87
+			visible		1
+			backcolor	0 0 0 0
+
+			hotkey		"4"
+
+			textfont	"hud"
+			textscale	.35
+			text		"4. GRENADE"
+			textaligny	2
+			textalignx	2
+
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+
+			border		1
+			bordercolor	0 0 0 1
+
+			ownerdraw		UI_OUTFITTING_SLOT
+			ownerdrawparam	OUTFITTING_GROUP_GRENADE
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				setitemcolor slot5_glow  backcolor .12 .14 .08 1;
+				setitemcolor slot5_glow  forecolor .49 .56 .27 1;
+			}
+
+			mouseExit
+			{
+				setitemcolor slot5_glow backcolor	0 0 0 0 ;
+				setitemcolor slot5_glow forecolor	0 0 0 1 ;
+			}
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+		}
+
+		itemDef
+		{
+			rect			265	295	110	70
+			forecolor		0 0 0 1
+			visible			1
+			ownerdraw		UI_OUTFITTING_SLOT_BACKGROUND
+			ownerdrawparam	OUTFITTING_GROUP_GRENADE
+			decoration
+		}
+
+		itemDef
+		{
+			rect			265 295 110 55
+			ownerdraw		UI_OUTFITTING_SLOT_RENDER
+			ownerdrawparam	OUTFITTING_GROUP_GRENADE
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			name			slot5_text
+			rect			372 354 0 15
+			ownerdraw		UI_OUTFITTING_SLOT_NAME
+			ownerdrawparam	OUTFITTING_GROUP_GRENADE
+			forecolor		.7 .7 .7 1
+			textalign		2
+			textfont		"hud"
+			textscale		.35
+			visible			1
+			decoration
+		}
+
+		///////////////////////////////////////////////////////////////////////
+		// SLOT #5
+		///////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		slot6_glow
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		383 280 111 87
+			visible		1
+			backcolor	0 0 0 0
+
+			hotkey		"5"
+
+			textfont	"hud"
+			textscale	.35
+			text		"5. ACCESSORY"
+			textaligny	2
+			textalignx	2
+
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+
+			border		1
+			bordercolor	0 0 0 1
+
+			ownerdraw		UI_OUTFITTING_SLOT
+			ownerdrawparam	OUTFITTING_GROUP_ACCESSORY
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				setitemcolor slot6_glow  backcolor .12 .14 .08 1;
+				setitemcolor slot6_glow  forecolor .49 .56 .27 1;
+			}
+
+			mouseExit
+			{
+				setitemcolor slot6_glow backcolor	0 0 0 0 ;
+				setitemcolor slot6_glow forecolor	0 0 0 1 ;
+			}
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+		}
+
+		itemDef
+		{
+			rect			385	295	110	70
+			forecolor		0 0 0 1
+			visible			1
+			ownerdraw		UI_OUTFITTING_SLOT_BACKGROUND
+			ownerdrawparam	OUTFITTING_GROUP_ACCESSORY
+			decoration
+		}
+
+		itemDef
+		{
+			rect			385 295 110 55
+			ownerdraw		UI_OUTFITTING_SLOT_RENDER
+			ownerdrawparam	OUTFITTING_GROUP_ACCESSORY
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			name			slot5_text
+			rect			492 354 0 15
+			ownerdraw		UI_OUTFITTING_SLOT_NAME
+			ownerdrawparam	OUTFITTING_GROUP_ACCESSORY
+			forecolor		.7 .7 .7 1
+			textalign		2
+			textfont		"hud"
+			textscale		.35
+			visible			1
+			decoration
+		}
+
+		///////////////////////////////////////////////////////////////////////
+		// HELP TEXT
+		///////////////////////////////////////////////////////////////////////
+		itemDef
+		{
+			rect				150 110 340 12
+			text				"Select your outfitting by choosing one of default outfittings or"
+			textfont			"hud"
+			textscale			.35
+			forecolor			0 0 0 1
+			visible				1
+			decoration
+		}
+
+		itemDef
+		{
+			rect				150 122 340 12
+			text				"customizing your own by selecting the weapon you want to change."
+			textfont			"hud"
+			textscale			.35
+			forecolor			0 0 0 1
+			visible				1
+			decoration
+		}
+
+		///////////////////////////////////////////////////////////////////////
+		// TEMPLATE SELECTION
+		///////////////////////////////////////////////////////////////////////
+		itemDef
+		{
+			name				window
+			rect				180 150 100 20
+			text				"Outfitting:"
+			textfont			"hud"
+			textscale			.5
+			visible				1
+			forecolor			0 0 0 1
+			decoration
+		}
+
+		itemDef
+		{
+			name				template
+			style				WINDOW_STYLE_FILLED
+			type				ITEM_TYPE_COMBOBOX
+			feeder				FEEDER_OUTFITTING_TEMPLATES
+			cvar				"ui_info_template"
+			visible				1
+
+			background			"gfx/menus/ingame/background.png"
+
+			rect				260 147 201 200
+
+			textfont			"hud"
+			textscale			.43
+
+			textaligny			-16
+
+			forecolor			0 0 0 1
+
+			elementheight		20
+
+			border				1
+			bordercolor			0 0 0 1
+
+			backcolor			1 1 1 1 // .49 .56 .27 1
+
+			outlinecolor		0 0 0 .25
+			
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+		}
+
+		itemDef 
+		{
+			name		ok_button
+			text		"OK"
+			type		1
+			textfont			"hud"
+			textscale			.43
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		240 380 65 26
+			textalignx	24
+			textaligny	7
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			
+			action 
+			{ 
+				play		"sound/misc/menus/select.wav" ; 
+				uiScript	"CompressOutfitting";
+				close		"ingame_outfitting";
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor ok_button backcolor .12 .14 .08 1
+				setitemcolor ok_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor ok_button backcolor 0 0 0 0
+				setitemcolor ok_button forecolor 0 0 0 1
+			}
+		}
+
+		itemDef 
+		{
+			name		cancel_button
+			text		"Cancel"
+			type		1
+			textfont			"hud"
+			textscale			.43
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		335 380 65 26
+			textalignx	12
+			textaligny	7
+			forecolor	0 0 0 1
+			backcolor	0 0 0 0
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			
+			action 
+			{ 
+				play		"sound/misc/menus/select.wav" ; 
+				close		"ingame_outfitting";
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor cancel_button backcolor .12 .14 .08 1
+				setitemcolor cancel_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor cancel_button backcolor 0 0 0 0
+				setitemcolor cancel_button forecolor 0 0 0 1
+			}
+		}
+	}
+}

@@ -1,0 +1,200 @@
+{
+	\\ VERSION DOWNLOAD MENU \\
+
+	menuDef 
+	{
+    	name		"version_download_menu"
+    	visible		0
+    	fullscreen	0
+		rect		0 0 640 480
+		focusColor	.49 .56 .27 1
+    	style		WINDOW_STYLE_FILLED
+		popup
+
+		itemDef
+		{
+			name		window
+			rect		0 0 640 480
+			style		WINDOW_STYLE_FILLED
+			backcolor	0 0 0 .5
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			rect		30 50 600 400
+			background	"gfx/menus/backdrop/requestor"
+			style		WINDOW_STYLE_SHADER
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			text		"Downloading the latest version of SOF2."
+			style		WINDOW_STYLE_FILLED
+			textfont	"hud"
+			textscale	.53
+			rect		66  75 470 33
+			textalign	1
+			textalignx	235
+			textaligny	8
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 .25
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name				invalid_versionText
+			feeder				FEEDER_NEWVERSION_TEXT
+			type				ITEM_TYPE_TEXTSCROLL
+			style				WINDOW_STYLE_EMPTY
+			visible				0
+			rect				70 120 450 100
+			textfont			"hud"
+			textscale			.43
+			textscale			.9
+			textalign			ITEM_ALIGN_LEFT	
+			border				1
+			bordercolor			0 0 0 1
+			forecolor			1 1 1 1
+			backcolor			0 0 0 .25
+			outlinecolor		.23 .26 .17 1
+			visible				1
+
+			lineHeight			20
+			maxLineChars		45
+		}
+
+		itemDef 
+		{
+      		name				downloadsize_field
+			type				ITEM_TYPE_NUMERICFIELD
+			style				WINDOW_STYLE_FILLED
+			text				"Download Size: "
+			cvar				"ui_downloadsize"
+      		rect				200 220 0 0
+      		textalign			ITEM_ALIGN_RIGHT
+      		textalignx			120
+			maxchars			20
+      		textaligny			2
+			textfont			"hud"
+			textscale			.43
+     		forecolor			.12 .14 .08 1
+			backcolor			0 0 0 0
+			visible				1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+		}
+
+
+		itemDef 
+		{
+			name		window
+			text		"Downloading patch from: "
+			style		WINDOW_STYLE_FILLED
+			textfont	"hud"
+			textscale	.53
+      		rect				120 260 0 0
+//			textalign	1
+			textalignx	0
+			textaligny	8
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 .25
+			visible		1
+			decoration
+		}
+
+
+		itemDef 
+		{
+			name		window
+			type				ITEM_TYPE_TEXT
+			style		WINDOW_STYLE_FILLED
+			textfont	"hud"
+			textscale	.53
+			cvar				"ui_downloadsite"
+      		rect				120 280 0 0
+//			textalign	1
+			textalignx	0
+			textaligny	8
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 .25
+			visible		1
+			decoration
+		}
+
+
+		itemDef 
+		{
+      		name				downloadprogress_field
+			type				ITEM_TYPE_TEXT
+			style				WINDOW_STYLE_FILLED
+      		rect				120 305 0 0
+			cvar				"ui_downloadstatus"
+// 			ownerdraw			UI_VERSIONDOWNLOAD_PROGRESS
+//			textalign	1
+      		textalignx			0
+      		textaligny			2
+			textfont			"hud"
+			textscale			.43
+     		forecolor			.12 .14 .08 1
+			backcolor			0 0 0 0
+			visible				1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+		}
+
+		itemDef 
+		{
+      		name		cancel_button
+      		text		"Cancel"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		225 360 150 20
+			textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	11
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+				uiScript cancelDownload
+				close version_download_menu ; 
+			}
+
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor cancel_button backcolor .12 .14 .08 1
+				setitemcolor cancel_button forecolor .49 .56 .27 1
+			}
+
+      		mouseExit 
+			{ 
+				setitemcolor cancel_button forecolor .12 .14 .08 1
+				setitemcolor cancel_button backcolor 0 0 0 0
+			}
+		}
+
+
+	}
+}

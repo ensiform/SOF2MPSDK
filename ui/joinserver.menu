@@ -1,0 +1,1240 @@
+{
+	\\ Server Join \\
+
+	menuDef 
+	{
+		name				"joinserver"
+		visible				0
+		fullscreen			0
+		rect				50 50 640 293
+		focusColor			.49 .56 .27 1
+		tooltipbackcolor	.49 .56 .27 1
+		tooltipforecolor	.12 .14 .08 1
+		tooltipfont			"hud"
+		tooltipscale		.43
+		tooltipdelay		500
+
+		onOpen 
+		{ 
+			uiScript UpdateFilter ;
+
+			// Re-initialize all of the tab colors
+			setitemcolor columns_group backcolor 0 0 0 0 ; 
+			setitemcolor tabs_group backcolor 0 0 0 0;
+			setitemcolor tabs_group forecolor .12 .14 .08 1;
+		}
+
+		onClose
+		{
+			uiScript stopRefresh ;
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//	COLUMNS
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef 
+		{
+			name needpass_column
+			group columns_group
+			rect 5 89 23 170
+			style WINDOW_STYLE_FILLED
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef 
+		{
+			name servername_column
+			group columns_group
+			rect 27 89 219 170
+			style WINDOW_STYLE_FILLED
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef 
+		{
+			name mapname_column
+			group columns_group
+			rect 245 89 101 170
+			style WINDOW_STYLE_FILLED
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef 
+		{
+			name players_column
+			group columns_group
+			rect 345 89 66 170
+			style WINDOW_STYLE_FILLED
+			backcolor 0 0 0 0
+			visible 1
+			decoration		
+		}
+
+		itemDef 
+		{
+			name type_column
+			group columns_group
+			rect 410 89 46 170
+			style WINDOW_STYLE_FILLED
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef 
+		{
+			name ping_column
+			group columns_group
+			rect 455 89 44 170
+			style WINDOW_STYLE_FILLED
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		itemDef 
+		{
+			name punkbuster_column
+			group columns_group
+			rect 497 89 23 170
+			style WINDOW_STYLE_FILLED
+			backcolor 0 0 0 0
+			visible 1
+			decoration
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//	Server list
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name			serverlist
+			rect			5 89 533 171
+			type			ITEM_TYPE_LISTBOX
+			style			WINDOW_STYLE_EMPTY
+			elementwidth	120
+			elementheight	12
+			textfont		"hud"
+			textscale		.33
+			textaligny		-10
+			elementtype		LISTBOX_TEXT
+			feeder			FEEDER_SERVERS
+			border			1
+			forecolor		1 1 1 1
+			bordercolor		0 0 0 1
+			outlinecolor	.12 .14 .08 1
+			visible			1
+			columns			7 0 3 20 20 40 30 240 40 16 340 5 10 405 20 10 450 20 20 490 10 10
+
+			doubleClick 
+			{ 
+				uiScript JoinServer 
+			}
+		}
+
+		itemDef
+		{
+			name		window
+	      	rect		14 9 46 46
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+			decoration
+		}
+
+		itemDef
+		{
+			name		getnewlist_image
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_get_list"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+	      	rect		22 17 32 32
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		getnewlist_image_alt
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_get_list_alt"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+	      	rect		22 17 32 32
+			visible		0
+			decoration
+		}
+
+		itemDef 
+		{
+      		name		getnewlist_button
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_EMPTY
+	      	rect		14 9 46 46
+      		visible		1
+			tooltip		"Get New List"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				show getnewlist_image_alt;
+				hide getnewlist_image;
+			}
+			mouseExit
+			{
+				show getnewlist_image;
+				hide getnewlist_image_alt;
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript RefreshServers
+			}	  	  
+    	}
+
+		itemDef
+		{
+			name		window
+      		rect		69 9 46 46
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+			decoration
+		}
+
+		itemDef
+		{
+			name		refreshlist_image
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_refresh"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		rect		76 17 32 32
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		refreshlist_image_alt
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_refresh_alt"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		rect		76 17 32 32
+			visible		0
+			decoration
+		}
+
+		itemDef 
+		{
+	      	name		refreshlist_button
+			style		WINDOW_STYLE_EMPTY
+			type		ITEM_TYPE_BUTTON
+      		rect		69 9 46 46
+      		visible		1 
+			tooltip		"Refresh List"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				show refreshlist_image_alt;
+				hide refreshlist_image;
+			}
+			mouseExit
+			{
+				show refreshlist_image;
+				hide refreshlist_image_alt;
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript RefreshFilter
+			}
+    	}
+
+		itemDef 
+		{
+      		name		netsource_filter
+      		style		WINDOW_STYLE_FILLED
+ 			ownerdraw	UI_NETSOURCE
+    		rect		144 9 134 16 
+			textstyle	0
+      		textalign	ITEM_ALIGN_LEFT		
+			textaligny	0
+			textalignx	1
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+     		visible		1 
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor netsource_filter backcolor .12 .14 .08 1
+				setitemcolor netsource_filter forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor netsource_filter forecolor .12 .14 .08 1
+				setitemcolor netsource_filter backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+			name		gametype_filter
+			style		WINDOW_STYLE_FILLED
+			text		"Type:"
+			ownerdraw	UI_JOINGAMETYPE
+    		rect		144 24 184 16 
+			textstyle	0
+    		textalign	ITEM_ALIGN_LEFT		
+			textaligny	0
+			textalignx	1
+			textfont		"hud"
+			textscale		.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor gametype_filter backcolor .12 .14 .08 1
+				setitemcolor gametype_filter forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor gametype_filter forecolor .12 .14 .08 1
+				setitemcolor gametype_filter backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		empty_filter
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_YESNO
+    		rect		340 9 80 16 
+			text		"Empty:"
+			cvar		"ui_browserShowEmpty"
+			textfont	"hud"
+			textscale	.43
+			textstyle	0
+    		textalign	ITEM_ALIGN_LEFT		
+			textaligny	0
+			textalignx	1
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript RefreshFilter 
+			}
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor empty_filter backcolor .12 .14 .08 1
+				setitemcolor empty_filter forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor empty_filter forecolor .12 .14 .08 1
+				setitemcolor empty_filter backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		full_filter
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_YESNO
+      		text		"Full:"
+			cvar		"ui_browserShowFull"
+			textfont	"hud"
+			textscale	.43
+    		rect		340 24 80 16 
+			textstyle	0
+    		textalign	ITEM_ALIGN_LEFT		
+			textaligny	0
+			textalignx	1
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript RefreshFilter ; 
+			}
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor full_filter backcolor .12 .14 .08 1
+				setitemcolor full_filter forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor full_filter forecolor .12 .14 .08 1
+				setitemcolor full_filter backcolor 0 0 0 0
+			}
+	    }
+
+		itemDef 
+		{
+			name		pb_filter
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_YESNO
+			text		"PunkBuster Enabled:"
+    		rect		144 40 184 16 
+			textstyle	0
+    		textalign	ITEM_ALIGN_LEFT		
+			textaligny	0
+			textalignx	1
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			cvar		"ui_browserPunkbuster"
+      		visible		1 
+			
+			action 
+			{ 
+				uiScript	updatePunkbuster ;
+				play		"sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor pb_filter backcolor .12 .14 .08 1
+				setitemcolor pb_filter forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor pb_filter forecolor .12 .14 .08 1
+				setitemcolor pb_filter backcolor 0 0 0 0
+			}
+		}
+
+		itemDef
+		{
+			name		window
+     		rect		490 9 46 46 
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+			decoration
+		}
+
+		itemDef
+		{
+			name		join_image
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_join"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+     		rect		498 17 32 32 
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		join_image_alt
+      		style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/submenu_join_alt"
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+     		rect		498 17 32 32 
+			visible		0
+			decoration
+		}
+
+		itemDef 
+		{
+      		name		join_button
+      		style		WINDOW_STYLE_EMPTY
+     		rect		490 9 46 46 
+			type		ITEM_TYPE_BUTTON
+      		visible		1
+			tooltip		"Join Game"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				show join_image_alt;
+				hide join_image;
+			}
+
+			mouseExit
+			{
+				show join_image;
+				hide join_image_alt;
+			}
+      		
+			action 
+			{ 
+				uiScript JoinServer 
+			}
+		}
+
+		itemDef
+		{
+			name		divider
+			rect		8 60 535 3
+			style		WINDOW_STYLE_FILLED
+			backcolor	0 0 0 1
+			visible		1
+			decoration
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//	Tabs
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef 
+		{
+      		name		needpass_tab
+			group		tabs_group
+			style		WINDOW_STYLE_FILLED
+      		rect		5 72 20 18
+			textalign	0
+      		textalignx	3
+      		textaligny	0
+			forecolor	.12 .14 .08 1
+			bordercolor	0 0 0 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+		}
+
+		itemDef 
+		{
+      		name		needpass_tab
+			group		tabs_group
+			style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/icon_lock"
+      		rect		5 72 20 18
+			textalign	0
+      		textalignx	3
+      		textaligny	0
+			forecolor	.12 .14 .08 1
+			bordercolor	0 0 0 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+		}
+
+		itemDef 
+		{
+      		name		needpass_tab_button
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_EMPTY
+      		rect		5 72 20 18
+      		visible		1 
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor needpass_tab backcolor .12 .14 .08 1
+				setitemcolor needpass_tab forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor needpass_tab forecolor .12 .14 .08 1
+				setitemcolor needpass_tab backcolor 0 0 0 0
+			}
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript ServerSort 0 ; 
+				setitemcolor tabs_group backcolor 0 0 0 0;
+				setitemcolor tabs_group forecolor .12 .14 .08 1;
+				setitemcolor needpass_tab backcolor .12 .14 .08 1
+				setitemcolor needpass_tab forecolor .49 .56 .27 1
+				setitemcolor columns_group backcolor 0 0 0 0 ; 
+				setitemcolor needpass_column backcolor .12 .14 .08 .35;
+			}
+		}
+
+		itemDef 
+		{
+      		name		servername_tab
+			group		tabs_group
+      		text		"Server Name"
+			style		WINDOW_STYLE_FILLED
+			textfont		"hud"
+			textscale		.43
+      		rect		27 72 95 18
+			textalign	0
+      		textalignx	3
+      		textaligny	0
+			forecolor	.12 .14 .08 1
+			bordercolor	0 0 0 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+		}
+
+		itemDef 
+		{
+      		name		servername_tab_button
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_EMPTY
+      		rect		27 72 95 18
+      		visible		1 
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor servername_tab backcolor .12 .14 .08 1
+				setitemcolor servername_tab forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor servername_tab forecolor .12 .14 .08 1
+				setitemcolor servername_tab backcolor 0 0 0 0
+			}
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript ServerSort 1 ; 
+				setitemcolor tabs_group backcolor 0 0 0 0;
+				setitemcolor tabs_group forecolor .12 .14 .08 1;
+				setitemcolor servername_tab backcolor .12 .14 .08 1
+				setitemcolor servername_tab forecolor .49 .56 .27 1
+				setitemcolor columns_group backcolor 0 0 0 0 ; 
+				setitemcolor servername_column backcolor .12 .14 .08 .35;
+			}
+		}
+
+		itemDef 
+		{   
+      		name		mapname_tab
+			group		tabs_group
+      		text		"Map Name"
+			style		WINDOW_STYLE_FILLED
+			textfont		"hud"
+			textscale		.43
+      		rect		245 72 80 18
+			textalign	0
+      		textalignx	5		// center
+			textaligny	0
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			bordercolor	0 0 0 1
+      		visible		1 
+			border		1
+		}
+
+		itemDef 
+		{   
+      		name		mapname_tab_button
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_EMPTY
+      		rect		245 72 80 18
+      		visible		1 
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor mapname_tab backcolor .12 .14 .08 1
+				setitemcolor mapname_tab forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor mapname_tab forecolor .12 .14 .08 1
+				setitemcolor mapname_tab backcolor 0 0 0 0
+			}
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript ServerSort 2 ; 
+				setitemcolor tabs_group backcolor 0 0 0 0;
+				setitemcolor tabs_group forecolor .12 .14 .08 1;
+				setitemcolor mapname_tab backcolor .12 .14 .08 1
+				setitemcolor mapname_tab forecolor .49 .56 .27 1
+				setitemcolor columns_group backcolor 0 0 0 0 ; 
+				setitemcolor mapname_column backcolor .12 .14 .08 .35;
+			}
+		}
+
+		itemDef 
+		{
+      		name		players_tab
+			group		tabs_group
+      		text		"#Plyrs"
+			style		WINDOW_STYLE_FILLED
+			textfont		"hud"
+			textscale		.43
+      		rect		345 72 53 18
+			textalign	0
+      		textalignx	2		// center
+			textaligny	0
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			bordercolor	0 0 0 1
+      		visible		1 
+			border		1
+		}
+
+		itemDef 
+		{
+      		name		players_tab_button
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_EMPTY
+      		rect		345 72 53 18
+      		visible		1 
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor players_tab backcolor .12 .14 .08 1
+				setitemcolor players_tab forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor players_tab forecolor .12 .14 .08 1
+				setitemcolor players_tab backcolor 0 0 0 0
+			}
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript ServerSort 3 ; 
+				setitemcolor tabs_group backcolor 0 0 0 0;
+				setitemcolor tabs_group forecolor .12 .14 .08 1;
+				setitemcolor players_tab backcolor .12 .14 .08 1
+				setitemcolor players_tab forecolor .49 .56 .27 1
+				setitemcolor columns_group backcolor 0 0 0 0 ; 
+				setitemcolor players_column backcolor .12 .14 .08 .35;
+			}
+		}
+
+		itemDef 
+		{
+      		name		type_tab
+			group		tabs_group
+      		text		"Type"
+			style		WINDOW_STYLE_FILLED
+			textfont		"hud"
+			textscale		.43
+      		rect		410 72 39 18
+			textalign	0
+      		textalignx	2		// center
+			textaligny	0
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			bordercolor	0 0 0 1
+      		visible		1 
+			border		1
+		}
+
+		itemDef 
+		{
+      		name		type_tab_button
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_EMPTY
+      		rect		410 72 39 18
+      		visible		1 
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor type_tab backcolor .12 .14 .08 1
+				setitemcolor type_tab forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor type_tab forecolor .12 .14 .08 1
+				setitemcolor type_tab backcolor 0 0 0 0
+			}
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript ServerSort 4 ; 
+				setitemcolor tabs_group backcolor 0 0 0 0;
+				setitemcolor tabs_group forecolor .12 .14 .08 1;
+				setitemcolor type_tab backcolor .12 .14 .08 1
+				setitemcolor type_tab forecolor .49 .56 .27 1
+				setitemcolor columns_group backcolor 0 0 0 0 ; 
+				setitemcolor type_column backcolor .12 .14 .08 .35;
+			}
+		}
+
+		itemDef 
+		{
+      		name		ping_tab
+			group		tabs_group
+      		text		"Ping"
+			style		WINDOW_STYLE_FILLED
+			textfont		"hud"
+			textscale		.43
+      		rect		455 72 36 18
+			textalign	0
+      		textalignx	2		// center
+			textaligny	0
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			bordercolor	0 0 0 1
+      		visible		1 
+			border		1
+		}
+
+		itemDef 
+		{
+      		name		ping_tab_button
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_EMPTY
+      		rect		455 72 39 18
+      		visible		1 
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor ping_tab backcolor .12 .14 .08 1
+				setitemcolor ping_tab forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor ping_tab forecolor .12 .14 .08 1
+				setitemcolor ping_tab backcolor 0 0 0 0
+			}
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript ServerSort 5 ; 
+				setitemcolor tabs_group backcolor 0 0 0 0;
+				setitemcolor tabs_group forecolor .12 .14 .08 1;
+				setitemcolor ping_tab backcolor .12 .14 .08 1
+				setitemcolor ping_tab forecolor .49 .56 .27 1
+				setitemcolor columns_group backcolor 0 0 0 0 ; 
+				setitemcolor ping_column backcolor .12 .14 .08 .35;
+			}
+		}
+
+		itemDef 
+		{
+      		name		punkbuster_tab
+			group		tabs_group
+			style		WINDOW_STYLE_FILLED
+      		rect		496 72 20 18
+			textalign	0
+      		textalignx	3
+      		textaligny	0
+			forecolor	.12 .14 .08 1
+			bordercolor	0 0 0 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+		}
+
+		itemDef 
+		{
+      		name		punkbuster_tab
+			group		tabs_group
+			style		WINDOW_STYLE_SHADER
+			background	"gfx/menus/icons/icon_punkbuster"
+      		rect		496 72 20 18
+			textalign	0
+      		textalignx	3
+      		textaligny	0
+			forecolor	.12 .14 .08 1
+			bordercolor	0 0 0 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+		}
+
+		itemDef 
+		{
+      		name		punkbuster_tab_button
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_EMPTY
+      		rect		496 72 20 18
+      		visible		1 
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor punkbuster_tab backcolor .12 .14 .08 1
+				setitemcolor punkbuster_tab forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor punkbuster_tab forecolor .12 .14 .08 1
+				setitemcolor punkbuster_tab backcolor 0 0 0 0
+			}
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript ServerSort 6 ; 
+				setitemcolor tabs_group backcolor 0 0 0 0;
+				setitemcolor tabs_group forecolor .12 .14 .08 1;
+				setitemcolor punkbuster_tab backcolor .12 .14 .08 1
+				setitemcolor punkbuster_tab forecolor .49 .56 .27 1
+				setitemcolor columns_group backcolor 0 0 0 0 ; 
+				setitemcolor punkbuster_column backcolor .12 .14 .08 .35;
+			}
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//	COLUMN BORDERS
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef 
+		{
+			name column_border
+			rect 5 89 23 171
+			style WINDOW_STYLE_EMPTY
+			border 1
+			bordersize 1
+			bordercolor 0 0 0 .8
+			visible 1
+			decoration
+		}
+
+		itemDef 
+		{
+			name column_border
+			rect 27 89 219 171
+			style WINDOW_STYLE_EMPTY
+			border 1
+			bordersize 1
+			bordercolor 0 0 0 .8
+			visible 1
+			decoration
+		}
+
+		itemDef 
+		{
+			name column_border
+			rect 245 89 101 171
+			style WINDOW_STYLE_EMPTY
+			border 1
+			bordersize 1
+			bordercolor 0 0 0 .8
+			visible 1
+			decoration
+		}
+
+		itemDef 
+		{
+			name column_border
+			rect 345 89 66 171
+			style WINDOW_STYLE_EMPTY
+			border 1
+			bordersize 1
+			bordercolor 0 0 0 .8
+			visible 1
+			decoration		
+		}
+
+		itemDef 
+		{
+			name column_border
+			rect 410 89 46 171
+			style WINDOW_STYLE_EMPTY
+			border 1
+			bordersize 1
+			bordercolor 0 0 0 .8
+			visible 1
+			decoration
+		}
+
+		itemDef 
+		{
+			name column_border
+			rect 455 89 42 171
+			style WINDOW_STYLE_EMPTY
+			border 1
+			bordersize 1
+			bordercolor 0 0 0 .8
+			visible 1
+			decoration
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//	BUTTONS BELOW LIST
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef 
+		{
+      		name		password_button
+      		text		"Password"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		5 265 76 20
+			textfont		"hud"
+			textscale		.43
+			textalign	0
+      		textalignx	5
+      		textaligny	-8
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		0
+			border		1
+			bordercolor	0 0 0 1
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				open password_popmenu 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor password_button backcolor .12 .14 .08 1
+				setitemcolor password_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor password_button forecolor .12 .14 .08 1
+				setitemcolor password_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		newfavorite_button
+      		text		"New Favorite"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		5 265 100 20
+			textfont		"hud"
+			textscale		.43
+			textalign	0
+      		textalignx	10
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				open createfavorite_popmenu ;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor newfavorite_button backcolor .12 .14 .08 1
+				setitemcolor newfavorite_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor newfavorite_button forecolor .12 .14 .08 1
+				setitemcolor newfavorite_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		addfavorite_button
+      		text		"Add Favorite"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		123 265 100 20
+			textfont		"hud"
+			textscale		.43
+			textalign	0
+      		textalignx	11
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+			cvarTest	"ui_netSource"
+			hideCvar 
+			{ 
+				"2"
+			}     
+
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript addFavorite
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor addfavorite_button backcolor .12 .14 .08 1
+				setitemcolor addfavorite_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor addfavorite_button forecolor .12 .14 .08 1
+				setitemcolor addfavorite_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		delfavorite_button
+      		text		"Del Favorite"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		123 265 100 20
+			textfont		"hud"
+			textscale		.43
+			textalign	0
+      		textalignx	12
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+			cvarTest	"ui_netSource"
+			showCvar 
+			{ 
+				"2"
+			}     
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript deleteFavorite
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor delfavorite_button backcolor .12 .14 .08 1
+				setitemcolor delfavorite_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor delfavorite_button forecolor .12 .14 .08 1
+				setitemcolor delfavorite_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		serverinfo_button
+      		text		"Server Info"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		241 265 95 20
+			textfont		"hud"
+			textscale		.43
+			textalign	0
+      		textalignx	15
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				open serverinfo_popmenu ;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor serverinfo_button backcolor .12 .14 .08 1
+				setitemcolor serverinfo_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor serverinfo_button forecolor .12 .14 .08 1
+				setitemcolor serverinfo_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		findfriend_button
+      		text		"Find Friend"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		355 265 95 20
+			textfont		"hud"
+			textscale		.43
+			textalign	0
+      		textalignx	12
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				open findplayer_popmenu ;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor findfriend_button backcolor .12 .14 .08 1
+				setitemcolor findfriend_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor findfriend_button forecolor .12 .14 .08 1
+				setitemcolor findfriend_button backcolor 0 0 0 0
+			}
+		}
+	}
+}

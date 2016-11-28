@@ -1,0 +1,272 @@
+{
+	\\ Credits menu
+
+	menuDef 
+	{
+		name				"credits_menu"
+		visible				0
+		fullscreen			0
+		rect				50 50 432 293
+		focusColor			.49 .56 .27 1
+
+		tooltipbackcolor	.49 .56 .27 1
+		tooltipforecolor	.12 .14 .08 1
+		tooltipfont			"small"
+		tooltipdelay		500
+
+		onOpen
+		{
+		}
+
+		itemDef
+		{
+			name		window
+			rect		20 10 300 20
+			text		"Credits"
+			textfont	"medium"
+			textscale	1.15
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		20	35	300 15
+			text		"Project Lead / Programming"
+			textfont	"medium"
+			textscale	.80
+			forecolor	0 0 0 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		30	50	300 15
+			text		"Rick Johnson"
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		20	70	300 15
+			text		"Programming"
+			textfont	"medium"
+			textscale	.80
+			forecolor	0 0 0 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		30	87	300 15
+			text		"Marcus Whitlock"
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		30	104	300 15
+			text		"Bryan Dube"
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+
+
+
+		itemDef
+		{
+			name		window
+			rect		20	136	300 15
+			text		"Additional Programming"
+			textfont	"medium"
+			textscale	.80
+			forecolor	0 0 0 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		30	153	300 15
+			text		"Pat Lipo"
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		30	170	300 15
+			text		"Jim O’kean"
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		30	187	300 15
+			text		"Rich Whitehouse"
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		30	204	300 15
+			text		"Jake Simpson"
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+
+
+
+
+		itemDef
+		{
+			name		window
+			rect		250	70	300 15
+			text		"Level Design"
+			textfont	"medium"
+			textscale	.80
+			forecolor	0 0 0 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		260	85	300 15
+			text		"Clem Samson-Samuel"
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+
+
+		itemDef
+		{
+			name		window
+			rect		250	105	300 15
+			text		"Sound / Music"
+			textfont	"medium"
+			textscale	.80
+			forecolor	0 0 0 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		260	120	300 15
+			text		"Zachary Quarles"
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+
+
+		itemDef
+		{
+			name		window
+			rect		250	140	300 15
+			text		"Guitar Solos"
+			textfont	"medium"
+			textscale	.80
+			forecolor	0 0 0 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		260	155	300 15
+			text		"Jim Hughes"
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+
+
+		itemDef
+		{
+			name		window
+			rect		250	175	300 15
+			text		"Animations"
+			textfont	"medium"
+			textscale	.80
+			forecolor	0 0 0 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		260	190	300 15
+			text		"Jarrod Showers"
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		260	205	300 15
+			text		"Bobby Duncanson"
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		30	230	300 15
+			text		"In addition to all of the hard working people on"
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		30	245	300 15
+			text		"SoF2 Single Player that provided us with the assets"
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		window
+			rect		30	260	300 15
+			text		"as a foundation"
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+	}
+}

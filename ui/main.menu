@@ -1,0 +1,460 @@
+{
+	assetGlobalDef 
+	{
+		defaultFont				"hud"
+
+		cursor "gfx/menus/cursor/cursor"			// cursor	
+	
+    	fadeClamp 1.0							// sets the fadeup alpha
+		fadeCycle 1								// how often fade happens in milliseconds
+		fadeAmount 0.1							// amount to adjust alpha per cycle
+
+		shadowColor 0.1 0.1 0.1 0.25			// shadow color
+
+		shader	gfx/menus/backdrop/menu_multiplayer_joinserver		// precache image
+	}
+							   
+	menuDef 
+	{
+   		name				"main"
+		background			"gfx/menus/backdrop/menu_multiplayer_back"  
+   		fullScreen			MENU_TRUE				
+		rect				0 0 640 480				// Size and position of the menu
+   		visible				MENU_TRUE				// Visible on open
+		focusColor			1 .75 0 1				// Menu focus color for text and items
+		tooltipbackcolor	.49 .56 .27 1
+		tooltipforecolor	.12 .14 .08 1
+		tooltipscale		.43
+		tooltipfont			"hud"
+		tooltipdelay		500
+							
+		onOpen 
+		{ 
+			open setup_menu;
+
+			show options_glow;
+			hide options_button;
+
+			playlooped "music/shop/shopa_slow.mp3"
+		}
+			
+		onESC 
+		{ 
+			open quit_popmenu;
+		}
+
+		//////////////////////////////////////////////////////
+		// Precache the player model
+		//////////////////////////////////////////////////////
+
+		itemDef 
+		{
+			name		modelselection
+			ownerdraw	UI_PLAYERMODEL
+			rect		0 0 0 0 
+			style		WINDOW_STYLE_EMPTY
+			visible		1
+			decoration 
+    	}
+
+		//////////////////////////////////////////////////////
+		// Play
+		//////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_FILLED
+			rect		74 393 67 47
+			background	"gfx/menus/icons/icon_join_server_mp.png"
+			backcolor	.20 .25 .11 1
+			visible		MENU_TRUE
+			decoration
+		}
+
+		itemDef
+		{
+			name		play_glow
+			group		main_glow_group
+			style		WINDOW_STYLE_FILLED
+			rect		74 393 67 47
+			background	"gfx/menus/icons/icon_join_server_glow_mp.png"
+			backcolor	.72 .96 .098 1
+			visible		MENU_FALSE
+			decoration
+		}
+
+		itemDef
+		{
+			name		play_button
+			group		main_button_group
+			style		WINDOW_STYLE_EMPTY
+			rect		74 392 67 47
+			type		ITEM_TYPE_BUTTON
+			visible		MENU_TRUE
+			tooltip		"Join Server"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				show play_glow;
+			}
+			mouseExit
+			{
+				hide play_glow;
+			}
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				setmenubackground	"gfx/menus/backdrop/menu_multiplayer_joinserver"  
+
+				uiScript VerifyNet;
+
+				show main_button_group;				
+				hide play_button;				
+
+				hide main_glow_group;
+				show play_glow;
+
+				close mods_menu;
+				close setup_menu;
+				close createserver_menu;
+				close violence_menu;
+				close violence_options_menu;
+				open joinserver;
+			}
+		}
+
+		//////////////////////////////////////////////////////
+		// Create Server
+		//////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_FILLED
+			rect		145 392 67 47
+			background	"gfx/menus/icons/icon_create_server_mp"
+			backcolor	.20 .25 .11 1
+			visible		MENU_TRUE
+			decoration
+		}
+
+		itemDef
+		{
+			name		createserver_glow
+			group		main_glow_group
+			style		WINDOW_STYLE_FILLED
+			rect		145 392 67 47
+			background	"gfx/menus/icons/icon_create_server_glow_mp"
+			backcolor	.72 .96 .098 1
+			visible		MENU_FALSE
+			decoration
+		}
+
+		itemDef
+		{
+			name		createserver_button
+			group		main_button_group
+			style		WINDOW_STYLE_EMPTY
+			rect		145 392 67 47
+			type		ITEM_TYPE_BUTTON
+			visible		MENU_TRUE
+			tooltip		"Create Server"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				show createserver_glow;
+			}
+			mouseExit
+			{
+				hide createserver_glow;
+			}
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				setmenubackground	"gfx/menus/backdrop/menu_multiplayer_back"  
+
+				show main_button_group;				
+				hide createserver_button;
+
+				hide main_glow_group;
+				show createserver_glow;
+
+				close mods_menu;
+				close joinserver;
+				close setup_menu;
+				close violence_menu;
+				close violence_options_menu;
+				open createserver_menu;
+			}
+		}
+
+		//////////////////////////////////////////////////////
+		// Options
+		//////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_FILLED
+			rect		214 394 71 45
+			background	"gfx/menus/icons/icon_options_mp"
+			backcolor	.20 .25 .11 1
+			visible		MENU_TRUE
+			decoration
+		}
+
+		itemDef
+		{
+			name		options_glow
+			group		main_glow_group
+			style		WINDOW_STYLE_FILLED
+			rect		214 394 71 45
+			background	"gfx/menus/icons/icon_options_glow_mp"
+			backcolor	.72 .96 .098 1
+			visible		MENU_FALSE
+			decoration
+		}
+
+		itemDef
+		{
+			name		options_button
+			group		main_button_group
+			style		WINDOW_STYLE_EMPTY
+			rect		214 394 71 45
+			type		ITEM_TYPE_BUTTON
+			visible		MENU_TRUE
+			tooltip		"Options"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				show options_glow;
+			}
+			mouseExit
+			{
+				hide options_glow;
+			}
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				setmenubackground	"gfx/menus/backdrop/menu_multiplayer_back"  
+
+				show main_button_group;				
+				hide options_button;
+
+				hide main_glow_group;
+				show options_glow;
+
+				close mods_menu;
+				close joinserver;
+				close createserver_menu;
+				close violence_menu;
+				close violence_options_menu;
+				open setup_menu;
+			}
+		}
+
+		//////////////////////////////////////////////////////
+		// Violence lock
+		//////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		violence_icon
+			style		WINDOW_STYLE_FILLED
+			rect		282 393 75 45
+			background	"gfx/menus/icons/icon_lock_mp"
+			backcolor	.20 .25 .11 1
+			visible		MENU_TRUE
+			decoration
+		}
+
+		itemDef
+		{
+			name		violence_glow
+			group		main_glow_group
+			style		WINDOW_STYLE_FILLED
+			rect		282 393 75 45
+			background	"gfx/menus/icons/icon_lock_glow_mp"
+			backcolor	.72 .96 .098 1
+			visible		MENU_FALSE
+			decoration
+		}
+
+		itemDef
+		{
+			name		violence_button
+			group		main_button_group
+			style		WINDOW_STYLE_EMPTY
+			rect		282 393 75 45
+			type		ITEM_TYPE_BUTTON
+			visible		MENU_TRUE
+			tooltip		"Violence Lock"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				show violence_glow;
+			}
+			mouseExit
+			{
+				hide violence_glow;
+			}
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				setmenubackground	"gfx/menus/backdrop/menu_multiplayer_back"  
+
+				show main_button_group;				
+				hide violence_button;
+
+				hide main_glow_group;
+				show violence_glow;
+
+				close mods_menu;
+				close setup_menu;
+				close joinserver;
+				close createserver_menu;
+				close violence_options_menu;
+				
+				open  violence_menu;
+			}
+		}
+
+		//////////////////////////////////////////////////////
+		// mods
+		//////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_FILLED
+			rect		360 393 55 45
+			background	"gfx/menus/icons/icon_modify"
+			backcolor	.20 .25 .11 1
+			visible		MENU_TRUE
+			decoration
+		}
+
+		itemDef
+		{
+			name		mods_glow
+			group		main_glow_group
+			style		WINDOW_STYLE_FILLED
+			rect		360 393 55 45
+			background	"gfx/menus/icons/icon_modify_glow"
+			backcolor	.72 .96 .098 1
+			visible		MENU_FALSE
+			decoration
+		}
+
+		itemDef
+		{
+			name		mods_button
+			group		main_button_group
+			style		WINDOW_STYLE_EMPTY
+			rect		352 393 75 45
+			type		ITEM_TYPE_BUTTON
+			visible		MENU_TRUE
+			tooltip		"Mods"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				show mods_glow;
+			}
+			mouseExit
+			{
+				hide mods_glow;
+			}
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				setmenubackground	"gfx/menus/backdrop/menu_multiplayer_back"  
+
+				show main_button_group;				
+				hide mods_button;
+
+				hide main_glow_group;
+				show mods_glow;
+
+				close setup_menu;
+				close joinserver;
+				close createserver_menu;
+				close violence_menu;
+				close violence_options_menu;
+
+				open mods_menu;			
+			}
+		}
+
+		//////////////////////////////////////////////////////
+		// Quit
+		//////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_FILLED
+			rect		419 394 79 43
+			background	"gfx/menus/icons/icon_quit_mp"
+			backcolor	.20 .25 .11 1
+			visible		MENU_TRUE
+			decoration
+		}
+
+		itemDef
+		{
+			name		quit_glow
+			group		main_glow_group
+			style		WINDOW_STYLE_FILLED
+			rect		419 394 79 43
+			background	"gfx/menus/icons/icon_quit_glow_mp"
+			backcolor	.72 .96 .098 1
+			visible		MENU_FALSE
+			decoration
+		}
+
+		itemDef
+		{
+			name		quit_button
+			group		main_button_group
+			style		WINDOW_STYLE_EMPTY
+			rect		419 394 79 43
+			type		ITEM_TYPE_BUTTON
+			visible		MENU_TRUE
+			tooltip		"Quit Game"
+
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+
+				show quit_glow;
+			}
+			mouseExit
+			{
+				hide quit_glow;
+			}
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				hide quit_glow;
+				open quit_popmenu;
+			}
+		}
+	}
+}

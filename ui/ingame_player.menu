@@ -1,0 +1,329 @@
+{
+	\\ INGAME_PLAYER MENU
+
+	menuDef 
+	{
+    	name			"ingame_player"
+    	visible			1
+    	fullScreen		0
+    	rect			105 50 188 138
+		disableColor	.36 .42 .24 1
+
+		////////////////////////////////////////////////////////////////////////
+		//  Dialog frame
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-6 -6 194 144
+			background	"gfx/menus/ingame/background.png"
+			backcolor	1 1 1 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-12 -10 8 8
+			background	"gfx/menus/ingame/frame_topleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-6 -10 194 8
+			background	"gfx/menus/ingame/frame_top.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		188 -10 8 8
+			background	"gfx/menus/ingame/frame_topright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-12 138 8 8
+			background	"gfx/menus/ingame/frame_bottomleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-6 138 194 8
+			background	"gfx/menus/ingame/frame_bottom.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		188 138 8 8
+			background	"gfx/menus/ingame/frame_bottomright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		188 -6 8 144
+			background	"gfx/menus/ingame/frame_right.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-12 -6 8 144
+			background	"gfx/menus/ingame/frame_left.png"
+			visible		1
+			decoration
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  Buttons
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef 
+		{
+     		name		joingame_button
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_BUTTON
+     		rect		10 10 160 26
+			text		"Join Game"
+     		textalign	1
+     		textalignx	80
+    		textaligny	6
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+			cvarTest	"ui_info_teamgame"
+
+			hideCvar 
+			{ 
+				"1" ; 
+			}     
+      		
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				exec "cmd team free" ; 
+				
+				uiScript closeingame 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor joingame_button backcolor .12 .14 .08 1;
+				setitemcolor joingame_button forecolor .49 .56 .27 1;
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor joingame_button backcolor 0 0 0 0;
+				setitemcolor joingame_button forecolor .12 .14 .08 1;
+			}
+    	}
+
+		itemDef 
+		{
+     		name		joingame_button
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_BUTTON
+     		rect		10 10 160 26
+			text		"Select Team"
+     		textalign	1
+     		textalignx	80
+    		textaligny	6
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+			cvarTest	"ui_info_teamgame"
+
+			showCvar 
+			{ 
+				"1" ; 
+			}     
+      		
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				exec "ui_team" ; 
+				
+				uiScript closeingame 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor joingame_button backcolor .12 .14 .08 1;
+				setitemcolor joingame_button forecolor .49 .56 .27 1;
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor joingame_button backcolor 0 0 0 0;
+				setitemcolor joingame_button forecolor .12 .14 .08 1;
+			}
+    	}
+
+		itemDef 
+		{
+      		name		blueteam_button
+			type		ITEM_TYPE_BUTTON
+      		style		WINDOW_STYLE_FILLED
+      		rect		10 40 160 26
+			text		"Spectate"
+      		textalign	1	
+      		textalignx	80
+      		textaligny	6
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+
+      		action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				exec "cmd team s" ; 
+				uiScript closeingame 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor blueteam_button backcolor .12 .14 .08 1;
+				setitemcolor blueteam_button forecolor .49 .56 .27 1;
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor blueteam_button backcolor 0 0 0 0;
+				setitemcolor blueteam_button forecolor .12 .14 .08 1;
+			}
+    	}
+ 
+		itemDef 
+		{
+      		name		autoteam_button
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		10 70 160 26
+      		text		"Outfitting"
+      		textalign	1	
+      		textalignx	80
+      		textaligny	6
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+
+			cvarTest	"ui_info_pickupsdisabled"
+
+			disableCvar 
+			{ 
+				"0" ; 
+			}     
+      		
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				exec "ui_outfitting" ; 
+				uiScript closeingame 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor autoteam_button backcolor .12 .14 .08 1;
+				setitemcolor autoteam_button forecolor .49 .56 .27 1;
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor autoteam_button backcolor 0 0 0 0;
+				setitemcolor autoteam_button forecolor .12 .14 .08 1;
+			}
+    	}
+
+		itemDef 
+		{
+      		name		specteam_button
+			type		ITEM_TYPE_BUTTON
+      		style		WINDOW_STYLE_FILLED
+      		rect		10 100 160 26
+      		text		"Objectives"
+      		textalign	1	
+      		textalignx	80
+      		textaligny	6
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+      	
+			cvarTest	"ui_info_showobjectives"
+
+			disableCvar 
+			{ 
+				"0" ; 
+			}     
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				exec "ui_objectives" ; 
+				uiScript closeingame 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor specteam_button backcolor .12 .14 .08 1;
+				setitemcolor specteam_button forecolor .49 .56 .27 1;
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor specteam_button backcolor 0 0 0 0;
+				setitemcolor specteam_button forecolor .12 .14 .08 1;
+			}
+    	}
+	}
+}

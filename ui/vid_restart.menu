@@ -1,0 +1,159 @@
+{
+	\\ VID_RESTART POPUP MENU \\
+
+	menuDef 
+	{
+    	name		"vid_restart_popmenu"
+    	visible		0
+    	fullscreen	0
+		rect		0 0 640 480
+		focusColor	.49 .56 .27 1
+    	style		WINDOW_STYLE_FILLED
+		popup
+
+		onESC 
+		{ 
+			close vid_restart_popmenu ; 
+		}
+
+		itemDef
+		{
+			name		window
+			rect		0 0 640 480
+			style		WINDOW_STYLE_FILLED
+			backcolor	0 0 0 .5
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			rect		202 122 255 255
+			background	"gfx/menus/backdrop/requestor"
+			style		WINDOW_STYLE_SHADER
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			style		WINDOW_STYLE_FILLED
+			text		"Apply Changes?"
+			textfont	"hud"
+			textscale	.53
+			rect		214 136 210 33
+			textalign	1
+			textalignx	108
+			textaligny	8
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 .25
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			text		"This will apply video"
+			textfont	"hud"
+			textscale	.43
+			rect		230 200 110 20
+			textalignx	5
+			textaligny	-8
+			forecolor	.12 .14 .08 1
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			text		"settings and reload."
+			textfont	"hud"
+			textscale	.43
+			rect		230 220 110 20
+			textalignx	5
+			textaligny	-8
+			forecolor	.12 .14 .08 1
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		yes_button
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_BUTTON
+			text		"Yes"
+			rect		250 280 40 26
+			textalign	1
+			textalignx	19
+			textaligny	4
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			border		1
+			bordercolor	0 0 0 1
+      		visible		1
+
+			action 
+			{ 
+				uiScript display_settings_store			
+				play "sound/misc/menus/select.wav" ; 
+				close vid_restart_popmenu ; 
+				exec "vid_restart" 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor yes_button backcolor .12 .14 .08 1
+				setitemcolor yes_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor yes_button forecolor .12 .14 .08 1
+				setitemcolor yes_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+			name		no_button
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_BUTTON
+			text		"No"
+			rect		350 280 40 26
+			textalign	1
+			textalignx	18
+			textaligny	4
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			border		1
+			bordercolor	0 0 0 1
+      		visible		1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				close vid_restart_popmenu ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor no_button backcolor .12 .14 .08 1
+				setitemcolor no_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor no_button forecolor .12 .14 .08 1
+				setitemcolor no_button backcolor 0 0 0 0
+			}
+		}
+	}
+}

@@ -1,0 +1,250 @@
+{
+	\\ ADDBOT MENU
+
+	menuDef 
+	{
+    	name			"ingame_addbot"
+    	visible			0
+    	fullscreen		0
+    	rect			192 50 228 123
+		disableColor	.36 .42 .24 1
+
+		////////////////////////////////////////////////////////////////////////
+		//  Dialog frame
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		0 0 228 123
+			background	"gfx/menus/ingame/background.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-12 -10 16 16
+			background	"gfx/menus/ingame/frame_topleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		0 -10 228 16
+			background	"gfx/menus/ingame/frame_top.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		228 -10 16 16
+			background	"gfx/menus/ingame/frame_topright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-12 123 16 16
+			background	"gfx/menus/ingame/frame_bottomleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		0 123 228 16
+			background	"gfx/menus/ingame/frame_bottom.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		228 123 16 16
+			background	"gfx/menus/ingame/frame_bottomright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		228 0 16 123
+			background	"gfx/menus/ingame/frame_right.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-12 0 16 123
+			background	"gfx/menus/ingame/frame_left.png"
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+      		name		botname_button
+			style		WINDOW_STYLE_FILLED
+ 			ownerdraw	UI_BOTNAME
+      		rect		20 10 155 17 
+			text		"Name:"	
+      		textalign	ITEM_ALIGN_RIGHT		
+      		textalignx	45
+      		textaligny	2
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor botname_button backcolor .12 .14 .08 1
+				setitemcolor botname_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor botname_button backcolor 0 0 0 0
+				setitemcolor botname_button forecolor .12 .14 .08 1
+			}
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+    	}
+
+		itemDef 
+		{
+      		name		team_button
+   			type		ITEM_TYPE_MULTI
+			style		WINDOW_STYLE_FILLED
+			text		"Team:"	
+      		rect		20 30 155 17 
+      		textalign	ITEM_ALIGN_RIGHT		
+      		textalignx	45
+      		textaligny	2
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			cvarTest	"g_gametype"
+			cvar		"ui_botteam"
+
+			cvarStrList 
+			{ 
+				"Auto", "Auto", "Red", "Red", "Blue", "Blue"
+			}     
+			disableCvar 
+			{ 
+				"0" ; 
+				"1" 
+			}     
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor team_button backcolor .12 .14 .08 1
+				setitemcolor team_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor team_button backcolor 0 0 0 0
+				setitemcolor team_button forecolor .12 .14 .08 1
+			}
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+    	}
+
+		itemDef 
+		{
+      		name		skill_button
+			style		WINDOW_STYLE_FILLED
+ 			ownerdraw	UI_BOTSKILL
+      		rect		15 50 200 17 
+			text		"Skill:"
+      		textalign	ITEM_ALIGN_RIGHT		
+      		textalignx	50
+      		textaligny	2
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+ 	
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor skill_button backcolor .12 .14 .08 1
+				setitemcolor skill_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor skill_button backcolor 0 0 0 0
+				setitemcolor skill_button forecolor .12 .14 .08 1
+			}
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+	   	}
+
+		itemDef 
+		{
+			name		addbot_button
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_BUTTON
+			rect		65 85 90 26
+			text		"Add Bot"
+			textalign	1
+			textalignx	45
+			textaligny	6
+			textfont	"small"
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript addBot ; 
+				uiScript closeingame 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor addbot_button backcolor .12 .14 .08 1
+				setitemcolor addbot_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor addbot_button backcolor 0 0 0 0
+				setitemcolor addbot_button forecolor .12 .14 .08 1
+			}
+		}
+	}
+}

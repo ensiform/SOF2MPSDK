@@ -1,0 +1,428 @@
+{
+	\\ MISC SETUP 
+
+	menuDef 
+	{
+    	name		"setup_misc_menu"
+		visible		0
+		fullscreen	0
+		rect		50 110 432 254
+		focusColor	.49 .56 .27 1
+
+		itemDef 
+		{
+   			name		teamscores_multi
+			style		WINDOW_STYLE_FILLED
+   			type		ITEM_TYPE_MULTI
+			text		"Team Scores:"
+			cvar		"cg_drawteamscores"
+			rect		50 14 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+			
+			cvarFloatList
+			{ 
+				"Off"			0 
+				"Bottom Right"	1 
+				"Bottom Center"	2 
+				"Top Right"		3
+				"Right"			4
+				"Slim"			5
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor teamscores_multi backcolor .12 .14 .08 1
+				setitemcolor teamscores_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor teamscores_multi forecolor .12 .14 .08 1
+				setitemcolor teamscores_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+   			name		autoswitch_multi
+			style		WINDOW_STYLE_FILLED
+   			type		ITEM_TYPE_MULTI
+			text		"Auto Switch:"
+			cvar		"cg_autoswitch"
+			rect		50 29 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+			
+			cvarFloatList
+			{ 
+				"None"		0 
+				"Always"	1 
+				"Safe"		2 
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor autoswitch_multi backcolor .12 .14 .08 1
+				setitemcolor autoswitch_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor autoswitch_multi forecolor .12 .14 .08 1
+				setitemcolor autoswitch_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+   			name		weaponsel_multi
+			style		WINDOW_STYLE_FILLED
+   			type		ITEM_TYPE_MULTI
+			text		"Weapon Selection:"
+			cvar		"cg_weaponMenuFast"
+			rect		50 44 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+			
+			cvarFloatList
+			{ 
+				"Menu"		0 
+				"Fast"		1 
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor weaponsel_multi backcolor .12 .14 .08 1
+				setitemcolor weaponsel_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor weaponsel_multi forecolor .12 .14 .08 1
+				setitemcolor weaponsel_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+   			name		autoreload_yesno
+			style		WINDOW_STYLE_FILLED
+   			type		ITEM_TYPE_YESNO
+			text		"Auto Reload:"
+			cvar		"cg_autoReload"
+			rect		50 59 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor autoreload_yesno backcolor .12 .14 .08 1
+				setitemcolor autoreload_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor autoreload_yesno forecolor .12 .14 .08 1
+				setitemcolor autoreload_yesno backcolor 0 0 0 0
+			}
+		}
+
+
+		itemDef 
+		{
+   			name		deferplayers_yesno
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_YESNO
+			text		"Defer Players:"
+			cvar		"cg_deferPlayers"
+			rect		50 74 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+		
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor deferplayers_yesno backcolor .12 .14 .08 1
+				setitemcolor deferplayers_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor deferplayers_yesno forecolor .12 .14 .08 1
+				setitemcolor deferplayers_yesno backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+   			name		drawcrosshairnames_multi
+			style		WINDOW_STYLE_FILLED
+   			type		ITEM_TYPE_MULTI
+			text		"Identify Target:"
+			cvar		"cg_drawCrosshairNames"
+			rect		50 89 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+			
+			cvarFloatList
+			{ 
+				"Off"			0 
+				"Bottom"		1 
+				"Center"		2 
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor drawcrosshairnames_multi backcolor .12 .14 .08 1
+				setitemcolor drawcrosshairnames_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor drawcrosshairnames_multi forecolor .12 .14 .08 1
+				setitemcolor drawcrosshairnames_multi backcolor 0 0 0 0
+			}
+		}
+
+
+		itemDef 
+		{
+   			name		drawfriend_yesno
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_YESNO
+			text		"Draw Team Icons:"
+			cvar		"cg_drawFriend"
+			rect		50 104 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+		
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor drawfriend_yesno backcolor .12 .14 .08 1
+				setitemcolor drawfriend_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor drawfriend_yesno forecolor .12 .14 .08 1
+				setitemcolor drawfriend_yesno backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+   			name		drawHUDTop_multi
+			style		WINDOW_STYLE_FILLED
+   			type		ITEM_TYPE_MULTI
+			text		"Radar Type:"
+			cvar		"cg_drawRadar"
+			rect		50 119 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+			
+			cvarFloatList
+			{ 
+				"None"			0 
+				"Friends"		1 
+				"Friends + Map"	2 
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor drawHUDTop_multi backcolor .12 .14 .08 1
+				setitemcolor drawHUDTop_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor drawHUDTop_multi forecolor .12 .14 .08 1
+				setitemcolor drawHUDTop_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+   			name		drawhudicons_yesno
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_YESNO
+			text		"Draw HUD Icons:"
+			cvar		"cg_drawHUDIcons"
+			rect		50 134 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+		
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor drawhudicons_yesno backcolor .12 .14 .08 1
+				setitemcolor drawhudicons_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor drawhudicons_yesno forecolor .12 .14 .08 1
+				setitemcolor drawhudicons_yesno backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		crosshair
+			style		WINDOW_STYLE_FILLED
+			text		"Crosshair:"
+			rect		50 149 240 30
+			ownerdraw	UI_CROSSHAIR
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	115
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor crosshair backcolor .12 .14 .08 1
+				setitemcolor crosshair forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor crosshair forecolor .12 .14 .08 1
+				setitemcolor crosshair backcolor 0 0 0 0
+			}
+		}
+
+
+		itemDef
+		{
+			name		brightness_slider
+			style		WINDOW_STYLE_FILLED
+			text		"Brightness"
+			rect		70 179 140 15
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			textaligny	0
+			textalignx	35
+			textfont	"hud"
+			textscale	.43
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+      		name		window
+      		type		ITEM_TYPE_SLIDER
+			text		""
+			cvarfloat	"r_gamma" 1 0.5 2
+			rect		70 194 128 40
+      		visible		1
+		
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor brightness_slider backcolor .12 .14 .08 1
+				setitemcolor brightness_slider forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor brightness_slider forecolor .12 .14 .08 1
+				setitemcolor brightness_slider backcolor 0 0 0 0
+			}
+   		}
+	}
+}

@@ -1,0 +1,117 @@
+{
+	\\ END OF GAME \\
+
+	menuDef 
+	{
+		name		"error_popmenu"
+   		visible		0
+   		fullscreen	0
+		rect		0 0 640 480
+		focusColor	.49 .56 .27 1
+	   	style		1
+		popup
+
+		onClose 
+		{ 
+			uiScript clearError 
+		}
+		
+		onESC 
+		{ 
+			close error_popmenu ; 
+		}
+
+		itemDef
+		{
+			name		window
+			rect		0 0 640 480
+			style		WINDOW_STYLE_FILLED
+			backcolor	0 0 0 .5
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+   			rect		160 80 350 360
+			background	"gfx/menus/backdrop/requestor"
+			style		WINDOW_STYLE_SHADER
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			text		"Message"
+			style		WINDOW_STYLE_FILLED
+			textfont	"hud"
+			textscale	.53
+			rect		176 97 285 33
+			textalign	1
+			textalignx	142
+			textaligny	8
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 .25
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			rect		205 143 226 195
+			style		WINDOW_STYLE_FILLED
+			cvar		"com_errorMessage"
+			textalignx	5
+			textaligny	8
+			textfont	"hud"
+			textscale	.43
+			forecolor	1 1 1 1
+			backcolor	0 0 0 .20
+			visible		1
+
+			autowrapped
+			decoration
+		}
+ 
+		//	BUTTON
+
+		itemDef 
+		{
+			name		exit_button
+			text		"Close"
+			type		1
+			textfont	"hud"
+			textscale	.43
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		295 347 45 26
+			textalignx	6
+			textaligny	5
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				close error_popmenu ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor exit_button backcolor .12 .14 .08 1
+				setitemcolor exit_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor exit_button backcolor 0 0 0 0
+				setitemcolor exit_button forecolor .12 .14 .08 1
+			}
+		}
+	}
+}

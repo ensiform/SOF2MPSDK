@@ -1,0 +1,36 @@
+// menu defs
+// 
+{
+	loadMenu { "ui/loading.menu" }
+
+ 	loadMenu { "ui/ingame.menu" }
+
+	loadMenu { "ui/ingame_objectives.menu" }
+	loadMenu { "ui/ingame_vote.menu" }
+	loadMenu { "ui/ingame_about.menu" }
+	loadMenu { "ui/ingame_player.menu" }
+	loadMenu { "ui/ingame_setup.menu" }
+	loadMenu { "ui/ingame_leave.menu" }
+	loadMenu { "ui/ingame_addbot.menu" }
+	loadMenu { "ui/ingame_callvote.menu" }
+	loadMenu { "ui/ingame_team.menu" }
+	loadMenu { "ui/ingame_identity_red.menu" }
+	loadMenu { "ui/ingame_identity_blue.menu" }
+	loadMenu { "ui/ingame_outfitting.menu" }
+	loadMenu { "ui/ingame_radio.menu" }
+	loadMenu { "ui/ingame_network.menu" }
+
+	loadMenu { "ui/connect.menu" }
+
+	loadMenu { "ui/setup_controls.menu" }
+	loadMenu { "ui/setup_player.menu" }
+	loadMenu { "ui/setup_sounds.menu" }
+	loadMenu { "ui/setup_display.menu" }
+	loadMenu { "ui/setup_misc.menu" }
+	loadMenu { "ui/setup_scale.menu" }
+	loadMenu { "ui/setup_cdkey.menu" }
+	loadMenu { "ui/setup_network.menu" }
+
+	loadMenu { "ui/vid_restart.menu" }
+	loadMenu { "ui/password.menu" }
+}

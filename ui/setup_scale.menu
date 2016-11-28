@@ -1,0 +1,405 @@
+{
+	\\ SCALABILITY SETUP 
+
+	menuDef 
+	{
+    	name		"setup_scale_menu"
+		visible		0
+		fullscreen	0
+		rect		50 110 432 254
+		focusColor	.49 .56 .27 1
+
+
+		itemDef 
+		{
+    		name		shadows_multi			
+			style		WINDOW_STYLE_FILLED	
+			text		"Shadow Quality:"
+   			type		ITEM_TYPE_MULTI	
+			cvar		"cg_shadows"
+			rect		50 19 240 15
+   			textalign	ITEM_ALIGN_RIGHT
+   			textalignx	125 
+   			textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+   			visible		1
+
+			cvarFloatList 
+			{ 
+				"None"		0 
+				"Low"		1 
+				"High"		3 
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor shadows_multi backcolor .12 .14 .08 1
+				setitemcolor shadows_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor shadows_multi forecolor .12 .14 .08 1
+				setitemcolor shadows_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+    		name		detail_multi			
+			style		WINDOW_STYLE_FILLED	
+			text		"Detail Textures:"
+   			type		ITEM_TYPE_YESNO
+			cvar		"r_detailtextures"
+			rect		50 39 240 15
+   			textalign	ITEM_ALIGN_RIGHT
+   			textalignx	125 
+   			textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+   			visible		1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor detail_multi backcolor .12 .14 .08 1
+				setitemcolor detail_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor detail_multi forecolor .12 .14 .08 1
+				setitemcolor detail_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+    		name		fx_multi			
+			style		WINDOW_STYLE_FILLED	
+			text		"FX Quality:"
+   			type		ITEM_TYPE_MULTI	
+			cvar		"fx_countScale"
+			rect		50 59 240 15
+   			textalign	ITEM_ALIGN_RIGHT
+   			textalignx	125 
+   			textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+   			visible		1
+
+			cvarFloatList 
+			{ 
+				"Low"		.33
+				"Medium"	.66
+				"High"		1
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor fx_multi backcolor .12 .14 .08 1
+				setitemcolor fx_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor fx_multi forecolor .12 .14 .08 1
+				setitemcolor fx_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+    		name		simple_yesno
+			style		WINDOW_STYLE_FILLED	
+			text		"Simple Items:"
+   			type		ITEM_TYPE_YESNO
+			cvar		"cg_simpleItems"
+			rect		50 79 240 15
+   			textalign	ITEM_ALIGN_RIGHT
+   			textalignx	125 
+   			textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+   			visible		1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor simple_yesno backcolor .12 .14 .08 1
+				setitemcolor simple_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor simple_yesno forecolor .12 .14 .08 1
+				setitemcolor simple_yesno backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		sky_multi
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_MULTI
+			text		"Sky:"
+			cvar		"r_fastsky"
+			rect		50 99 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+
+			cvarFloatList 
+			{ 
+				"Normal" 0 
+				"Fast" 1
+			}
+ 			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor sky_multi backcolor .12 .14 .08 1
+				setitemcolor sky_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor sky_multi forecolor .12 .14 .08 1
+				setitemcolor sky_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		impact_yesno
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_MULTI
+			text		"Impact Mark Count:"
+			cvar		"r_markcount"
+			rect		50 119 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+
+			cvarFloatList 
+			{ 
+				"None"		0 
+				"Low"		50
+				"Medium"	100
+				"High"		250
+				"Very High"	500
+			}
+
+ 			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor impact_yesno backcolor .12 .14 .08 1
+				setitemcolor impact_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor impact_yesno forecolor .12 .14 .08 1
+				setitemcolor impact_yesno backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		shelleject_yesno
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_YESNO
+			text		"Shell Ejection:"
+			cvar		"cg_shellEjection"
+			rect		50 139 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+
+ 			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor shelleject_yesno backcolor .12 .14 .08 1
+				setitemcolor shelleject_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor shelleject_yesno forecolor .12 .14 .08 1
+				setitemcolor shelleject_yesno backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		bodytime_multi
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_MULTI
+			text		"Dead Bodies:"
+			cvar		"cg_bodytime"
+			rect		50 159 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+
+			cvarFloatList 
+			{ 
+				"Stay"		0
+				"Disappear"	10
+			}
+
+ 			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor bodytime_multi backcolor .12 .14 .08 1
+				setitemcolor bodytime_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor bodytime_multi forecolor .12 .14 .08 1
+				setitemcolor bodytime_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		goredetail_multi
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_MULTI
+			text		"Gore Detail:"
+			cvar		"cg_goreDetail"
+			rect		50 179 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+
+			cvarTest	"lock_blood"
+			hideCvar	
+			{
+				"1"
+			}
+
+			cvarFloatList 
+			{ 
+				"Low"		0
+				"Medium"	1
+				"High"		2
+			}
+
+ 			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor goredetail_multi backcolor .12 .14 .08 1
+				setitemcolor goredetail_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor goredetail_multi forecolor .12 .14 .08 1
+				setitemcolor goredetail_multi backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		ssdetail_multi
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_MULTI
+			text		"Surface Sprites:"
+			cvar		"r_ssCheap"
+			rect		50 199 240 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	125
+      		textaligny	0
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1
+
+			cvarFloatList 
+			{ 
+				"High Detail"		0
+				"Medium Detail"		.2
+				"Low Detail"		.4
+			}
+
+ 			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor ssdetail_multi backcolor .12 .14 .08 1
+				setitemcolor ssdetail_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor ssdetail_multi forecolor .12 .14 .08 1
+				setitemcolor ssdetail_multi backcolor 0 0 0 0
+			}
+		}
+	}
+}

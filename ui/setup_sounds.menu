@@ -1,0 +1,134 @@
+{
+	\\ SOUNDS MENU
+
+	menuDef 
+	{
+    	name		"sounds_menu"
+		visible		0
+		fullscreen	0
+		rect		50 110 432 254
+		focusColor	.49 .56 .27 1
+
+		itemDef
+		{
+			name		effectsvolume_slider
+			style		WINDOW_STYLE_FILLED
+			text		"Effects Volume"
+			rect		152 29 125 20
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			textaligny	2
+			textalignx	5
+			textfont	"hud"
+			textscale	.53
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+      		name		other
+      		type		ITEM_TYPE_SLIDER
+			text		""
+			cvarfloat	"s_volume" 0.7 0 1
+			rect		150 49 128 40
+      		visible		1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor effectsvolume_slider backcolor .12 .14 .08 1
+				setitemcolor effectsvolume_slider forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor effectsvolume_slider forecolor .12 .14 .08 1
+				setitemcolor effectsvolume_slider backcolor 0 0 0 0
+			}
+    	}
+	
+		itemDef
+		{
+			name		musicvolume_slider
+			style		WINDOW_STYLE_FILLED
+			text		"Music Volume"
+			rect		155 109 125 20
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			textaligny	2
+			textalignx  5
+			textfont	"hud"
+			textscale	.53
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+      		name		other
+     		type		ITEM_TYPE_SLIDER
+			text		""
+			rect		150 129 128 40
+			cvarfloat	"s_musicvolume" 0.25 0 1
+      		visible		1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor musicvolume_slider backcolor .12 .14 .08 1
+				setitemcolor musicvolume_slider forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor musicvolume_slider forecolor .12 .14 .08 1
+				setitemcolor musicvolume_slider backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		samplerate_multi
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_MULTI
+			text		"Sound Frequency:"
+			cvar		"s_khz"
+			rect		100 179 243 20
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	130
+      		textaligny	2
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+      		visible		1 
+
+			cvarFloatList
+			{ 
+				"22 khz (high)" 22 
+				"11 khz (low)" 11 
+			}
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor samplerate_multi backcolor .12 .14 .08 1
+				setitemcolor samplerate_multi forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor samplerate_multi forecolor .12 .14 .08 1
+				setitemcolor samplerate_multi backcolor 0 0 0 0
+			}
+  		}
+	}
+}

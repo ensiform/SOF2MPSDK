@@ -1,0 +1,106 @@
+{
+	\\ Violence menu
+
+	menuDef 
+	{
+		name				"violence_menu"
+		visible				0
+		fullscreen			0
+		rect				50 50 432 293
+		focusColor			.49 .56 .27 1
+
+		tooltipbackcolor	.49 .56 .27 1
+		tooltipforecolor	.12 .14 .08 1
+		tooltipfont			"hud"
+		tooltipscale		.43
+		tooltipdelay		500
+
+		onOpen
+		{
+			setfocus password_field ;
+			setcvar  parental_password_error "  " 
+		}
+
+		itemDef
+		{
+			name		window
+			rect		95 50 300 40
+			text		"Enter Parental Lock Password"
+			textfont	"hud"
+			textscale	.55
+			forecolor	.12 .14 .08 1
+			visible		1
+		}
+
+		itemDef
+		{
+			name		password_field
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_PASSWORDFIELD
+			rect		45 100 340 40
+			text		""
+			cvar		"ui_lock_password"
+			maxChars	15
+			textfont	"hud"
+			textscale	.56
+			textaligny	12
+			textalignx	5
+			forecolor	1 1 1 1
+			backcolor	0 0 0 .25
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+		}
+
+		itemDef 
+		{
+			name		window
+			cvar		"parental_password_error"
+			textfont	"hud"
+			textscale	.6
+			rect		130 260 260 20
+			textalignx	2
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		enter_button
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_BUTTON
+			rect		160  180 100 30
+			text		"Enter"
+			textfont	"hud"
+			textscale	.53
+			textalignx	30
+			textaligny	6
+			border		1
+			bordercolor	0 0 0 1
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript violence_options
+			}
+			mouseEnter
+			{
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor enter_button backcolor .12 .14 .08 1
+				setitemcolor enter_button forecolor .49 .56 .27 1
+			}
+
+			mouseExit
+			{
+				setitemcolor enter_button forecolor .12 .14 .08 1
+				setitemcolor enter_button backcolor 0 0 0 0
+			}
+		}
+	}
+}

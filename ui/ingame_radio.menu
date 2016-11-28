@@ -1,0 +1,434 @@
+{
+	\\ INGAME_JOIN MENU
+
+	menuDef 
+	{
+    	name			"ingame_radio"
+    	visible			0
+    	fullScreen		0
+		rect			-100 0 640 480
+		focusColor		1 .85 0 1
+		disablecolor	.12 .14 .08 .5
+
+		onOpen
+		{
+		}
+
+		onClose
+		{
+			exec	"ui_team 1";
+		}
+
+		onESC
+		{
+			exec  "ui_team 1" ;
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  Dialog frame
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		130 70 220 250
+			background	"gfx/menus/ingame/background.png"
+			backcolor	1 1 1 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		124 65 8 8
+			background	"gfx/menus/ingame/frame_topleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		130 65 220 8
+			background	"gfx/menus/ingame/frame_top.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		350 65 8 8
+			background	"gfx/menus/ingame/frame_topright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		124 320 8 8
+			background	"gfx/menus/ingame/frame_bottomleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		130 320 220 8
+			background	"gfx/menus/ingame/frame_bottom.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		350 320 8 8
+			background	"gfx/menus/ingame/frame_bottomright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		350 70 8 250
+			background	"gfx/menus/ingame/frame_right.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		124 70 8 250
+			background	"gfx/menus/ingame/frame_left.png"
+			visible		1
+			decoration
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//  Title
+		////////////////////////////////////////////////////////////////////////
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		130 70 218 30
+			forecolor	0 0 0 1
+			backcolor	0 0 0 .25
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+
+			textalignx	110
+			textaligny	6
+			textalign	1
+			textfont	"hud"
+			textscale	.63
+			text		"RADIO"
+		}
+
+		///////////////////////////////////////////////////////////////////////
+		// BUTTONS
+		///////////////////////////////////////////////////////////////////////
+		itemDef
+		{
+			name		radio1_button
+			type		ITEM_TYPE_BUTTON
+			rect		150	120 100 20
+			text		"1. Affirmative!"
+			hotkey		"1"
+			visible		1
+
+			textfont	"hud"
+			textscale	.53
+
+			forecolor	0 0 0 1
+
+			action
+			{
+				close ingame_radio ;
+				exec "cmd vsay_team affirmative"
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor radio1_button backcolor .12 .14 .08 1
+				setitemcolor radio1_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor radio1_button backcolor 0 0 0 0
+				setitemcolor radio1_button forecolor 0 0 0 1
+			}
+		}
+
+		itemDef
+		{
+			name		radio2_button
+			type		ITEM_TYPE_BUTTON
+			rect		150	140 100 20
+			text		"2. Negative!"
+			hotkey		"2"
+			visible		1
+
+			textfont	"hud"
+			textscale	.53
+
+			forecolor	0 0 0 1
+
+			action
+			{
+				close ingame_radio ;
+				exec "cmd vsay_team negative"
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor radio2_button backcolor .12 .14 .08 1
+				setitemcolor radio2_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor radio3_button backcolor 0 0 0 0
+				setitemcolor radio3_button forecolor 0 0 0 1
+			}
+		}
+
+		itemDef
+		{
+			name		radio3_button
+			type		ITEM_TYPE_BUTTON
+			rect		150	160 100 20
+			text		"3. Clear!"
+			hotkey		"3"
+			visible		1
+
+			textfont	"hud"
+			textscale	.53
+
+			forecolor	0 0 0 1
+
+			action
+			{
+				close ingame_radio ;
+				exec "cmd vsay_team clear"
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor radio3_button backcolor .12 .14 .08 1
+				setitemcolor radio3_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor radio3_button backcolor 0 0 0 0
+				setitemcolor radio3_button forecolor 0 0 0 1
+			}
+		}
+
+		itemDef
+		{
+			name		radio3_button
+			type		ITEM_TYPE_BUTTON
+			rect		150	180 100 20
+			text		"4. Cover me!"
+			hotkey		"4"
+			visible		1
+
+			textfont	"hud"
+			textscale	.53
+
+			forecolor	0 0 0 1
+
+			action
+			{
+				close ingame_radio ;
+				exec "cmd vsay_team cover_me"
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor radio4_button backcolor .12 .14 .08 1
+				setitemcolor radio4_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor radio4_button backcolor 0 0 0 0
+				setitemcolor radio4_button forecolor 0 0 0 1
+			}
+		}
+
+		itemDef
+		{
+			name		radio4_button
+			type		ITEM_TYPE_BUTTON
+			rect		150	200 100 20
+			text		"5. Got him!"
+			hotkey		"5"
+			visible		1
+
+			textfont	"hud"
+			textscale	.53
+
+			forecolor	0 0 0 1
+
+			action
+			{
+				close ingame_radio ;
+				exec "cmd vsay_team got_him"
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor radio5_button backcolor .12 .14 .08 1
+				setitemcolor radio5_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor radio5_button backcolor 0 0 0 0
+				setitemcolor radio5_button forecolor 0 0 0 1
+			}
+		}
+
+		itemDef
+		{
+			name		radio6_button
+			type		ITEM_TYPE_BUTTON
+			rect		150	220 100 20
+			text		"6. Hold position!"
+			hotkey		"6"
+			visible		1
+
+			textfont	"hud"
+			textscale	.53
+
+			forecolor	0 0 0 1
+
+			action
+			{
+				close ingame_radio ;
+				exec "cmd vsay_team hold_position"
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor radio6_button backcolor .12 .14 .08 1
+				setitemcolor radio6_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor radio6_button backcolor 0 0 0 0
+				setitemcolor radio6_button forecolor 0 0 0 1
+			}
+		}
+
+		itemDef
+		{
+			name		radio7_button
+			type		ITEM_TYPE_BUTTON
+			rect		150	240 100 20
+			text		"7. Man down!"
+			hotkey		"7"
+			visible		1
+
+			textfont	"hud"
+			textscale	.53
+
+			forecolor	0 0 0 1
+
+			action
+			{
+				close ingame_radio ;
+				exec "cmd vsay_team man_down"
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor radio7_button backcolor .12 .14 .08 1
+				setitemcolor radio7_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor radio7_button backcolor 0 0 0 0
+				setitemcolor radio7_button forecolor 0 0 0 1
+			}
+		}
+
+		itemDef
+		{
+			name		radio8_button
+			type		ITEM_TYPE_BUTTON
+			rect		150	260 100 20
+			text		"8. Need backup!"
+			hotkey		"8"
+			visible		1
+
+			textfont	"hud"
+			textscale	.53
+
+			forecolor	0 0 0 1
+
+			action
+			{
+				close ingame_radio ;
+				exec "cmd vsay_team need_backup"
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor radio8_button backcolor .12 .14 .08 1
+				setitemcolor radio8_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor radio8_button backcolor 0 0 0 0
+				setitemcolor radio8_button forecolor 0 0 0 1
+			}
+		}
+
+		itemDef
+		{
+			name		radio9_button
+			type		ITEM_TYPE_BUTTON
+			rect		150	280 100 20
+			text		"9. Take cover!"
+			hotkey		"9"
+			visible		1
+
+			textfont	"hud"
+			textscale	.53
+
+			forecolor	0 0 0 1
+
+			action
+			{
+				close ingame_radio ;
+				exec "cmd vsay_team take_cover"
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor radio9_button backcolor .12 .14 .08 1
+				setitemcolor radio9_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor radio9_button backcolor 0 0 0 0
+				setitemcolor radio9_button forecolor 0 0 0 1
+			}
+		}
+	}
+}

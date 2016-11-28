@@ -1,0 +1,170 @@
+{
+	\\ VERSION LOCATION INFORMATION
+
+	menuDef 
+	{
+    	name		"patch_location"
+    	visible		0
+    	fullscreen	0
+		rect		0 0 640 480
+		focusColor	.49 .56 .27 1
+    	style		WINDOW_STYLE_FILLED
+		popup
+
+		onESC 
+		{ 
+			close patch_location ;
+		}
+
+		itemDef
+		{
+			name		window
+			rect		0 0 640 480
+			style		WINDOW_STYLE_FILLED
+			backcolor	0 0 0 .5
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			rect		120 100 420 330
+			background	"gfx/menus/backdrop/requestor"
+			style		WINDOW_STYLE_SHADER
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			text		"Download Patch"
+			style		WINDOW_STYLE_FILLED
+			textfont	"hud"
+			textscale	.53
+			rect		140 110 340 33
+			textalign	1
+			textalignx	170
+			textaligny	10
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 .25
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			rect				155 155 300 140
+			text				"available locations:"
+			textfont			"hud"
+			textscale			.43
+			textalign			ITEM_ALIGN_LEFT
+			forecolor			0 0 0 1
+			visible				1
+		}
+
+		itemDef 
+		{
+			name				website_list
+			group				invalid_version
+			rect				150 170 320 165
+			type				ITEM_TYPE_LISTBOX
+			style				WINDOW_STYLE_FILLED
+			elementwidth		120
+			elementheight		15
+			textfont			"hud"
+			textscale			.43
+			elementtype			LISTBOX_TEXT
+			feeder				FEEDER_NEWVERSION_WEBSITES
+			textaligny			-12
+			border				1
+			bordercolor			0 0 0 1
+			forecolor			1 1 1 1
+			backcolor			0 0 0 .25
+			outlinecolor		.23 .26 .17 1
+			visible				1
+			columns				1 2 190 21
+	  	}
+
+		itemDef 
+		{
+      		name		download_button
+      		text		"Download"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		170 350 100 20
+			textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	20
+			textaligny	1
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+				close patch_location ;
+				uiScript loadNewVersion ;
+			}
+
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor download_button backcolor .12 .14 .08 1
+				setitemcolor download_button forecolor .49 .56 .27 1
+			}
+
+      		mouseExit 
+			{ 
+				setitemcolor download_button forecolor .12 .14 .08 1
+				setitemcolor download_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		cancel_button
+      		text		"Cancel"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		350 350 100 20
+			textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	25
+			textaligny	1
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+				close patch_location ;
+				open patch_info ; 
+			}
+
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor cancel_button backcolor .12 .14 .08 1
+				setitemcolor cancel_button forecolor .49 .56 .27 1
+			}
+
+      		mouseExit 
+			{ 
+				setitemcolor cancel_button forecolor .12 .14 .08 1
+				setitemcolor cancel_button backcolor 0 0 0 0
+			}
+		}
+	}
+}

@@ -1,0 +1,181 @@
+{
+	\\ SERVER INFO MENU 
+
+	menuDef 
+	{
+ 		name			"ingame_vote"
+ 		visible			0
+ 		fullscreen		0
+		rect			366 50 128 78
+		disableColor	.36 .42 .24 1
+
+		////////////////////////////////////////////////////////////////////////
+		//  Dialog frame
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-6 -6 134 84
+			background	"gfx/menus/ingame/background.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-12 -10 8 8
+			background	"gfx/menus/ingame/frame_topleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-6 -10 134 8
+			background	"gfx/menus/ingame/frame_top.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		128 -10 8 8
+			background	"gfx/menus/ingame/frame_topright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-12 78 8 8
+			background	"gfx/menus/ingame/frame_bottomleft.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-6 78 134 8
+			background	"gfx/menus/ingame/frame_bottom.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		128 78 8 8
+			background	"gfx/menus/ingame/frame_bottomright.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		128 -6 8 84
+			background	"gfx/menus/ingame/frame_right.png"
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			name		window
+			style		WINDOW_STYLE_SHADER
+			rect		-12 -6 8 84
+			background	"gfx/menus/ingame/frame_left.png"
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		yes_button
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		10 10 100 26
+			text		"Yes"
+			textalign	1
+			textalignx	50
+			textaligny	6
+			textfont	"hud"
+			textscale	.43
+      		forecolor	.12 .14 .08 1
+      		visible		1
+			border		1
+			bordercolor	0 0 0 1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				exec "vote yes" ; 
+				uiScript closeingame 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor yes_button backcolor .12 .14 .08 1;
+				setitemcolor yes_button forecolor .49 .56 .27 1;
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor yes_button backcolor 0 0 0 0;
+				setitemcolor yes_button forecolor .12 .14 .08 1;
+			}
+		}
+
+		itemDef 
+		{
+			name		no_button
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		10 40 100 26
+			text		"No"
+			textalign	1
+			textalignx	50
+			textaligny	6
+			textfont	"hud"
+			textscale	.43
+      		forecolor	.12 .14 .08 1
+      		visible		1
+			border		1
+			bordercolor	0 0 0 1
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				exec "vote no" ; 
+				uiScript closeingame 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor no_button backcolor .12 .14 .08 1;
+				setitemcolor no_button forecolor .49 .56 .27 1;
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor no_button backcolor 0 0 0 0;
+				setitemcolor no_button forecolor .12 .14 .08 1;
+			}
+		}
+
+	}
+}

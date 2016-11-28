@@ -1,0 +1,2371 @@
+{
+\\ SETUP MENU \\
+
+	menuDef 
+	{
+    	name				"setup_controls_menu"
+		visible				0
+		fullscreen			0
+		rect				50 110 432 254
+		focusColor			.49 .56 .27 1
+
+		tooltipbackcolor	.49 .56 .27 1
+		tooltipforecolor	.12 .14 .08 1
+		tooltipfont			"hud"
+		tooltipscale		.43
+		tooltipdelay		500
+
+		onClose 
+		{
+			uiScript saveControls
+		}
+		
+		onOpen 
+		{ 
+			hide misc_group;
+			hide chat_group;
+			hide weapon_group;
+			hide move_group;
+			hide default_group;
+			hide mouse_group;
+			show look_group;
+
+			uiScript loadControls 
+		}
+
+		itemDef 
+		{
+      		name		look_button
+      		text		"Look"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		10 15 64 20
+      		textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	5
+      		textaligny	1
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				hide chat_group;
+				hide misc_group;
+				hide weapon_group;
+				hide move_group;
+				hide default_group;
+				hide mouse_group;
+				show look_group;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor look_button backcolor .12 .14 .08 1
+				setitemcolor look_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor look_button forecolor .12 .14 .08 1
+				setitemcolor look_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		move_button
+      		text		"Move"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		10 45 64 20
+      		textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	5
+      		textaligny	1
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				hide look_group;
+				hide weapon_group;
+				hide chat_group;
+				hide misc_group;
+				hide default_group;
+				hide mouse_group;
+				show move_group;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor move_button backcolor .12 .14 .08 1
+				setitemcolor move_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor move_button forecolor .12 .14 .08 1
+				setitemcolor move_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		weapon_button
+      		text		"Weapon"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		10 75 64 20
+      		textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	5
+      		textaligny	1
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				hide look_group;
+				hide move_group;
+				hide misc_group;
+				hide chat_group;
+				hide default_group;
+				hide mouse_group;
+
+				show weapon_group;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor weapon_button backcolor .12 .14 .08 1
+				setitemcolor weapon_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor weapon_button forecolor .12 .14 .08 1
+				setitemcolor weapon_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		misc_button
+      		text		"Misc"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		10 105 64 20
+      		textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	5
+      		textaligny	1
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				hide look_group;
+				hide move_group;
+				hide chat_group;
+				hide weapon_group;
+				hide default_group;
+				hide mouse_group;
+				show misc_group;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor misc_button backcolor .12 .14 .08 1
+				setitemcolor misc_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor misc_button forecolor .12 .14 .08 1
+				setitemcolor misc_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		chat_button
+      		text		"Chat"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		10 135 64 20
+      		textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	5
+      		textaligny	1
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				hide look_group;
+				hide move_group;
+				hide weapon_group;
+				hide misc_group;
+				hide default_group;
+				hide mouse_group;
+				show chat_group;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor chat_button backcolor .12 .14 .08 1
+				setitemcolor chat_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor chat_button forecolor .12 .14 .08 1
+				setitemcolor chat_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		mouse_button
+      		text		"Mouse"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		10 165 64 20
+      		textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	5
+      		textaligny	1
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				hide look_group;
+				hide move_group;
+				hide weapon_group;
+				hide misc_group;
+				hide chat_group;
+				hide default_group;
+				show mouse_group;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor mouse_button backcolor .12 .14 .08 1
+				setitemcolor mouse_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor mouse_button forecolor .12 .14 .08 1
+				setitemcolor mouse_button backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		default_button
+      		text		"Defaults"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+      		rect		10 195 64 20
+      		textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	5
+      		textaligny	1
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+      		visible		1 
+			border		1
+			bordercolor	0 0 0 1
+
+      		action 
+			{
+				play "sound/misc/menus/select.wav" ; 
+
+				hide look_group;
+				hide move_group;
+				hide weapon_group;
+				hide misc_group;
+				hide chat_group;
+				hide mouse_group;
+				show default_group;
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor default_button backcolor .12 .14 .08 1
+				setitemcolor default_button forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor default_button forecolor .12 .14 .08 1
+				setitemcolor default_button backcolor 0 0 0 0
+			}
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//	LOOK CONTROLS
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef 
+		{
+      		name		lookup_bind
+			group		look_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Look Up:"
+			cvar		"+lookup"
+			rect		90 19 330 15 
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120 
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor lookup_bind backcolor .12 .14 .08 1
+				setitemcolor lookup_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor lookup_bind forecolor .12 .14 .08 1
+				setitemcolor lookup_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		lookdown_bind
+			group		look_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Look Down:"
+			cvar		"+lookdown"
+			rect		90 34 330 15 
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120 
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor lookdown_bind backcolor .12 .14 .08 1
+				setitemcolor lookdown_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor lookdown_bind forecolor .12 .14 .08 1
+				setitemcolor lookdown_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		mouselook_bind
+			group		look_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Mouse Look:"
+			cvar		"+mlook"
+			rect		90 49 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+		
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor mouselook_bind backcolor .12 .14 .08 1
+				setitemcolor mouselook_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor mouselook_bind forecolor .12 .14 .08 1
+				setitemcolor mouselook_bind backcolor 0 0 0 0
+			}
+    	}
+	
+		itemDef 
+		{
+      		name		centerview_bind
+			group		look_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Centerview:"
+			cvar		"centerview"
+			rect		90 64 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor centerview_bind backcolor .12 .14 .08 1
+				setitemcolor centerview_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor centerview_bind forecolor .12 .14 .08 1
+				setitemcolor centerview_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		lean_bind
+			group		look_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Lean:"
+			cvar		"+lean"
+			rect		90 89 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor lean_bind backcolor .12 .14 .08 1
+				setitemcolor lean_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor lean_bind forecolor .12 .14 .08 1
+				setitemcolor lean_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		leanleft_bind
+			group		look_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Lean Left:"
+			cvar		"+leanleft"
+			rect		90 104 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor leanleft_bind backcolor .12 .14 .08 1
+				setitemcolor leanleft_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor leanleft_bind forecolor .12 .14 .08 1
+				setitemcolor leanleft_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		leanright_bind
+			group		look_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Lean Right:"
+			cvar		"+leanright"
+			rect		90 119 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor leanright_bind backcolor .12 .14 .08 1
+				setitemcolor leanright_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor leanright_bind forecolor .12 .14 .08 1
+				setitemcolor leanright_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		automap_bind
+			group		look_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Automap:"
+			cvar		"+automap"
+			rect		90 144 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor automap_bind backcolor .12 .14 .08 1
+				setitemcolor automap_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor automap_bind forecolor .12 .14 .08 1
+				setitemcolor automap_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		venhance_bind
+			group		look_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Thermals/NV:"
+			cvar		"+goggles"
+			rect		90 159 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor venhance_bind backcolor .12 .14 .08 1
+				setitemcolor venhance_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor venhance_bind forecolor .12 .14 .08 1
+				setitemcolor venhance_bind backcolor 0 0 0 0
+			}
+    	}
+
+		////////////////////////////////////////////////////////////////////////
+		//	MOVE CONTROLS
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef 
+		{
+      		name		alwaysrun_yesno
+			group		move_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_YESNO
+			text		"Always Run:"
+			cvar		"cl_run"
+			rect		90 19 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120 
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 	
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor alwaysrun_yesno backcolor .12 .14 .08 1
+				setitemcolor alwaysrun_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor alwaysrun_yesno forecolor .12 .14 .08 1
+				setitemcolor alwaysrun_yesno backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		runwalk_bind
+			group		move_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Run / Walk:"
+			cvar		"+speed"
+			rect		90 34 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120 
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor runwalk_bind backcolor .12 .14 .08 1
+				setitemcolor runwalk_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor runwalk_bind forecolor .12 .14 .08 1
+				setitemcolor runwalk_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		forward_bind
+			group		move_group
+			style		WINDOW_STYLE_FILLED
+			type		ITEM_TYPE_BIND
+			text		"Forward:"
+			cvar		"+forward"
+			rect		90 49 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor forward_bind backcolor .12 .14 .08 1
+				setitemcolor forward_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor forward_bind forecolor .12 .14 .08 1
+				setitemcolor forward_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		back_bind
+ 			group		move_group
+			style		WINDOW_STYLE_FILLED
+     		type		ITEM_TYPE_BIND
+			text		"Back:"
+			cvar		"+back"
+			rect		90 64 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor back_bind backcolor .12 .14 .08 1
+				setitemcolor back_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor back_bind forecolor .12 .14 .08 1
+				setitemcolor back_bind backcolor 0 0 0 0
+			}
+    	}
+	
+		itemDef 
+		{
+      		name		stepleft_bind
+ 			group		move_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Step Left:"
+			cvar		"+moveleft"
+			rect		90 79 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor stepleft_bind backcolor .12 .14 .08 1
+				setitemcolor stepleft_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor stepleft_bind forecolor .12 .14 .08 1
+				setitemcolor stepleft_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		stepright_bind
+ 			group		move_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Step Right:"
+			cvar		"+moveright"
+			rect		90 94 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor stepright_bind backcolor .12 .14 .08 1
+				setitemcolor stepright_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor stepright_bind forecolor .12 .14 .08 1
+				setitemcolor stepright_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		jump_bind
+ 			group		move_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Jump:"
+			cvar		"+moveup"
+			rect		90 109 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor jump_bind backcolor .12 .14 .08 1
+				setitemcolor jump_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor jump_bind forecolor .12 .14 .08 1
+				setitemcolor jump_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		crouch_bind
+ 			group		move_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Down / Crouch:"
+			cvar		"+movedown"
+			rect		90 124 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible 0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor crouch_bind backcolor .12 .14 .08 1
+				setitemcolor crouch_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor crouch_bind forecolor .12 .14 .08 1
+				setitemcolor crouch_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		turnleft_bind
+ 			group		move_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Turn Left:"
+			cvar		"+left"
+			rect		90 139 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor turnleft_bind backcolor .12 .14 .08 1
+				setitemcolor turnleft_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor turnleft_bind forecolor .12 .14 .08 1
+				setitemcolor turnleft_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		turnright_bind
+ 			group		move_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Turn Right:"
+			cvar		"+right"
+			rect		90 154 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor turnright_bind backcolor .12 .14 .08 1
+				setitemcolor turnright_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor turnright_bind forecolor .12 .14 .08 1
+				setitemcolor turnright_bind backcolor 0 0 0 0
+			}
+    	}
+	
+		itemDef 
+		{
+      		name		strafe_bind
+ 			group		move_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Strafe:"
+			cvar		"+strafe"
+			rect		90 169 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible 0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor strafe_bind backcolor .12 .14 .08 1
+				setitemcolor strafe_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor strafe_bind forecolor .12 .14 .08 1
+				setitemcolor strafe_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		autorun_bind
+ 			group		move_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Autorun:"
+			cvar		"+autorun"
+			rect		90 184 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible 0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor autorun_bind backcolor .12 .14 .08 1
+				setitemcolor autorun_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor autorun_bind forecolor .12 .14 .08 1
+				setitemcolor autorun_bind backcolor 0 0 0 0
+			}
+    	}
+
+		////////////////////////////////////////////////////////////////////////
+		//	WEAPON CONTROLS
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef 
+		{
+      		name		attack_bind
+			group		weapon_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Attack:"
+			cvar		"+attack"
+			rect		90 19 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor attack_bind backcolor .12 .14 .08 1
+				setitemcolor attack_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor attack_bind forecolor .12 .14 .08 1
+				setitemcolor attack_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		altattack_bind
+			group		weapon_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Alternate Attack:"
+			cvar		"+altattack"
+			rect		90 34 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor altattack_bind backcolor .12 .14 .08 1
+				setitemcolor altattack_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor altattack_bind forecolor .12 .14 .08 1
+				setitemcolor altattack_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		prevweap_bind
+			group		weapon_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Previous Weapon:"
+			cvar		"weapprev"
+			rect		90 49 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor prevweap_bind backcolor .12 .14 .08 1
+				setitemcolor prevweap_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor prevweap_bind forecolor .12 .14 .08 1
+				setitemcolor prevweap_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		nextweap_bind
+			group		weapon_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Next Weapon:"
+			cvar		"weapnext"
+			rect		90 64 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor nextweap_bind backcolor .12 .14 .08 1
+				setitemcolor nextweap_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor nextweap_bind forecolor .12 .14 .08 1
+				setitemcolor nextweap_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		lastweap_bind
+			group		weapon_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Last Weapon:"
+			cvar		"weaplast"
+			rect		90 79 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor lastweap_bind backcolor .12 .14 .08 1
+				setitemcolor lastweap_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor lastweap_bind forecolor .12 .14 .08 1
+				setitemcolor lastweap_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		reload_bind
+			group		weapon_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Reload:"
+			cvar		"+reload"
+			rect		90 99 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor reload_bind backcolor .12 .14 .08 1
+				setitemcolor reload_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor reload_bind forecolor .12 .14 .08 1
+				setitemcolor reload_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		mode_bind
+			group		weapon_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Fire Mode:"
+			cvar		"+firemode"
+			rect		90 114 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor mode_bind backcolor .12 .14 .08 1
+				setitemcolor mode_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor mode_bind forecolor .12 .14 .08 1
+				setitemcolor mode_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		zoomin_bind
+			group		weapon_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Zoom In:"
+			cvar		"+zoomin"
+			rect		90 129 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor zoomin_bind backcolor .12 .14 .08 1
+				setitemcolor zoomin_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor zoomin_bind forecolor .12 .14 .08 1
+				setitemcolor zoomin_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		zoomout_bind
+			group		weapon_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Zoom Out:"
+			cvar		"+zoomout"
+			rect		90 144 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor zoomout_bind backcolor .12 .14 .08 1
+				setitemcolor zoomout_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor zoomout_bind forecolor .12 .14 .08 1
+				setitemcolor zoomout_bind backcolor 0 0 0 0
+			}
+    	}
+
+		itemDef 
+		{
+      		name		drop_bind
+			group		weapon_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_BIND
+			text		"Drop Weapon:"
+			cvar		"drop"
+			rect		90 159 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor drop_bind backcolor .12 .14 .08 1
+				setitemcolor drop_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor drop_bind forecolor .12 .14 .08 1
+				setitemcolor drop_bind backcolor 0 0 0 0
+			}
+    	}
+
+
+		////////////////////////////////////////////////////////////////////////
+		//	MISC CONTROLS
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef 
+		{
+      		name		scores_bind
+			group		misc_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Show Scores:"
+			cvar		"+scores"
+			rect		90 19 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor scores_bind backcolor .12 .14 .08 1
+				setitemcolor scores_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor scores_bind forecolor .12 .14 .08 1
+				setitemcolor scores_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		team_bind
+			group		misc_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Select Team:"
+			cvar		"ui_team"
+			rect		90 34 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor team_bind backcolor .12 .14 .08 1
+				setitemcolor team_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor team_bind forecolor .12 .14 .08 1
+				setitemcolor team_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		buy_bind
+			group		misc_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Outfitting:"
+			cvar		"ui_outfitting"
+			rect		90 49 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor buy_bind backcolor .12 .14 .08 1
+				setitemcolor buy_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor buy_bind forecolor .12 .14 .08 1
+				setitemcolor buy_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		objectives_bind
+			group		misc_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Objectives:"
+			cvar		"ui_objectives"
+			rect		90 64 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor objectives_bind backcolor .12 .14 .08 1
+				setitemcolor objectives_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor objectives_bind forecolor .12 .14 .08 1
+				setitemcolor objectives_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		use_bind
+			group		misc_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Use:"
+			cvar		"+use"
+			rect		90 84 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor use_bind backcolor .12 .14 .08 1
+				setitemcolor use_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor use_bind forecolor .12 .14 .08 1
+				setitemcolor use_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		dropitem_bind
+			group		misc_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Drop Item:"
+			cvar		"dropitem"
+			rect		90 99 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor dropitem_bind backcolor .12 .14 .08 1
+				setitemcolor dropitem_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor dropitem_bind forecolor .12 .14 .08 1
+				setitemcolor dropitem_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		weapgroup1_bind
+			group		misc_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Inventory Group 1:"
+			cvar		"weapon 1"
+			rect		90 119 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor weapgroup1_bind backcolor .12 .14 .08 1
+				setitemcolor weapgroup1_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor weapgroup1_bind forecolor .12 .14 .08 1
+				setitemcolor weapgroup1_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		weapgroup2_bind
+			group		misc_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Inventory Group 2:"
+			cvar		"weapon 2"
+			rect		90 132 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor weapgroup2_bind backcolor .12 .14 .08 1
+				setitemcolor weapgroup2_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor weapgroup2_bind forecolor .12 .14 .08 1
+				setitemcolor weapgroup2_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		weapgroup3_bind
+			group		misc_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Inventory Group 3:"
+			cvar		"weapon 3"
+			rect		90 145 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor weapgroup3_bind backcolor .12 .14 .08 1
+				setitemcolor weapgroup3_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor weapgroup3_bind forecolor .12 .14 .08 1
+				setitemcolor weapgroup3_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		weapgroup4_bind
+			group		misc_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Inventory Group 4:"
+			cvar		"weapon 4"
+			rect		90 158 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor weapgroup4_bind backcolor .12 .14 .08 1
+				setitemcolor weapgroup4_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor weapgroup4_bind forecolor .12 .14 .08 1
+				setitemcolor weapgroup4_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		weapgroup5_bind
+			group		misc_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Inventory Group 5:"
+			cvar		"weapon 5"
+			rect		90 171 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor weapgroup5_bind backcolor .12 .14 .08 1
+				setitemcolor weapgroup5_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor weapgroup5_bind forecolor .12 .14 .08 1
+				setitemcolor weapgroup5_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		weapgroup6_bind
+			group		misc_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Inventory Group 6:"
+			cvar		"weapon 6"
+			rect		90 184 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor weapgroup6_bind backcolor .12 .14 .08 1
+				setitemcolor weapgroup6_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor weapgroup6_bind forecolor .12 .14 .08 1
+				setitemcolor weapgroup6_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		weapgroup7_bind
+			group		misc_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Inventory Group 7:"
+			cvar		"weapon 7"
+			rect		90 197 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor weapgroup7_bind backcolor .12 .14 .08 1
+				setitemcolor weapgroup7_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor weapgroup7_bind forecolor .12 .14 .08 1
+				setitemcolor weapgroup7_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		weapgroup8_bind
+			group		misc_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Inventory Group 8:"
+			cvar		"weapon 8"
+			rect		90 210 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor weapgroup8_bind backcolor .12 .14 .08 1
+				setitemcolor weapgroup8_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor weapgroup8_bind forecolor .12 .14 .08 1
+				setitemcolor weapgroup8_bind backcolor 0 0 0 0
+			}
+   		}
+
+		////////////////////////////////////////////////////////////////////////
+		//	CHAT CONTROLS
+		////////////////////////////////////////////////////////////////////////
+
+
+		itemDef 
+		{
+      		name		chat_bind
+			group		chat_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Chat:"
+			cvar		"messagemode"
+			rect		90 19 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor chat_bind backcolor .12 .14 .08 1
+				setitemcolor chat_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor chat_bind forecolor .12 .14 .08 1
+				setitemcolor chat_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		teamchat_bind
+			group		chat_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Team Chat:"
+			cvar		"messagemode2"
+			rect		90 34 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor teamchat_bind backcolor .12 .14 .08 1
+				setitemcolor teamchat_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor teamchat_bind forecolor .12 .14 .08 1
+				setitemcolor teamchat_bind backcolor 0 0 0 0
+			}
+   		}
+	
+		itemDef 
+		{
+      		name		targetchat_bind
+			group		chat_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Target Chat:"
+			cvar		"messagemode3"
+			rect		90 49 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor targetchat_bind backcolor .12 .14 .08 1
+				setitemcolor targetchat_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor targetchat_bind forecolor .12 .14 .08 1
+				setitemcolor targetchat_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		radio_bind
+			group		chat_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Radio Message:"
+			cvar		"ui_radio"
+			rect		90 69 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor radio_bind backcolor .12 .14 .08 1
+				setitemcolor radio_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor radio_bind forecolor .12 .14 .08 1
+				setitemcolor radio_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		voteyes_bind
+			group		chat_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Vote Yes:"
+			cvar		"vote yes"
+			rect		90 89 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor voteyes_bind backcolor .12 .14 .08 1
+				setitemcolor voteyes_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor voteyes_bind forecolor .12 .14 .08 1
+				setitemcolor voteyes_bind backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		voteno_bind
+			group		chat_group
+      		type		ITEM_TYPE_BIND
+			style		WINDOW_STYLE_FILLED
+			text		"Vote No:"
+			cvar		"vote no"
+			rect		90 104 330 15
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	0
+      		textfont	"hud"
+			textscale	.43
+			backcolor	0 0 0 0
+			forecolor	.12 .14 .08 1
+      		visible		0 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor voteno_bind backcolor .12 .14 .08 1
+				setitemcolor voteno_bind forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor voteno_bind forecolor .12 .14 .08 1
+				setitemcolor voteno_bind backcolor 0 0 0 0
+			}
+   		}
+
+		////////////////////////////////////////////////////////////////////////
+		//	DEFAULT CONTROLS
+		////////////////////////////////////////////////////////////////////////
+		itemDef 
+		{
+			name		window_text1
+			group		default_group
+			text		"WARNING!!!"
+      		textfont	"hud"
+			textscale	.53
+			rect		105 30 240 33
+			textalign	1
+			textalignx	125
+			textaligny	8
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 .25
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window_text2
+			group		default_group
+			text		"This will reset ALL options and controls to their default settings."
+	      		textfont	"hud"
+			textscale	.53
+			rect		130 70 200 33
+			textaligny	8
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+			decoration
+
+			autowrapped
+		}
+
+		itemDef 
+		{
+			name		continue_button
+			group		default_group
+			text		"Continue"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		186 150 80 26
+
+      		textfont	"hud"
+			textscale	.53
+			textalign	0
+      		textalignx	6
+     		textaligny	3
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript resetDefaults ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor continue_button backcolor .12 .14 .08 1
+				setitemcolor continue_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor continue_button backcolor 0 0 0 0
+				setitemcolor continue_button forecolor .12 .14 .08 1
+			}
+		}
+
+		////////////////////////////////////////////////////////////////////////
+		//	MOUSE CONTROLS
+		////////////////////////////////////////////////////////////////////////
+
+		itemDef
+		{
+			name		sensitivity_slider
+			group		mouse_group
+			style		WINDOW_STYLE_FILLED
+			text		"Mouse Sensitivity"
+			rect		130 29 135 15
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			textaligny	0
+			textalignx	10
+			textfont	"hud"
+			textscale	.43
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			group		mouse_group
+      		type		ITEM_TYPE_SLIDER
+			text		""
+			cvarfloat	"sensitivity" 5 1 30
+			rect		130 49 128 40
+      		visible		1
+		
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor sensitivity_slider backcolor .12 .14 .08 1
+				setitemcolor sensitivity_slider forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor sensitivity_slider forecolor .12 .14 .08 1
+				setitemcolor sensitivity_slider backcolor 0 0 0 0
+			}
+   		}
+
+		itemDef 
+		{
+      		name		invertmouse_yesno
+			group		mouse_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_YESNO
+			text		"Invert Mouse:"
+			cvar		"ui_mousePitch"
+			rect		90 109 170 20
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	2
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+      		visible		1 
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+				uiScript update ui_mousePitch 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor invertmouse_yesno backcolor .12 .14 .08 1
+				setitemcolor invertmouse_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor invertmouse_yesno forecolor .12 .14 .08 1
+				setitemcolor invertmouse_yesno backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		smoothmouse_yesno
+			group		mouse_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_YESNO
+			text		"Smooth Mouse:"
+			cvar		"m_filter"
+			rect		90 129 170 20
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	2
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+      		visible		1 
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor smoothmouse_yesno backcolor .12 .14 .08 1
+				setitemcolor smoothmouse_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor smoothmouse_yesno forecolor .12 .14 .08 1
+				setitemcolor smoothmouse_yesno backcolor 0 0 0 0
+			}
+		}
+
+		itemDef 
+		{
+      		name		freelook_yesno
+			group		mouse_group
+			style		WINDOW_STYLE_FILLED
+      		type		ITEM_TYPE_YESNO
+			text		"Free Look:"
+			cvar		"cl_freelook"
+			rect		90 149 170 20
+      		textalign	ITEM_ALIGN_RIGHT
+      		textalignx	120
+      		textaligny	2
+			textfont	"hud"
+			textscale	.43
+			forecolor	.12 .14 .08 1
+      		visible		1 
+
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor freelook_yesno backcolor .12 .14 .08 1
+				setitemcolor freelook_yesno forecolor .49 .56 .27 1
+			}
+      		mouseExit 
+			{ 
+				setitemcolor freelook_yesno forecolor .12 .14 .08 1
+				setitemcolor freelook_yesno backcolor 0 0 0 0
+			}
+		}
+	}
+}

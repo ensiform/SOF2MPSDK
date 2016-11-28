@@ -1,0 +1,166 @@
+{
+	\\ PLATER SELECTION
+
+	menuDef 
+	{
+    	name		"player_menu"
+    	visible		0
+    	fullscreen	0
+		rect		50 110 432 254
+		focusColor	.49 .56 .27 1
+	
+		onOpen 
+		{ 
+			uiScript update "ui_GetName" ; 
+			uiScript "UpdateModel";
+		}
+
+		onClose 
+		{ 
+			uiScript update "ui_SetName" 
+		}
+
+		itemDef 
+		{
+			name		name_field
+			text		"Name"
+			style		WINDOW_STYLE_EMPTY
+			textfont		"hud"
+			textscale		.53
+			rect		20 19 215 20
+			textalign	ITEM_ALIGN_LEFT
+			textalignx	0
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name			name_field
+			style			WINDOW_STYLE_FILLED
+			group			"playersettinggroup"
+			type			ITEM_TYPE_EDITFIELD
+			cvar			"ui_Name"
+			maxChars		32
+			maxPaintChars	26
+			rect			15 39 320 25
+			textalign		ITEM_ALIGN_LEFT		
+			textalignx		5
+			textaligny		2
+			textfont		"hud"
+			textscale		.53
+			forecolor		1 1 1 1
+			backcolor		0 0 0 .25
+			visible			1 
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+			}
+		}
+
+		itemDef 
+		{
+			name		modelselection
+			ownerdraw	UI_PLAYERMODEL
+			rect		300 9 156 204
+			style		1
+			visible		1
+			decoration 
+		}
+
+		itemDef 
+		{
+			name		identity_field
+			text		"Identity"
+			style		WINDOW_STYLE_EMPTY
+			textfont		"hud"
+			textscale		.53
+			rect		20 94 215 20
+			textalign	ITEM_ALIGN_LEFT
+			textalignx	0
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name			headlist
+			rect			15 114 303 90
+			group			grpquaketype	
+			type			ITEM_TYPE_LISTBOX
+			elementwidth	32
+			elementheight	64
+			elementtype		LISTBOX_IMAGE
+			feeder			FEEDER_IDENTITIES
+			horizontalscroll
+			border			1
+			bordersize		1
+			outlinecolor	.69 .89 .27 1
+			bordercolor		0 0 0 1
+			forecolor		1 1 1 1
+			visible			1
+
+			cvarTest		"ui_info_teamgame"
+			showCvar 
+			{ 
+				"0";
+			}
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+			}
+		}
+
+		itemDef 
+		{
+			name			headlist
+			rect			15 114 303 90
+			group			grpquaketype	
+			type			ITEM_TYPE_LISTBOX
+			elementwidth	32
+			elementheight	64
+			elementtype		LISTBOX_IMAGE
+			feeder			FEEDER_TEAMIDENTITIES
+			horizontalscroll
+			border			1
+			bordersize		1
+			outlinecolor	.69 .89 .27 1
+			bordercolor		0 0 0 1
+			forecolor		1 1 1 1
+			visible			1
+
+			cvarTest		"ui_info_teamgame"
+			hideCvar 
+			{ 
+				"0";
+			}
+
+			action
+			{
+				play "sound/misc/menus/select.wav" ; 
+			}
+
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+			}
+		}
+	}
+}
+

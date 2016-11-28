@@ -1,0 +1,208 @@
+{
+	\\ CREATE FAVORITE POPUP MENU \\
+
+	menuDef 
+	{
+    	name		"createfavorite_popmenu"
+    	visible		0
+    	fullscreen	0
+		rect		0 0 640 480
+		focusColor	.49 .56 .27 1
+    	style		WINDOW_STYLE_FILLED
+		popup
+		
+		onClose
+		{
+		}
+
+		onESC 
+		{ 
+			close createfavorite_popmenu ;
+		}
+
+		onOpen
+		{
+			setcvar  fave_ip_error " "
+		}
+
+		itemDef
+		{
+			name		window
+			rect		0 0 640 480
+			style		WINDOW_STYLE_FILLED
+			backcolor	0 0 0 .5
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			rect		202 122 260 260
+			background	"gfx/menus/backdrop/requestor"
+			style		WINDOW_STYLE_SHADER
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		window
+			text		"New Favorite"
+			style		WINDOW_STYLE_FILLED
+			textfont	"hud"
+			textscale	.53
+			rect		214 136 210 33
+			textalign	1
+			textalignx	108
+			textaligny	6
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 .25
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		address
+			text		"IP Address"
+			style		WINDOW_STYLE_EMPTY
+			textfont	"hud"
+			textscale	.43
+			rect		202 213 110 20
+			textalign	1
+			textalignx	117
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		addressEntry
+			style		WINDOW_STYLE_FILLED
+			maxchars	20
+			text		""
+			textfont	"hud"
+			textscale	.43
+			type		ITEM_TYPE_EDITFIELD
+			cvar		"ui_favoriteAddress"
+			rect		242 233 160 20
+			textalign	0
+			textalignx	0
+			textaligny	2
+			forecolor	1 1 1 1
+			backcolor	0 0 0 .25
+			visible		1
+			
+			action
+			{
+				play "sound/misc/menus/select.wav" ;
+			}
+			mouseenter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor addressEntry backcolor 0 0 0 .75 
+			}
+			mouseexit 
+			{ 
+				setitemcolor addressEntry backcolor 0 0 0 .25 
+			}
+		}
+
+		itemDef 
+		{
+			name		window
+			cvar		"fave_ip_error"
+			textfont	"hud"
+			textscale	.43
+			rect		265 260 260 20
+			textalignx	2
+			textaligny	2
+			forecolor	.12 .14 .08 1
+			visible		1
+			decoration
+		}
+
+		itemDef 
+		{
+			name		ok_button
+			text		"OK"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		255 290 60 26
+
+			textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	20
+     		textaligny	4
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript CreateFavorite ; 
+
+//				close createfavorite_popmenu ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor ok_button backcolor .12 .14 .08 1
+				setitemcolor ok_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor ok_button backcolor 0 0 0 0
+				setitemcolor ok_button forecolor .12 .14 .08 1
+			}
+		}
+
+		itemDef 
+		{
+			name		cancel_button
+			text		"Cancel"
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		325 290 60 26
+
+			textfont	"hud"
+			textscale	.43
+			textalign	0
+      		textalignx	7
+     		textaligny	4
+			forecolor	.12 .14 .08 1
+			backcolor	0 0 0 0
+			visible		1
+			border		1
+			bordercolor	0 0 0 1
+			
+			action 
+			{ 
+				play "sound/misc/menus/select.wav" ; 
+
+				uiScript CancelCreateFavorite ;
+
+				close createfavorite_popmenu ; 
+			}
+			mouseEnter 
+			{ 
+				play "sound/misc/menus/hilite1.wav" ; 
+				setitemcolor cancel_button backcolor .12 .14 .08 1
+				setitemcolor cancel_button forecolor .49 .56 .27 1
+			}				 
+			mouseExit 
+			{ 
+				setitemcolor cancel_button backcolor 0 0 0 0
+				setitemcolor cancel_button forecolor .12 .14 .08 1
+			}
+		}
+	}
+}
