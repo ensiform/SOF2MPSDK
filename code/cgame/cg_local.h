@@ -2,13 +2,13 @@
 //
 // cg_local.h --
 
-#include "../game/q_shared.h"
+#include "game/q_shared.h"
 #include "tr_types.h"
-#include "../game/bg_public.h"
+#include "game/bg_public.h"
 #include "cg_public.h"
-#include "../ghoul2/g2.h"
-#include "../ghoul2/G2_gore_shared.h"
-#include "../game/inv.h"
+#include "ghoul2/G2.h"
+#include "ghoul2/G2_gore_shared.h"
+#include "game/inv.h"
 
 #undef _SNAPSHOT_EXTRAPOLATION
 

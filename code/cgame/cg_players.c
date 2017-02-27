@@ -3,8 +3,8 @@
 // cg_players.c -- handle the media and animation for player entities
 
 #include "cg_local.h"
-#include "..\ghoul2\g2.h"
-#include "..\game\inv.h"
+#include "ghoul2/G2.h"
+#include "game/inv.h"
 
 typedef struct SCustomSound
 {

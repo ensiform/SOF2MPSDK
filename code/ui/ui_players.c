@@ -3,7 +3,7 @@
 // ui_players.c
 
 #include "ui_local.h"
-#include "..\ghoul2\g2.h"
+#include "ghoul2/G2.h"
 
 
 #define UI_TIMER_GESTURE		2300

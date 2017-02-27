@@ -1,16 +1,15 @@
 // Copyright (C) 2001-2002 Raven Software.
 //
-#include "../game/q_shared.h"
+#include "game/q_shared.h"
 #include "gt_public.h"
 
 // this file is only included when building a dll
 // gt_syscalls.asm is included instead when building a qvm
 
-static int (QDECL *syscall)( int arg, ... ) = (int (QDECL *)( int, ...))-1;
+static intptr_t (QDECL *Q_syscall)( intptr_t arg, ... ) = (intptr_t (QDECL *)( intptr_t, ...))-1;
 
-void dllEntry( int (QDECL *syscallptr)( int arg,... ) ) 
-{
-	syscall = syscallptr;
+Q_EXPORT void dllEntry( intptr_t (QDECL *syscallptr)( intptr_t arg,... ) ) {
+	Q_syscall = syscallptr;
 }
 
 int PASSFLOAT( float x ) 
@@ -22,41 +21,43 @@ int PASSFLOAT( float x )
 
 void trap_Print( const char *string ) 
 {
-	syscall( GT_PRINT, string );
+	Q_syscall( GT_PRINT, string );
 }
 
 void trap_Error( const char *string ) {
-	syscall( GT_ERROR, string );
+	Q_syscall( GT_ERROR, string );
+	// shut up GCC warning about returning functions, because we know better
+	exit(1);
 }
 
 int trap_Milliseconds( void ) 
 {
-	return syscall( GT_MILLISECONDS ); 
+	return Q_syscall( GT_MILLISECONDS ); 
 }
 
 void trap_Cvar_Register ( vmCvar_t *cvar, const char *var_name, const char *value, int flags, float MinValue, float MaxValue ) 
 {
-	syscall( GT_CVAR_REGISTER, cvar, var_name, value, flags, PASSFLOAT(MinValue), PASSFLOAT(MaxValue) );
+	Q_syscall( GT_CVAR_REGISTER, cvar, var_name, value, flags, PASSFLOAT(MinValue), PASSFLOAT(MaxValue) );
 }
 
 void trap_Cvar_Update( vmCvar_t *cvar ) 
 {
-	syscall( GT_CVAR_UPDATE, cvar );
+	Q_syscall( GT_CVAR_UPDATE, cvar );
 }
 
 void trap_Cvar_Set( const char *var_name, const char *value ) 
 {
-	syscall( GT_CVAR_SET, var_name, value );
+	Q_syscall( GT_CVAR_SET, var_name, value );
 }
 
 int trap_Cvar_VariableIntegerValue( const char *var_name ) 
 {
-	return syscall( GT_CVAR_VARIABLE_INTEGER_VALUE, var_name );
+	return Q_syscall( GT_CVAR_VARIABLE_INTEGER_VALUE, var_name );
 }
 
 void trap_Cvar_VariableStringBuffer( const char *var_name, char *buffer, int bufsize ) 
 {
-	syscall( GT_CVAR_VARIABLE_STRING_BUFFER, var_name, buffer, bufsize );
+	Q_syscall( GT_CVAR_VARIABLE_STRING_BUFFER, var_name, buffer, bufsize );
 }
 
 

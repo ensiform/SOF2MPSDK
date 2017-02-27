@@ -61,6 +61,16 @@
 
 #include "../qcommon/disablewarnings.h"
 
+#if (defined _MSC_VER)
+	#define Q_EXPORT __declspec(dllexport)
+#elif (defined __SUNPRO_C)
+	#define Q_EXPORT __global
+#elif ((__GNUC__ >= 3) && (!__EMX__) && (!sun))
+	#define Q_EXPORT __attribute__((visibility("default")))
+#else
+	#define Q_EXPORT
+#endif
+
 /**********************************************************************
   VM Considerations
 
@@ -83,6 +93,8 @@
 
 #define assert(exp)     ((void)0)
 
+typedef int intptr_t;
+
 #define min(x,y) ((x)<(y)?(x):(y))
 #define max(x,y) ((x)>(y)?(x):(y))
 
@@ -97,6 +109,29 @@
 #include <time.h>
 #include <ctype.h>
 #include <limits.h>
+
+#if defined (_MSC_VER)
+	#if _MSC_VER >= 1600
+		#include <stdint.h>
+	#else
+		typedef signed __int64 int64_t;
+		typedef signed __int32 int32_t;
+		typedef signed __int16 int16_t;
+		typedef signed __int8  int8_t;
+		typedef unsigned __int64 uint64_t;
+		typedef unsigned __int32 uint32_t;
+		typedef unsigned __int16 uint16_t;
+		typedef unsigned __int8  uint8_t;
+	#endif
+#else // not using MSVC
+	#if !defined(__STDC_LIMIT_MACROS)
+		#define __STDC_LIMIT_MACROS
+	#endif
+	#include <stdint.h>
+	
+	#define min(x,y) ((x)<(y)?(x):(y))
+	#define max(x,y) ((x)>(y)?(x):(y))
+#endif
 
 #endif
 
@@ -701,7 +736,7 @@ float Q_rsqrt( float f );		// reciprocal square root
 signed char ClampChar( int i );
 signed short ClampShort( int i );
 
-float powf ( float x, int y );
+float Q_powf ( float x, int y );
 
 // this isn't a real cheap function to call!
 int DirToByte( vec3_t dir );

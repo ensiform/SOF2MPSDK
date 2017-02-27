@@ -4,7 +4,7 @@
 
 #include "cg_local.h"
 #if !defined(GHOUL2_SHARED_H_INC)
-#include "..\ghoul2\G2_gore_shared.h"
+#include "ghoul2/G2_gore_shared.h"
 #endif
 
 

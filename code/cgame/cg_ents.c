@@ -3,8 +3,8 @@
 // cg_ents.c -- present snapshot entities, happens every single frame
 
 #include "cg_local.h"
-#include "..\game\q_shared.h"
-#include "..\ghoul2\g2.h"
+#include "game/q_shared.h"
+#include "ghoul2/G2.h"
 
 /*
 ======================

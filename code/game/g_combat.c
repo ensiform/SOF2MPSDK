@@ -1323,7 +1323,7 @@ qboolean G_RadiusDamage (
 			continue;
 		}
 
-		points = damage * ( 1.0 - powf((dist / radius), power));
+		points = damage * ( 1.0 - Q_powf((dist / radius), power));
 
 		if( CanDamage (ent, origin) ) 
 		{
